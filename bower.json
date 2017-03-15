@@ -1,0 +1,23 @@
+{
+  "name": "moheqionglin",
+  "authors": [
+    "zhouwanli2009@yeah.net"
+  ],
+  "description": "moheqionglin website",
+  "main": "",
+  "license": "MIT",
+  "homepage": "http://www.moheqionglin.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1",
+    "flat-ui": "*",
+    "animate.css":"~3.5.2",
+    "sidr":"~2.2.1"
+  }
+}
