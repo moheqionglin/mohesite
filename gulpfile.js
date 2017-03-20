@@ -18,7 +18,7 @@ const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 /********************CONST VAR***********************/
 //IMAGE
-const sourceImgDir = './public/images/*';
+const sourceImgDir = ['./public/images/**/*', '!./public/images/dist/**/*']; ;
 const compressImgDir = './target/public/images';
 
 const localCompressImgDir = './public/images/dist';

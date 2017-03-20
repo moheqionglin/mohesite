@@ -35,8 +35,7 @@
     "gulp-ruby-sass": "^2.0.6",
     "gulp-watch": "^4.3.8",
     "jshint": "^2.9.3",
-    "jshint-stylish":"*",
-    "gulp-rename":"*",
+    "jshint-stylish":"*"
   },
   "devDependencies":{
 
