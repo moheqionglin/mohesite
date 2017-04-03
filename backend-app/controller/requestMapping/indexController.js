@@ -8,5 +8,6 @@ var index = async (ctx, next) => {
     await next();
 };
 module.exports = {
-    "GET /index.html " : index
+    "GET /index.html " : index,
+    "GET /" : index
 };

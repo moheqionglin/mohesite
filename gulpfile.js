@@ -169,7 +169,7 @@ gulp.task('serve', function(){
 gulp.task('default', function(){
     gulp.run('js-hint',
         // 'local-js',
-        'local-css',
+        'local-css'
         // 'local-img'
     );
 });

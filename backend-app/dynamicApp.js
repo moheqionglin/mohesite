@@ -42,8 +42,8 @@ log4js.configure('log4js.json', { reloadSecs: 300, cwd: __dirname });
 
 {//中间件 [5]加载中间件requestMapping
    server.use(registerController(router,
-       [__dirname + '/controller/requestMapping/'
-        // __dirname + '/controller/learnNunJucks/'
+       [__dirname + '/controller/requestMapping/',
+        __dirname + '/controller/learnNunJucks/'
    ]));
 }
 

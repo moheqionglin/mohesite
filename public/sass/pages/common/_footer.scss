@@ -1,0 +1,33 @@
+footer{
+  background-color: $color-gray;
+  padding: 60px 0px !important;
+  clear: both;
+  color:$font-gray;
+  text-align: center;
+  text-transform: uppercase;
+  ul.legals  {
+    list-style: none;
+    color: #8c9398;
+    font-size: 14px;
+    margin: 20px auto;
+    padding: 0px !important;
+
+    li{
+      display: inline-block;
+      padding: 0px 20px;
+      margin: 0px;
+    }
+  }
+  ul.social  {
+    li{
+      padding: 0px 5px;
+      font-size: 20px !important;
+    }
+  }
+
+  .copy {
+    font-size: 10px;
+    text-align: center;
+    color: $font-gray;
+  }
+}

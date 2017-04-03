@@ -1,0 +1,22 @@
+@media (min-width: $screen-lg){
+  .divider-left-lg{
+    border-left: 1px solid $border-gray;
+  }
+}
+
+.divider-right{
+  border-right: 1px solid $border-gray;
+}
+.divider-bottom{
+  border-bottom: 1px solid $border-gray;
+}
+.divider-bottom-dashed{
+  border-bottom: 1px dashed $border-gray;
+
+}
+
+.line {
+  border-bottom: 2px solid $color-logo-cyan;
+  width: 110px;
+  margin: 0 auto;
+}

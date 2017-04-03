@@ -4,7 +4,7 @@ var items = ['网站首页' ,'公司案例', '公司相册', '团队博客', '�
 
 const test = async (ctx, next) => {
     log.info('Test Page');
-    ctx.render('index.html', {
+    ctx.render('learnNunjucks/response.html', {
         items : items,
         testSet : 'Hello',
         testFun: function(a, b){

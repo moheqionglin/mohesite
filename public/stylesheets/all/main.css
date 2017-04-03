@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .clearfix:before, .clearfix:after {
   content: " ";
   display: table; }
@@ -43,11 +44,21 @@
 
 @font-face {
   font-family: 'fontello';
-  src: url("../font/fontello.eot?31364612");
-  src: url("../font/fontello.eot?31364612#iefix") format("embedded-opentype"), url("../font/fontello.woff2?31364612") format("woff2"), url("../font/fontello.woff?31364612") format("woff"), url("../font/fontello.ttf?31364612") format("truetype"), url("../font/fontello.svg?31364612#fontello") format("svg");
+  src: url("../font/fontello.eot?34383739");
+  src: url("../font/fontello.eot?34383739#iefix") format("embedded-opentype"), url("../font/fontello.woff2?34383739") format("woff2"), url("../font/fontello.woff?34383739") format("woff"), url("../font/fontello.ttf?34383739") format("truetype"), url("../font/fontello.svg?34383739#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?34383739#fontello') format('svg');
+  }
+}
+*/
 [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "fontello";
   font-style: normal;
@@ -58,28 +69,51 @@
   width: 1em;
   margin-right: .2em;
   text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
   margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
 
 .icon-tags:before {
   content: '\e800'; }
 
+/* '' */
+.icon-calendar:before {
+  content: '\e801'; }
+
+/* '' */
+.icon-eye:before {
+  content: '\e802'; }
+
+/* '' */
 .icon-user:before {
   content: '\e806'; }
 
+/* '' */
 .icon-weibo:before {
   content: '\f18a'; }
 
+/* '' */
 .icon-wechat:before {
   content: '\f1d7'; }
 
+/* '' */
 .icon-github-squared:before {
   content: '\f300'; }
 
+/* '' */
 body {
   padding-top: 50px;
   background-color: #fff;
@@ -89,6 +123,9 @@ a {
   color: #1ABC9C; }
   a:hover, a:active, a:focus {
     color: #1ABC9C; }
+
+.white {
+  color: #fff; }
 
 .navbar {
   position: relative;
@@ -493,16 +530,10 @@ a {
     left: 0;
     right: auto; } }
 
-.white {
-  color: #fff; }
-
 .navbar, .well, .panel {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0; }
-
-.navbar-nav li a {
-  font-weight: 400; }
 
 .jumbotron {
   background: url("../images/dist/index-body-bg.jpg"); }
@@ -525,3 +556,64 @@ a {
   margin: 0 15px;
   border: 1px solid #ddd;
   border-radius: 50%; }
+
+.mohe-jumbotron h1, .mohe-jumbotron h3 {
+  color: #ffffff; }
+
+.result-list-display {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+  .result-list-display .result-list-img img {
+    width: 100%; }
+  .result-list-display .result-list-metadata .result-list-title {
+    margin-top: 5px; }
+  .result-list-display .result-list-metadata .result-list-attribute li {
+    text-align: center;
+    display: inline-block;
+    margin-right: 45px; }
+
+footer {
+  background-color: #34495E;
+  padding: 60px 0px !important;
+  clear: both;
+  color: #8C9398;
+  text-align: center;
+  text-transform: uppercase; }
+  footer ul.legals {
+    list-style: none;
+    color: #8c9398;
+    font-size: 14px;
+    margin: 20px auto;
+    padding: 0px !important; }
+    footer ul.legals li {
+      display: inline-block;
+      padding: 0px 20px;
+      margin: 0px; }
+  footer ul.social li {
+    padding: 0px 5px;
+    font-size: 20px !important; }
+  footer .copy {
+    font-size: 10px;
+    text-align: center;
+    color: #8C9398; }
+
+@media (min-width: 1200px) {
+  .divider-left-lg {
+    border-left: 1px solid #d5dbdb; } }
+
+.divider-right {
+  border-right: 1px solid #d5dbdb; }
+
+.divider-bottom {
+  border-bottom: 1px solid #d5dbdb; }
+
+.divider-bottom-dashed {
+  border-bottom: 1px dashed #d5dbdb; }
+
+.line {
+  border-bottom: 2px solid #49CCED;
+  width: 110px;
+  margin: 0 auto; }

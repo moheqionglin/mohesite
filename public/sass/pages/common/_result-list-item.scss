@@ -1,0 +1,26 @@
+.result-list-display{
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  .result-list-img{
+    img{
+      width: 100%;
+    }
+  }
+  .result-list-metadata{
+    .result-list-title{
+      margin-top:5px;
+    }
+    //.result-list-introduction{
+    //}
+    .result-list-attribute{
+      li{
+        text-align: center;
+        display: inline-block;
+        margin-right: 45px;
+      }
+    }
+  }
+}

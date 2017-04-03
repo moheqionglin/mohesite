@@ -27,18 +27,16 @@
         <script src="/javascripts/bootstrap/vender/html5shiv.min.js"></script>
         <script src="/javascripts/bootstrap/vender/respond.min.js"></script>
     <![endif]-->
-    <!--待删除-->
-    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
     {% include './common/_header.html' %}
-    <script src="/bower_components/bootstrap-offcanvas/dist/js/bootstrap.offcanvas.js"></script>
+    {% import "./common/_result-list-item.html" as resultListItem %}
     <div class="jumbotron">
         <div class="container">
             <div class="row mohe-jumbotron">
                 <div class="col-md-8 col-md-offset-2 text-center inner">
-                    <h2 class="white">墨荷琼林官网</h2>
-                    <h6 class="animated fadeInUp delay-05s white">一个学习 & 分享IT知识的港湾</h6>
+                    <h1 class="white">墨荷琼林官网</h1>
+                    <h2 class="animated fadeInUp delay-05s white">一个学习 & 分享IT知识的港湾</h2>
                 </div>
             </div>
             <div class="row">
@@ -60,26 +58,28 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><img src="/images/indexImg/1.jpg" width="60%"></div>
-                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                        <h6>如何在Camel中使用swagger实现REST SDL</h6>
-                        <p>2017年第三方支付行业也随之进入高速发展的第7个年头，第三方支付市场已成为互联网金融领域最为成熟的行业，并作为基础服务广泛应用于各行业。</p>
-                        <div class="row">
-                            <div class="col-xs-2"><p>发布时间: 15小时前</p></div>
-                            <div class="col-xs-2"><p>阅读: 15小时前</p></div>
-                            <div class="col-xs-2"><p><i class="icon-tags"></i><a href="#">javascript</a><a href="#">JAVA</a><a href="#">Camel</a></p></div>
-                        </div>
-                    </div>
-
-                </div>
+                {% for i in range(0, 10)%}
+                    {% set img = '/images/indexImg/'+ loop.index +'.jpg'%}
+                    {{resultListItem.resultListDisplay(img, '如何在Camel中使用swagger实现REST SDL', '速发展的第7个年头，第三方支付市场已成为互联网金融领域最为成熟的行业，并作为基础服务广泛应用于各行业。', '3小时前', '234', 'javascript')}}
+                {% endfor %}
             </div>
-            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                <p>
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 divider-left-lg">
+                <h4>
                     个人简介
+                </h4>
+                <p>
+                    归去来兮，田园将芜胡不归？既自以心为形役，奚惆怅而独悲？悟已往之不谏，知来者之可追。实迷途其未远，觉今是而昨非。舟遥遥以轻飏，风飘飘而吹衣。问征夫以前路，恨晨光之熹微。
+                    乃瞻衡宇，载欣载奔。僮仆欢迎，稚子候门。三径就荒，松菊犹存。携幼入室，有酒盈樽。引壶觞以自酌，眄庭柯以怡颜。倚南窗以寄傲，审容膝之易安。园日涉以成趣，门虽设而常关。策扶老以流憩，时矫首而遐观。云无心以出岫，鸟倦飞而知还。景翳翳以将入，抚孤松而盘桓。
+                    归去来兮，请息交以绝游。世与我而相违，复驾言兮焉求？悦亲戚之情话，乐琴书以消忧。农人告余以春及，将有事于西畴。或命巾车，或棹孤舟。既窈窕以寻壑，亦崎岖而经丘。木欣欣以向荣，泉涓涓而始流。善万物之得时，感吾生之行休。
+                    已矣乎！寓形宇内复几时？曷不委心任去留？胡为乎遑遑欲何之？富贵非吾愿，帝乡不可期。怀良辰以孤往，或植杖而耘耔。登东皋以舒啸，临清流而赋诗。聊乘化以归尽，乐夫天命复奚疑！
                 </p>
             </div>
         </div>
     </div>
+    {% include './common/_footer.html'%}
+    <!--待删除-->
+    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap-offcanvas/dist/js/bootstrap.offcanvas.js"></script>
+    <script src="/bower_components/bootstrap/js/dropdown.js"></script>
 </body>
 </html>
