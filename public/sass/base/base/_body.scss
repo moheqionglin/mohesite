@@ -1,0 +1,17 @@
+body {
+  padding-top: 50px;
+  background-color: $body-bg;
+  font-family: "Heiti TC";
+}
+
+
+a{
+  color:$color-green;
+
+  &:hover,
+  &:active,
+  &:focus
+  {
+    color:$color-green;
+  }
+}

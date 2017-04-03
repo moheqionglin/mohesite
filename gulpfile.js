@@ -18,7 +18,7 @@ const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 /********************CONST VAR***********************/
 //IMAGE
-const sourceImgDir = ['./public/images/**/*', '!./public/images/dist/**/*']; ;
+const sourceImgDir = './public/images/!(dist)**/*' ;
 const compressImgDir = './target/public/images';
 
 const localCompressImgDir = './public/images/dist';
@@ -33,7 +33,7 @@ const compressJSFileName = 'all.min.js';
 
 const localCompressJSDir = './public/javascripts';
 //SCSS
-const sourceSass = './public/sass/**/*.scss';
+const sourceSass = './public/sass/*.scss';
 const compileCssDir = './target/public/stylesheets/all';
 const compressCssDir = './target/public/stylesheets';
 const concatCssFileName = 'main.css';
@@ -168,9 +168,10 @@ gulp.task('serve', function(){
 
 gulp.task('default', function(){
     gulp.run('js-hint',
-        'local-js',
+        // 'local-js',
         'local-css',
-        'local-img');
+        // 'local-img'
+    );
 });
 
 gulp.task('prod', function(){

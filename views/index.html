@@ -10,27 +10,29 @@
     <meta name="author" content="">
     <!-- 国产浏览器高速模式 -->
     <meta name="renderer" content="webkit">
-    <link rel="icon" href="../public/images/favicon.ico">
+    <link rel="icon" href="/images/favicon.ico">
 
     <title>墨荷琼林官网</title>
     <!-- Bootstrap core CSS -->
-    <link href="../public/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Loading Flat UI -->
-    <link href="../public/bower_components/flat-ui/dist/css/flat-ui.css" rel="stylesheet">
-    <link href="../public/bower_components/animate.css/animate.min.css" rel="stylesheet">
+    <!--<link href="/bower_components/flat-ui/dist/css/flat-ui.css" rel="stylesheet">-->
+    <link href="/bower_components/animate.css/animate.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="../public/stylesheets/main.min.css" rel="stylesheet">
+    <link href="/stylesheets/main.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="/bower_components/bootstrap-offcanvas/dist/css/bootstrap.offcanvas.min.css"/>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-        <script src="../public/javascripts/bootstrap/vender/html5shiv.min.js"></script>
-        <script src="../public/javascripts/bootstrap/vender/respond.min.js"></script>
+        <script src="/javascripts/bootstrap/vender/html5shiv.min.js"></script>
+        <script src="/javascripts/bootstrap/vender/respond.min.js"></script>
     <![endif]-->
-
+    <!--待删除-->
+    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
-    <div id="header"></div>
-
+    {% include './common/_header.html' %}
+    <script src="/bower_components/bootstrap-offcanvas/dist/js/bootstrap.offcanvas.js"></script>
     <div class="jumbotron">
         <div class="container">
             <div class="row mohe-jumbotron">
@@ -42,13 +44,13 @@
             <div class="row">
                 <div class="col-md-4 col-md-offset-4 text-center animated fadeInUp delay-15s  ">
                     <span class="mohe-index-page-contact">
-                        <a href="#"><i class="icon-wechat"></i> </a>
+                        <a href="#" target="_blank"><i class="icon-wechat" ></i> </a>
                     </span>
                     <span class="mohe-index-page-contact">
                         <a href="http://weibo.com/moheqionglin" target="_blank"> <i class="icon-weibo"></i> </a>
                     </span>
                     <span class="mohe-index-page-contact">
-                        <a href="https://github.com/moheqionglin"><i class="icon-github-squared"></i></a>
+                        <a href="https://github.com/moheqionglin" target="_blank"><i class="icon-github-squared"></i></a>
                     </span>
                 </div>
             </div>
@@ -57,11 +59,11 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-10">
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                 <div class="row">
-                    <div class="col-lg-4"><img src="../public/images/dist/indexImg/1.jpg"></div>
-                    <div class="col-lg-8">
-                        <h2>如何在Camel中使用swagger实现REST SDL</h2>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><img src="/images/indexImg/1.jpg" width="60%"></div>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <h6>如何在Camel中使用swagger实现REST SDL</h6>
                         <p>2017年第三方支付行业也随之进入高速发展的第7个年头，第三方支付市场已成为互联网金融领域最为成熟的行业，并作为基础服务广泛应用于各行业。</p>
                         <div class="row">
                             <div class="col-xs-2"><p>发布时间: 15小时前</p></div>
@@ -72,23 +74,12 @@
 
                 </div>
             </div>
-            <div class="col-lg-2">
-
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                <p>
+                    个人简介
+                </p>
             </div>
         </div>
     </div>
-
-
-    <!--待删除-->
-    <script type="text/javascript" src="../public/bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../public/bower_components/flat-ui/dist/js/flat-ui.min.js"></script>
-    <script type="text/javascript" >
-        $(document).ready(function(){
-            $('#header').load('./common/_header.html');
-        });
-    </script>
-
 </body>
-
 </html>

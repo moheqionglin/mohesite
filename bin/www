@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('../app');
+var app = require('../backend-app/middleware/app');
 var debug = require('debug')('mohewebsite:server');
 var http = require('http');
 

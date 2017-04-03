@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--使用 viewport meta 标签在手机浏览器上控制布局-->
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+    <!--通过快捷方式打开时全屏显示-->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!--隐藏状态栏-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="blank" />
+    <!--iPhone会将看起来像电话号码的数字添加电话连接，应当关闭-->
+    <meta name="format-detection" content="telephone=no" />
+    <script type="text/javascript" src="..//bower_components/jquery/dist/jquery.min.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        code{
+            display: block;
+            width: 300px;
+            background-color: #dff0d8;
+        }
+        table tr {
+            border: 1px solid #f3f3f3;
+        }
+        table tr td{
+            border: 1px solid #f3f3f3;
+        }
+        .nav {
+            position: relative;
+            background-color: #fff;
+            height: 78px;
+            width: 100%;
+            border-bottom: 1px solid #DADADA;
+        }
+
+        .nav img {
+            position: absolute;
+            right: 20px;
+            top: 30px;
+            width: 28px;
+            display: none;
+        }
+
+        .nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .nav ul li {
+            height: 78px;
+            width: 168px;
+            line-height: 78px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .nav ul li:hover {
+            cursor: pointer;
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: #666;
+            padding-bottom: 8px;
+        }
+
+        .nav ul li .actived {
+            border-bottom: 3px solid #EE5C42;
+        }
+
+        @media only screen and (max-width: 878px) {
+            .nav img {
+                display: inline;
+            }
+            .nav ul {
+                position: absolute;
+                right: 0;
+                text-align: right;
+                top: 78px;
+                display: none;
+            }
+            .nav ul li {
+                display: block;
+                border: 1px solid #dadada;
+                height: 58px;
+                line-height: 58px;
+                width: 98px;
+            }
+            .nav ul li a {
+                display: block;
+                padding-bottom: 0;
+            }
+            .nav ul li .actived {
+                border-bottom: none;
+            }
+            .nav ul li a:hover {
+                background-color: #6E6E6E;
+                color: #fff;
+            }
+        }
+
+    </style>
+
+    <script>
+        $(function() {
+            $(".nav ul li").click(function() {//导航点击
+                $(".nav ul li a").removeClass("actived");
+                $(this).children("a").addClass("actived");
+            });
+            $(".nav img").click(function() {//显示或隐藏下方导航列表
+                console.log(1)
+                $(".nav ul").slideToggle(100);
+            });
+        }
+
+        );
+
+
+    </script>
+</head>
+<body>
+<div class="nav">
+    <ul>
+        {% for item in items%}
+            {% if loop.first%}
+                <li>
+                    <a href="#" class="actived">{{loop.index}} - {{item}} -{{loop.index0}}</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="#" >{{loop.index}} - {{item}} -{{loop.index0}}</a>
+                </li>
+            {% endif %}
+
+        {% endfor %}
+    </ul>
+    <img src="data:image/png;base64,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"/> 　
+</div>
+<div style="margin: 30px auto; width:989px;">
+    <table   style="width:100%; border: solid 1px #eee">
+        <thead >
+            <tr>
+                <th>nunjucks 组件</th>
+                <th>效果</th>
+                <th>代码</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <!--定义宏-->
+                {% macro formGroup(name, value='', type='text')%}
+                <div class="field">
+                    <input type = "{{type}}" name="{{name}}" value="{{value | escape}}" />
+                </div>
+                {% endmacro%}
+                <td>macro(宏)</td>
+                <td>
+                    <div class="panel" style="margin-top: 30px; border: solid 1px #eee;">
+                    {{formGroup('use' )}}
+                    {{formGroup('use', type='password')}}
+                    {{formGroup('use', 'test macro', 'text')}}
+                </div>
+                </td>
+                <td>
+                    {% set testHtml1 %}
+                       <textarea rows="5" cols="55">
+                            <div class="panel" style="margin-top: 30px; border: solid 1px #eee;">
+                            {{formGroup('use' )}}
+                            {{formGroup('use', type='password')}}
+                            {{formGroup('use', 'test macro', 'text')}}
+                            </div>
+                        </textarea>
+                    {% endset %}
+                    <code >{{testHtml1}}</code>
+                </td>
+            </tr>
+            <tr>
+                <td>set 变量</td>
+                <td>
+                    {{testSet}}
+                    <!-- 测试set-->
+                    {% set testSet = ' World'%}
+                    {{testSet}}
+                </td>
+                <td>
+                    {% set testHtml2 %}
+                        <b>{{testSet}} </b>-asfs
+                        <!-- 测试set-->
+                        {% set testSet = ' World'%}
+                        {{testSet}}阿斯蒂芬
+                    {% endset %}
+                    <code >{{testHtml2}}</code>
+                </td>
+            </tr>
+            <tr>
+                <td>set 设置html为变量</td>
+                <td>
+                    {% set testHtml %}
+                        {% include './common.html' %}
+                    {% endset %}
+
+                    {{testHtml}}
+                </td>
+                <td>
+                    {% set testHtml2 %}
+                    <b>{{testSet}} </b>-asfs
+                    <!-- 测试set-->
+                    {% set testSet = ' World'%}
+                    {{testSet}}
+                    {% endset %}
+                    <code >{{testHtml2}}</code>
+                </td>
+            </tr>
+            <tr>
+                <td>include 给字页面赋值</td>
+                <td>
+                    {% include './common.html' %}
+                </td>
+                <td>
+                    <code>{% raw %}
+                        {% include './common.html' %}
+                        {% endraw %}</code>
+                </td>
+            </tr>
+            <tr>
+                <td>raw 输出nunjucks所有东西</td>
+                <td>
+                    {% include './common.html' %}
+                </td>
+                <td>
+                    <code>
+                        {% raw %}
+                            {% raw %}
+                            {% include './common.html' %}
+                            {% endraw %}
+                        {% endraw %}</code>
+                </td>
+            </tr>
+            <tr>
+                {% filter title %}
+                    may the force be with you
+                {% endfilter %}
+                <td>filter 自定义</td>
+                <td>
+                    {{test | title}}
+                </td>
+                <td>
+                    <code>{% raw %}
+                        {% include './common.html' %}
+                        {% endraw %}</code>
+                </td>
+            </tr>
+            <tr>
+                <td>js 函数调用</td>
+                <td>
+                    {{testFun('asfd', 'aa')}}
+                </td>
+                <td>
+                    <code>{% raw %}
+                        {{testFun('asfd', 'aa')}}
+                        {% endraw %}</code>
+                </td>
+            </tr>
+            <tr>
+                <td>for 循环 默认有空格,除掉空格</td>
+                <td>
+                    {% for i in [1,2,3,4,5] %}
+                    {{ i }}
+                    {% endfor %} <br/>
+                    {% for i in [1,2,3,4,5] -%}
+                    {{ i }}
+                    {%- endfor %}
+                </td>
+                <td>
+                    <code>{% raw %}
+                        {% for i in [1,2,3,4,5] %}
+                        {{ i }}
+                        {% endfor %} <br/>
+                        {% for i in [1,2,3,4,5] -%}
+                        {{ i }}
+                        {%- endfor %}
+                        {% endraw %}</code>
+                </td>
+            </tr>
+            <tr>
+                {% set myHtml %}
+                <html><body>body 正文<div>div 正文</div></body></html>
+                {% endset %}
+                <td>safe escape</td>
+                <td>
+                    {{ myHtml | safe }}<br/>
+                    {{ myHtml | escape }}
+                </td>
+                <td>
+                    <code>{% raw %}
+                        {% set myHtml %}
+                        <html><body>body 正文<div>div 正文</div></body></html>
+                        {% endset %}
+                        {{ myHtml | safe }}<br/>
+                        {{ myHtml | escape }}
+                        {% endraw %}</code>
+                </td>
+            </tr>
+            <tr>
+                <td>3个全局函数 joiner, cycler, range</td>
+                <td>
+                    {% set comma = joiner('---') %}
+                    {% set cyc = cycler('odd', 'even')%}
+                    {% for i in [1,2,3,4,5] %}
+                        {{comma()}} {{i}} {{cyc.next()}}
+                    {% endfor %}
+                    <br/>
+                    {% for i in range(0, 5) -%}
+                    {{ i }},
+                    {%- endfor %}
+                </td>
+                <td>
+                    <code>{% raw %}
+                        {% set comma = joiner('---') %}
+                        {% set cyc = cycler('odd', 'even')%}
+                        {% for i in [1,2,3,4,5] %}
+                        {{comma()}} {{i}} {{cyc.next()}}
+                        {% endfor %}
+
+                        {% for i in range(0, 5) -%}
+                        {{ i }},
+                        {%- endfor %}
+                        {% endraw %}</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+</div>
+</body>
+</html>

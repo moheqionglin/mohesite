@@ -1,0 +1,24 @@
+{ "defaultEnv": "dev",
+  "dev": {
+    "host": "localhost",
+    "driver": "mysql",
+    "user": "root",
+    "password": "",
+    "database":"moheweb",
+    "multipleStatements": true
+  },
+
+  "test": {
+    "driver": "sqlite3",
+    "filename": ":memory:"
+  },
+
+  "prod": {
+    "host": "localhost",
+    "driver": "mysql",
+    "user": {"ENV": "PRODUCTION_USERNAME"},
+    "password": {"ENV": "PRODUCTION_PASSWORD"},
+    "multipleStatements": true
+  },
+  "sql-file" : true
+}
