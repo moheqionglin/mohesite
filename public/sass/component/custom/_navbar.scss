@@ -7,6 +7,11 @@
 //
 // Provide a static navbar from which we expand to create full-width, fixed, and
 // other navbar variations.
+@media (max-width: $screen-sm) {
+  .navbar-inverse .navbar-offcanvas, .navbar-offcanvas{
+    background: $color-gray;
+  }
+}
 
 .navbar {
   position: relative;

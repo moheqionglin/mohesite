@@ -1,0 +1,22 @@
+{% macro pagation(url, diaplayMaxLength= 10, totalpage, currentPage)%}
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        <li>
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">首页</span>
+            </a>
+        </li>
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li class="disabled"><span >...</span></li>
+        <li><a href="#">14</a></li>
+        <li><a href="#">15</a></li>
+        <li>
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">末页</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+{% endmacro %}

@@ -44,8 +44,8 @@
 
 @font-face {
   font-family: 'fontello';
-  src: url("../font/fontello.eot?34383739");
-  src: url("../font/fontello.eot?34383739#iefix") format("embedded-opentype"), url("../font/fontello.woff2?34383739") format("woff2"), url("../font/fontello.woff?34383739") format("woff"), url("../font/fontello.ttf?34383739") format("truetype"), url("../font/fontello.svg?34383739#fontello") format("svg");
+  src: url("../font/fontello.eot?73501499");
+  src: url("../font/fontello.eot?73501499#iefix") format("embedded-opentype"), url("../font/fontello.woff2?73501499") format("woff2"), url("../font/fontello.woff?73501499") format("woff"), url("../font/fontello.ttf?73501499") format("truetype"), url("../font/fontello.svg?73501499#fontello") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -55,7 +55,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?34383739#fontello') format('svg');
+    src: url('../font/fontello.svg?73501499#fontello') format('svg');
   }
 }
 */
@@ -98,6 +98,14 @@
   content: '\e802'; }
 
 /* '' */
+.icon-plus:before {
+  content: '\e803'; }
+
+/* '' */
+.icon-mail:before {
+  content: '\e805'; }
+
+/* '' */
 .icon-user:before {
   content: '\e806'; }
 
@@ -110,6 +118,10 @@
   content: '\f1d7'; }
 
 /* '' */
+.icon-paper-plane-empty:before {
+  content: '\f1d9'; }
+
+/* '' */
 .icon-github-squared:before {
   content: '\f300'; }
 
@@ -126,6 +138,10 @@ a {
 
 .white {
   color: #fff; }
+
+@media (max-width: 768px) {
+  .navbar-inverse .navbar-offcanvas, .navbar-offcanvas {
+    background: #34495E; } }
 
 .navbar {
   position: relative;
@@ -569,7 +585,8 @@ a {
   .result-list-display .result-list-img img {
     width: 100%; }
   .result-list-display .result-list-metadata .result-list-title {
-    margin-top: 5px; }
+    margin-top: 5px;
+    font-size: 18px; }
   .result-list-display .result-list-metadata .result-list-attribute li {
     text-align: center;
     display: inline-block;
@@ -581,7 +598,8 @@ footer {
   clear: both;
   color: #8C9398;
   text-align: center;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  margin-top: 100px; }
   footer ul.legals {
     list-style: none;
     color: #8c9398;
@@ -617,3 +635,146 @@ footer {
   border-bottom: 2px solid #49CCED;
   width: 110px;
   margin: 0 auto; }
+
+.about-page img {
+  width: 100%; }
+
+.about-page p {
+  color: #8C9398;
+  word-spacing: 1px;
+  line-height: 25px;
+  font-size: 14px;
+  margin-top: 20px; }
+
+.about-page .inner-title {
+  margin-bottom: 30px;
+  margin-top: 30px; }
+
+.about-page .about-content {
+  padding-left: 20px;
+  padding-right: 80px; }
+
+.contact-page {
+  padding-top: 50px;
+  background-color: #fff;
+  font-family: "Heiti TC";
+  line-height: 1.42857143; }
+  .contact-page .intro {
+    background: #f3f5f8; }
+  .contact-page .section-padding {
+    padding-top: 50px;
+    padding-bottom: 100px; }
+  .contact-page dl {
+    margin-top: 30px; }
+    .contact-page dl dd, .contact-page dl dt {
+      display: inline-block;
+      margin-right: 35px; }
+
+.self-introduce {
+  margin-top: 50px;
+  padding-left: 25px; }
+  .self-introduce .contact-way {
+    margin-top: 30px;
+    font-size: 18px; }
+
+.article {
+  font-size: 16px;
+  color: #000; }
+  .article p {
+    font-size: 16px;
+    color: #000; }
+  .article .title {
+    font-size: 24px; }
+  .article .meta-data .introduction {
+    font-size: 14px;
+    color: #8C9398;
+    text-indent: 28px; }
+  .article .meta-data .result-list-attribute li {
+    display: inline-block;
+    margin-left: 25px;
+    font-size: 12px;
+    color: #8C9398; }
+  .article .image {
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px; }
+  .article .share li {
+    width: 135px;
+    height: 35px;
+    border: 1px solid #d5dbdb;
+    display: inline-block;
+    line-height: 35px; }
+
+.grid-list-row a {
+  text-decoration: none; }
+
+.grid-list-row .grid-list-item {
+  margin-top: 100px;
+  border: 1px solid #d5dbdb; }
+  .grid-list-row .grid-list-item .book-name {
+    font-size: 24px;
+    font-weight: 300; }
+  .grid-list-row .grid-list-item .book-img {
+    position: relative;
+    width: 80px;
+    height: 100px;
+    margin: -60px auto 0 auto;
+    background: #d5dbdb;
+    line-height: 80px;
+    color: #fff; }
+    .grid-list-row .grid-list-item .book-img img {
+      max-width: 100%;
+      height: auto;
+      box-sizing: border-box;
+      border: 1px solid #34495E;
+      border-radius: 5px; }
+  .grid-list-row .grid-list-item .read-more {
+    background-color: #1ABC9C;
+    border-radius: 15px;
+    display: block;
+    width: 85px;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    margin: 10px auto; }
+  .grid-list-row .grid-list-item .text-center {
+    margin: 20px auto; }
+
+@media (max-width: 768px) {
+  .grid-list-row .grid-list-item {
+    float: none;
+    margin: 100px auto; } }
+
+.catalog-side-page .catalog-detail ul, .catalog-side-page .catalog-books ul {
+  padding-left: 1em; }
+  .catalog-side-page .catalog-detail ul li, .catalog-side-page .catalog-books ul li {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    list-style: none; }
+    .catalog-side-page .catalog-detail ul li > a, .catalog-side-page .catalog-books ul li > a {
+      padding-left: 5px;
+      padding-top: 5px;
+      padding-bottom: 5px; }
+
+.catalog-side-page .catalog-detail > ul, .catalog-side-page .catalog-books > ul {
+  padding-left: 0; }
+  .catalog-side-page .catalog-detail > ul > li > a, .catalog-side-page .catalog-books > ul > li > a {
+    padding-left: 0; }
+
+.catalog-side-page .catalog-active-li > a {
+  display: block;
+  background-color: #1ABC9C;
+  color: #fff; }
+
+@media (max-width: 768px) {
+  .catalog-side-page {
+    margin-top: 50px; }
+    .catalog-side-page strong {
+      color: #fff; } }
+
+.blog-page .contact-way {
+  margin-top: 30px;
+  font-size: 18px; }
+
+.book-detail-page {
+  margin-top: 50px; }

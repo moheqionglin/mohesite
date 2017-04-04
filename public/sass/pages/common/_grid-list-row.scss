@@ -1,0 +1,50 @@
+.grid-list-row{
+  a{
+    text-decoration: none;
+  }
+  .grid-list-item{
+    margin-top: 100px;
+    border: 1px solid $border-gray;
+    .book-name{
+      font-size: 24px;
+      font-weight:300;
+    }
+    .book-img{
+      position: relative;
+      width: 80px;
+      height: 100px;
+      margin: -60px auto 0 auto;
+      background: $border-gray;
+      line-height: 80px;
+      color: #fff;
+      img{
+        max-width: 100%;
+        height: auto;
+        box-sizing: border-box;
+        border: 1px solid $color-gray;
+        border-radius: 5px;
+      }
+    }
+
+    .read-more{
+      background-color: $color-green;
+      border-radius: 15px;
+      display: block;
+      width:85px;
+      height: 30px;
+      line-height:30px;
+      color:$color-white;
+      margin: 10px auto;
+    }
+    .text-center{
+      margin: 20px auto;
+    }
+  }
+  @media (max-width: $screen-sm) {
+    .grid-list-item{
+      float:none;
+      margin: 100px auto;
+    }
+  }
+
+}

@@ -1,0 +1,40 @@
+.catalog-side-page{
+  .catalog-detail, .catalog-books{
+    ul{
+      padding-left: 1em;
+      li{
+        margin-top: 10px;
+        margin-bottom: 5px;
+        list-style: none;
+        >a{
+          padding-left: 5px;
+          padding-top:5px;
+          padding-bottom: 5px;
+        }
+      }
+    }
+    >ul{
+      padding-left:0;
+      >li{
+        >a{
+          padding-left: 0;
+        }
+      }
+    }
+  }
+  .catalog-active-li{
+    >a{
+      display: block;
+      background-color: $color-green;
+      color: $color-white;
+    }
+  }
+}
+@media (max-width: $screen-sm) {
+  .catalog-side-page{
+    margin-top: 50px;
+    strong{
+      color: $color-white;
+    }
+  }
+}

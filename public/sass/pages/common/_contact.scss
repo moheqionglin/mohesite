@@ -1,0 +1,20 @@
+.contact-page{
+  padding-top: 50px;
+  background-color: $color-white;
+  font-family: "Heiti TC";
+  line-height: 1.42857143;
+  .intro{
+    background: #f3f5f8;
+  }
+  .section-padding{
+    padding-top: 50px;
+    padding-bottom: 100px;
+  }
+  dl{
+    margin-top: 30px;
+    dd, dt{
+      display: inline-block;
+      margin-right: 35px;
+    }
+  }
+}

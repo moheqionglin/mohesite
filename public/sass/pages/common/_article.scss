@@ -1,0 +1,40 @@
+.article{
+  font-size: 16px;
+  color: $color-black;
+  p{
+    font-size: 16px;
+    color: $color-black;
+  }
+  .title{
+    font-size: 24px;
+  }
+  .meta-data{
+    .introduction{
+      font-size: 14px;
+      color: $font-gray;
+      text-indent: 28px;
+    }
+    .result-list-attribute{
+      li{
+        display: inline-block;
+        margin-left: 25px;
+        font-size:12px;
+        color: $font-gray;
+      }
+    }
+  }
+  .image{
+    width: 100%;
+    margin-top: $content-to-header-maring;
+    margin-bottom: $content-to-header-maring;
+  }
+  .share{
+    li{
+      width: 135px;
+      height: 35px;
+      border: 1px solid $border-gray;
+      display: inline-block;
+      line-height: 35px;
+    }
+  }
+}
