@@ -11,7 +11,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="blank" />
     <!--iPhone会将看起来像电话号码的数字添加电话连接，应当关闭-->
     <meta name="format-detection" content="telephone=no" />
-    <script type="text/javascript" src="..//bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     <style type="text/css">
         body {
             margin: 0;
@@ -116,6 +118,14 @@
                 console.log(1)
                 $(".nav ul").slideToggle(100);
             });
+
+            var simplemde = new SimpleMDE({ element: $("#wanli")[0] });
+                    simplemde.value('# sdf <h1>asdf</h1>');
+
+            $("#bth").on("click", function(){
+                console.log(simplemde.value());
+
+            });
         }
 
         );
@@ -141,7 +151,9 @@
     </ul>
     <img src="data:image/png;base64,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"/> 　
 </div>
-<div style="margin: 30px auto; width:989px;">
+<button id="bth" style="margin-top:50px; margin-bottom: 50px">asdfasdf</button>
+    <textarea id = "wanli"></textarea>
+<div id="ASDFFF"style="margin: 30px auto; width:989px;">
     <table   style="width:100%; border: solid 1px #eee">
         <thead >
             <tr>

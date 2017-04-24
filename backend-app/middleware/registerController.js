@@ -50,6 +50,13 @@ function getAllControllerFile (dir){
 }
 
 function addHtmlController (router){
+    router.get('/:page', async(ctx, next) =>{
+        if(ctx.params.page.endsWith('.html')){
+            log.info(`Process html : page is : ${ctx.params.page}`);
+            ctx.render('./' + ctx.params.page);
+        }
+        await next();
+    });
     //add regex to html
     router.get('/:dir1/:page', async(ctx, next) =>{
         if(ctx.params.page.endsWith('.html')){
