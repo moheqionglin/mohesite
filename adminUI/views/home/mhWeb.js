@@ -5,5 +5,6 @@ angular.module('mhWeb', [
     'home',
     'questions',
     'serilaze',
-    'statistics'
+    'statistics',
+    'common'
 ]);
