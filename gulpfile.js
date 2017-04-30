@@ -33,11 +33,14 @@ const compressJSFileName = 'all.min.js';
 
 const localCompressJSDir = './public/javascripts';
 //SCSS
-const sourceSass = './public/sass/*.scss';
+const sourceSass = './public/sass/main.scss';
 const compileCssDir = './target/public/stylesheets/all';
 const compressCssDir = './target/public/stylesheets';
 const concatCssFileName = 'main.css';
 const compressCssFileName = 'main.min.css';
+const adminUISourceSass = './public/sass/adminUI.scss';
+const adminUIConcatCssFileName = 'adminUI.main.css';
+const adminUICompressCssFileName = 'adminUI.main.min.css';
 
 const localCompileCssDir = './public/stylesheets/all';
 const localCompressCssDir = './public/stylesheets';
@@ -119,7 +122,17 @@ gulp.task('local-css', function(){
         .pipe(rename(compressCssFileName))
         .pipe(compressCss())
         .pipe(gulp.dest(localCompressCssDir));
-})
+});
+gulp.task('local-css-adminUI', function(){
+    return gulp.src([adminUISourceSass])
+        .pipe(sass())
+        .pipe(gulp.dest(localCompileCssDir))
+        .pipe(concat(adminUIConcatCssFileName))
+        .pipe(gulp.dest(localCompressCssDir))
+        .pipe(rename(adminUICompressCssFileName))
+        .pipe(compressCss())
+        .pipe(gulp.dest(localCompressCssDir));
+});
 
 
 
@@ -169,7 +182,8 @@ gulp.task('serve', function(){
 gulp.task('default', function(){
     gulp.run('js-hint',
         // 'local-js',
-        'local-css'
+        'local-css',
+        'local-css-adminUI'
         // 'local-img'
     );
 });

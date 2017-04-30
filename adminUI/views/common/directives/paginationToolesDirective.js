@@ -1,3 +1,4 @@
+'use strict';
 angular.module('common').directive('mohePagiation', function(){
     return {
         templateUrl: '/common/directives/paginationToolesDirective.html',
