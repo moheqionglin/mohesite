@@ -1,0 +1,18 @@
+
+<div class="paging">
+	<div class="paging-buttons text-center">
+		<button type="button" class="btn btn btn-default" ng-disabled="isFirst() || isRetrieving()" ng-click="firstPage()">
+			<span aria-hidden="true" class="glyphicon glyphicon-fast-backward color-green" ></span>
+		</button>
+		<button type="button" class="btn btn-default" ng-disabled="isFirst() || isRetrieving()" ng-click="previousPage()">
+			<span class="glyphicon glyphicon-backward color-green" ></span>
+		</button>
+		<button type="button" class="btn btn-default" ng-disabled="isLast() || isRetrieving()" ng-click="nextPage()">
+			<span class="glyphicon glyphicon-forward color-green" ></span>
+		</button>
+		<button type="button" class="btn btn-default" ng-disabled="isLast() || isRetrieving()" ng-click="lastPage()">
+			<span aria-hidden="true" class="glyphicon glyphicon-fast-forward color-green" ></span>
+		</button>
+		<label class="no-colon">{{page}}&nbsp;/&nbsp;{{pageCount}}</label>
+	</div>
+</div>

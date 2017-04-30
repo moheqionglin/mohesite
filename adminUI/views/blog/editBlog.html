@@ -1,17 +1,25 @@
-<article class="edit-blog">
-    <aside class="left-side">
-        <div class="input-group">
-           <input type="text" class="form-control" placeholder="请输入 blog ID">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button">搜索</button>
-            </span>
-        </div>
-        <mohe-pagiation></mohe-pagiation>
-    </aside>
+<div class="edit-blog row">
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">编辑</div>
+            <div class="panel-body">
+                <div class="input-group">
+                    <input type="text" class="form-control " placeholder="请输入 blog ID">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">搜索</button>
+                    </span>
+                </div>
 
-    <div class="blog-content">
+                <mohe-pagination></mohe-pagination>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="col-lg-9">
         <!--<textarea simplemde="{default:'asdfasdf'}" ng-model="text"></textarea>-->
         <mohe-markdown-editor></mohe-markdown-editor>
     </div>
 
-</article>
+</div>
