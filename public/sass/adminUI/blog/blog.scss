@@ -1,0 +1,20 @@
+.edit-blog{
+  .search-input{
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+  .blog-list-mohe-popover{
+    float: right;
+    mohe-popover-btn{
+      color: $border-gray;
+    }
+  }
+  .list-group-item{
+    cursor: pointer;
+    color: $color-green;
+  }
+  .new-blog-label{
+    float: right;
+    font-size: 12px;
+  }
+}

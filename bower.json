@@ -20,8 +20,8 @@
     "bootstrap-sass-official": "3.2.0",
     "bootstrap-offcanvas": "*",
     "simplemde": "^1.11.2",
-    "angular": "1.4.8",
-    "angular-route": "1.4.8",
+    "angular": "1.5.1",
+    "angular-route": "1.5.1",
     "lodash": "~3.10.1"
   }
 }

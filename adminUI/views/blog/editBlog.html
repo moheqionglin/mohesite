@@ -1,14 +1,32 @@
 <div class="edit-blog row">
     <div class="col-lg-3">
         <div class="panel panel-default">
-            <div class="panel-heading text-center">编辑</div>
+            <div class="panel-heading text-center">编辑
+                <label class="new-blog-label"><a href="#"><span class="glyphicon glyphicon-plus" ></span>&nbsp;新建</a></label>
+            </div>
             <div class="panel-body">
-                <div class="input-group">
+                <div class="input-group search-input">
                     <input type="text" class="form-control " placeholder="请输入 blog ID">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button">搜索</button>
                     </span>
                 </div>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-class="{'active' : blog.id === selectedBlogId}" ng-click="selectedBlogTitle(blog)" ng-repeat="blog in blogs">
+                        {{blog.title}}
+                        <mohe-popover class="blog-list-mohe-popover" ng-show="blog.id === selectedBlogId">
+                            <mohe-popover-btn>
+                                <span class="glyphicon glyphicon-cog"></span>
+                            </mohe-popover-btn>
+                            <mohe-popover-content>
+                                <ul class="edit-blog-popver-menu">
+                                    <li><a href="#"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;移动文章</a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-trash"></span>&nbsp;删除文章</a></li>
+                                </ul>
+                            </mohe-popover-content>
+                        </mohe-popover>
+                    </li>
+                </ul>
 
                 <mohe-pagination></mohe-pagination>
             </div>
