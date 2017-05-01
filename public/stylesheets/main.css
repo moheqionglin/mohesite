@@ -826,7 +826,8 @@ input[type="button"].btn-block {
   border-top: 1px solid #ddd; }
   .list-group-item:first-child {
     border-top-left-radius: 0px;
-    border-top-right-radius: 0px; }
+    border-top-right-radius: 0px;
+    border: none; }
   .list-group-item:last-child {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;

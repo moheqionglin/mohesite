@@ -6,5 +6,6 @@ angular.module('mhWeb', [
     'questions',
     'serilaze',
     'statistics',
-    'common'
+    'common',
+    'ui.tree'
 ]);

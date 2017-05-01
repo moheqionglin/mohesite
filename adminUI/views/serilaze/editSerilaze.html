@@ -1,0 +1,42 @@
+<div class="edit-serilazes rows">
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <a class="collapsed" role="button" data-toggle="collapse" href=".serilazesCollapseList" aria-expanded="true" aria-controls="serilazesCollapseList">图书</a>
+                <label class="new-serilazes-label"><a href="#"><span class="glyphicon glyphicon-plus" ></span>&nbsp;新建</a></label>
+            </div>
+            <div class="serilazesCollapseList" class="panel-collapse collapse panel-body" role="tabpanel" aria-labelledby="serilazesCollapseList" aria-expanded="true">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-class="{'active' : serilaze.id === selectedSerilazeId}" ng-click="selectedSerilazeTitle(serilaze)" ng-repeat="serilaze in serilazes">
+                        {{serilaze.title}}
+                        <mohe-popover class="blog-list-mohe-popover" ng-show="serilaze.id === selectedSerilazeId">
+                            <mohe-popover-btn>
+                                <span class="glyphicon glyphicon-cog"></span>
+                            </mohe-popover-btn>
+                            <mohe-popover-content>
+                                <ul class="edit-blog-popver-menu">
+                                    <li><a href="#"><span class="glyphicon glyphicon-trash"></span>&nbsp;删除序列</a></li>
+                                </ul>
+                            </mohe-popover-content>
+                        </mohe-popover>
+                    </li>
+                </ul>
+
+                <mohe-pagination></mohe-pagination>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <a class="collapsed" role="button" data-toggle="collapse" href=".serilazesCatalogList" aria-expanded="true" aria-controls="booksCatalogList">目录</a>
+            </div>
+            <div class="serilazesCatalogList" class="panel-collapse collapse panel-body" role="tabpanel" aria-labelledby="serilazesCatalogList" aria-expanded="true">
+                <mohe-tree data="data"></mohe-tree>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-9">
+        <mohe-article></mohe-article>
+    </div>
+</div>
