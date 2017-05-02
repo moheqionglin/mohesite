@@ -1227,6 +1227,84 @@ footer {
     font-size: 18px;
     color: #1ABC9C; }
 
+.sponsor-page .sponsor-form {
+  width: 50%;
+  margin: 15px auto;
+  border: 1px solid #d5dbdb;
+  border-radius: 10px; }
+  .sponsor-page .sponsor-form button {
+    color: #1ABC9C;
+    margin: 25px auto 55px auto; }
+  .sponsor-page .sponsor-form .author-img img {
+    width: 100px;
+    border-radius: 50%;
+    margin: 35px auto;
+    border: 1px solid #d5dbdb; }
+  .sponsor-page .sponsor-form .main-inputs {
+    margin: 25px 0;
+    font-size: 14px;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    color: #333;
+    border-radius: 4px; }
+    .sponsor-page .sponsor-form .main-inputs .control-group {
+      padding: 15px 20px;
+      margin-bottom: 0;
+      background-color: rgba(181, 181, 181, 0.1); }
+      .sponsor-page .sponsor-form .main-inputs .control-group label {
+        float: left;
+        padding: 0;
+        margin: 13px 10px 0 0;
+        font-weight: 400; }
+      .sponsor-page .sponsor-form .main-inputs .control-group input {
+        position: relative;
+        top: 1px;
+        width: calc(100% - 120px);
+        height: auto;
+        margin-bottom: 0;
+        color: #646464;
+        font-size: 32px;
+        line-height: 38px;
+        background: none !important;
+        border: none !important;
+        box-sizing: border-box;
+        box-shadow: none; }
+      .sponsor-page .sponsor-form .main-inputs .control-group .message {
+        border-top: 1px solid #f0f0f0; }
+      .sponsor-page .sponsor-form .main-inputs .control-group textarea {
+        width: 100%;
+        height: 50px;
+        padding: 0;
+        margin: 0;
+        resize: none;
+        background: none !important;
+        border: none !important;
+        box-sizing: border-box;
+        box-shadow: none; }
+  .sponsor-page .sponsor-form .choose-pay .method {
+    margin-left: 1px; }
+    .sponsor-page .sponsor-form .choose-pay .method img {
+      height: 30px;
+      margin: 0 30px 0 5px;
+      vertical-align: middle;
+      border: 0; }
+
+@media (max-width: 1200px) {
+  .sponsor-page .sponsor-form {
+    width: 60%; } }
+
+@media (max-width: 992px) {
+  .sponsor-page .sponsor-form {
+    width: 70%; } }
+
+@media (max-width: 768px) {
+  .sponsor-page .sponsor-form {
+    width: 80%; } }
+
+@media (max-width: 480px) {
+  .sponsor-page .sponsor-form {
+    width: 100%; } }
+
 .blog-page .contact-way {
   margin-top: 30px;
   font-size: 18px; }

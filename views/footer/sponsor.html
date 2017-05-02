@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <!-- IE 兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- 国产浏览器高速模式 -->
+    <meta name="renderer" content="webkit">
+    <link rel="icon" href="/images/favicon.ico">
+
+    <title>墨荷琼林官网-赞助</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/bower_components/bootstrap-offcanvas/dist/css/bootstrap.offcanvas.min.css"/>
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/main.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/javascripts/bootstrap/vender/html5shiv.min.js"></script>
+    <script src="/javascripts/bootstrap/vender/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="sponsor-page">
+{% include '../common/_header.html' %}
+<div class="container">
+    <form class="sponsor-form">
+        <div class="form-group author-img text-center">
+            <img src="/images/author.jpg">
+        </div>
+        <div class="form-group main-inputs text-left">
+            <div class="control-group">
+                <label for="reward_amount">赞赏金额:</label>
+                <i class="fa fa-yen"></i> <input type="text">
+            </div>
+            <div class="control-group message">
+                <textarea placeholder="给Ta留言…"></textarea>
+            </div>
+        </div>
+        <div class="form-group choose-pay text-center">
+            <label class="text-center">支付方式</label>
+            <div class="method ">
+                <input type="radio" name="pay-method" value="wx_pub_qr">
+                <img src="/images/wechart.png" class="day wechat">
+                <input type="radio" name="pay-method" value="alipay">
+                <img src="/images/alipay.png" class="day alipay">
+            </div>
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-default">慷慨赞助</button>
+        </div>
+    </form>
+</div>
+{% include './_footer.html'%}
+<!--待删除-->
+<script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/bootstrap-offcanvas/dist/js/bootstrap.offcanvas.js"></script>
+<script src="/bower_components/bootstrap/js/dropdown.js"></script>
+</body>
+</html>
