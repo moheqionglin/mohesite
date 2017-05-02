@@ -1,0 +1,12 @@
+{% macro authorArticleDetail(index='', authorImg='', articleTitle='', articleContent='', authorName='', articleTime='') %}
+<div class="media divider-bottom-dashed author-article-detail-item">
+    <div class="pull-left media-middle author-img">
+        <img class="media-object" src="{{authorImg}}">
+    </div>
+    <div class="media-body author-article-title">
+        <h1 class="media-heading">{{articleTitle}}</h1>
+        <small class="article-meta">#{{index + 1}} {{authorName}}.{{articleTime}}</small>
+        <p>{{articleContent}}</p>
+    </div>
+</div>
+{% endmacro %}

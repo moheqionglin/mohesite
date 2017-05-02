@@ -27,15 +27,33 @@
 </head>
 <body >
 {% include '../common/_header.html' %}
-{% import "../common/_result-list-item.html" as resultListItem %}
+{% import "../common/_author-article-detail.html" as authorArticleDetail %}
 {% import "../common/_pagination.html" as pagationTool %}
-<div class="container blog-page" >
+<div class="container question-answer-detail-page" >
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            {% for i in range(0, 10)%}
-            {% set img = '/images/indexImg/'+ loop.index +'.jpg'%}
-            {{resultListItem.resultListDisplay(img, '如何在Camel中使用swagger实现REST SDL','/blogs/blog-details.html' , '速发展的第7个年头，第三方支付市场已成为互联网金融领域最为成熟的行业，并作为基础服务广泛应用于各行业。', '3小时前', '234')}}
-            {% endfor %}
+            <ol class="breadcrumb">
+                <li><a href="#">首页</a></li>
+                <li><a href="#">墨荷问答</a></li>
+                <li><a href="#">JavaScript教程</a></li>
+                <li>怎么才能写好面向对象的js &nbsp;&nbsp;&nbsp;&nbsp;(<a href="#">问题来源</a>)</li>
+            </ol>
+            <div class="media divider-bottom-dashed author-article-detail-item">
+                <div class="pull-left media-middle author-img">
+                    <img class="media-object" src="/images/author.jpg">
+                </div>
+                <div class="media-body author-article-title">
+                    <h1 class="media-heading">文章标题</h1>
+                    <small class="article-meta"> 墨荷琼林.4小时前</small>
+                    <p>正文话题正文话题正文话题正文话题</p>
+                    <label><a href="#" class="font-gray"><i class="icon-comment"></i> 评论</a></label>
+                    {% for i in range(0, 10)%}
+                    {% set img = '/images/author.jpg' %}
+                    {{authorArticleDetail.authorArticleDetail(i, img, '怎么才能写好面向对象的js','文章正文文章正文文章正文文章正文文章正文文章正文文章正文文章正文' , '沧海一粟', '3小时前')}}
+                    {% endfor %}
+                </div>
+            </div>
+
             <div class="row">
                 <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
                     {{ pagationTool.pagation()}}

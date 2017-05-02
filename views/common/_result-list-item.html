@@ -1,12 +1,14 @@
-{% macro resultListDisplay(image='/images/indexImg/1.jpg', title='', introduction='', date='', readCount='', tag='')%}
+{% macro resultListDisplay(image='/images/indexImg/1.jpg', title='', titleUrl = '', introduction='', date='', readCount='', totalArticleCount='')%}
 <div class="row result-list-display divider-bottom-dashed">
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 result-list-img"><img src="{{image}}"></div>
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 result-list-metadata">
-        <h3 class="result-list-title"><a href="/blogs/blog-details.html">{{title}}</a></h3>
+        <h3 class="result-list-title"><a href="{{titleUrl}}">{{title}}</a></h3>
         <ul class="result-list-attribute">
             <li><i class="icon-calendar"></i>{{date}}</li>
             <li><i class="icon-eye"></i>{{readCount}}</li>
-            <li><i class="icon-tags"></i>{{tag}}</li>
+            {% if totalArticleCount%}
+            <li><i class="icon-docs"></i>{{totalArticleCount}}</li>
+            {% endif %}
         </ul>
         <p class="result-list-introduction">{{introduction}}</p>
     </div>

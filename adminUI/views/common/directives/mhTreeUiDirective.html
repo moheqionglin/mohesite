@@ -10,11 +10,11 @@
     <script type="text/ng-template" id="nodes_renderer.html">
         <div ui-tree-handle>
             <a class="btn btn-success btn-xs" ng-if="node.nodes && node.nodes.length > 0" data-nodrag="" ng-click="toggle(this)">
-                <span class="glyphicon glyphicon-chevron-down" ng-class="{'glyphicon-chevron-right': collapsed,'glyphicon-chevron-down': !collapsed}"></span>
+                <i class="glyphicon glyphicon-chevron-down" ng-class="{'icon-angle-circled-right': collapsed,'icon-angle-circled-down': !collapsed}"></i>
             </a>
             {{node.title}}
-            <a class="pull-right btn btn-danger btn-xs" data-nodrag="" ng-click="remove(this)"><span class="glyphicon glyphicon-remove"></span></a>
-            <a class="pull-right btn btn-primary btn-xs" data-nodrag="" ng-click="newSubItem(this)" style="margin-right: 8px;"><span class="glyphicon glyphicon-plus"></span></a>
+            <a class="pull-right btn btn-danger btn-xs" data-nodrag="" ng-click="remove(this)"><i class="icon-doc-new"></i></a>
+            <a class="pull-right btn btn-primary btn-xs" data-nodrag="" ng-click="newSubItem(this)" style="margin-right: 8px;"><i class="icon-doc-remove"></i></a>
         </div>
         <ol ui-tree-nodes="" ng-class="{hidden: collapsed}" class="ng-pristine ng-untouched ng-valid angular-ui-tree-nodes" ng-model="node.nodes">
             <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">

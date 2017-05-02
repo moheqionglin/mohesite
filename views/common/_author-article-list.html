@@ -1,0 +1,12 @@
+{% macro acrotArticleList(imgUrl='', articleTitle='', articleLink='', actor='', writeTime='')%}
+<div class="media divider-bottom-dashed author-articlt-list">
+    <div class="pull-left author-img">
+        <img class="media-object" src="{{imgUrl}}">
+    </div>
+    <div class="media-body author-article-title">
+        <h1 class="media-heading"><a href="{{articleLink}}">{{articleTitle}}</a> </h1>
+        <span><strong>{{actor}}</strong></span>&nbsp;<strong>.</strong>
+        <span>{{writeTime}}</span>
+    </div>
+</div>
+{% endmacro %}

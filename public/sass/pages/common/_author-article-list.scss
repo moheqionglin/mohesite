@@ -1,0 +1,15 @@
+.author-articlt-list{
+  .author-img{
+    img{
+      border-radius: 50%;
+      border: 1px solid $border-gray;
+      margin-bottom: 10px;
+    }
+  }
+  .author-article-title{
+    h1{
+      font-size: 18px;
+    }
+    margin-bottom: 10px;
+  }
+}
