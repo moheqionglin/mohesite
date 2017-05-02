@@ -13,7 +13,7 @@ const registerController = require('./middleware/registerController');
 log4js.configure('log4js.json', { reloadSecs: 300, cwd: __dirname });
 {//中间件 [1] url Filter.需要放在静态资源和Router前面,监控所有请求。
     server.use(async (ctx, next) =>{
-        log.info(`Process ${ctx.request.method} ${ctx.request.url} ...`);
+        log.info(`IP: ${ctx.request.ip} Process ${ctx.request.method} ${ctx.request.url}   ...`);
         await next();
     });
 }
