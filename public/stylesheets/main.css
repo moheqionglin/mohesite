@@ -1015,10 +1015,14 @@ a.list-group-item-danger {
   .result-list-display .result-list-metadata .result-list-title {
     margin-top: 5px;
     font-size: 18px; }
-  .result-list-display .result-list-metadata .result-list-attribute li {
-    text-align: center;
-    display: inline-block;
-    margin-right: 45px; }
+  .result-list-display .result-list-metadata .result-list-attribute {
+    padding-left: 0; }
+    .result-list-display .result-list-metadata .result-list-attribute li {
+      text-align: center;
+      display: inline-block;
+      margin-right: 45px; }
+      .result-list-display .result-list-metadata .result-list-attribute li:last-child {
+        margin-right: 0; }
 
 footer {
   background-color: #34495E;

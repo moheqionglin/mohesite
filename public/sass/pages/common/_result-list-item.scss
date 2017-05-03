@@ -17,11 +17,16 @@
     //.result-list-introduction{
     //}
     .result-list-attribute{
+      padding-left:0;
       li{
         text-align: center;
         display: inline-block;
         margin-right: 45px;
+        &:last-child{
+          margin-right: 0;
+        }
       }
+
     }
   }
 }
