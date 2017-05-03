@@ -37,3 +37,15 @@
 .cursor-pointer{
   cursor: pointer;
 };
+.well{
+  background-color: hsla(0,0%,71%,.1);
+  border-radius: 5px;
+  box-shadow:none;
+  -webkit-box-shadow:none;
+  margin-top: 55px;
+  margin-bottom: 55px;
+}
+.hr-gray{
+  height: 1px;
+  background-color: $border-gray;
+}

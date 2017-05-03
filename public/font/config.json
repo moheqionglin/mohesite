@@ -109,10 +109,22 @@
       "src": "fontawesome"
     },
     {
-      "uid": "b90868gfogj970a1g0dnot6hm5r4uj55",
-      "css": "comment",
+      "uid": "fd45bb961d08f9f2092f0df3fba29fe9",
+      "css": "qrcode",
+      "code": 59400,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "c60f50a1729165e3752fa27a16325208",
+      "css": "reply-outline",
       "code": 59399,
       "src": "typicons"
+    },
+    {
+      "uid": "a2a74f5e7b7d9ba054897d8c795a326a",
+      "css": "list-bullet",
+      "code": 61642,
+      "src": "fontawesome"
     }
   ]
 }
