@@ -31,7 +31,7 @@
 {% import "../common/_pagination.html" as pagationTool %}
 <div class="container book-page" >
     <div class="row">
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 book-article-grade">
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 book-article-grade">
             <h1 class="text-center">跟我读书</h1>
             {% for i in range(0,4)%}
                 {%include "../common/_grid-list-row.html"%}
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
             {% include "../common/_right_side_self_introduce.html" %}
         </div>
     </div>
