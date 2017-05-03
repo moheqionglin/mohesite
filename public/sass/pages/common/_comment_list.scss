@@ -48,15 +48,15 @@
     margin-bottom: 10px;
   }
   .comment-action-grp{
+    margin-bottom: 10px;
     a{
       border: 1px solid $color-green;
       min-height: 25px;
-      height: 30px;
-      margin-right: 25px;
+      margin-right: 35px;
       display: inline-block;
-      line-height: 30px;
-      padding-left: 20px;
-      padding-right: 20px;
+      line-height: 25px;
+      padding-left: 15px;
+      padding-right: 15px;
       border-radius: 5px;
       text-decoration: none;
       &:last-child{
