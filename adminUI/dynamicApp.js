@@ -48,5 +48,6 @@ log4js.configure('log4js.json', { reloadSecs: 300, cwd: __dirname });
 //    ]));
 // }
 
-server.listen(9999);
-log.info('App started success! port: 9999');
+var port = process.argv[2] || 9999;
+server.listen(port);
+log.info(`App started success! port: ${port}`);

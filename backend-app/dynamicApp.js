@@ -46,6 +46,6 @@ log4js.configure('log4js.json', { reloadSecs: 300, cwd: __dirname });
         __dirname + '/controller/learnNunJucks/'
    ]));
 }
-
-server.listen(9988);
-log.info('App started success! port: 9988')
+var port = process.argv[2] || 9988;
+server.listen(port);
+log.info(`App started success! port: ${port}`);
