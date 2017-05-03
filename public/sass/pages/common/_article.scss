@@ -24,9 +24,11 @@
     }
   }
   .image{
-    width: 100%;
     margin-top: $content-to-header-maring;
     margin-bottom: $content-to-header-maring;
+    img{
+      width: 100%;
+    }
   }
   .share{
     li{
