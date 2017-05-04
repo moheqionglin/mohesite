@@ -34,3 +34,11 @@
     color: #ffffff;
   }
 }
+.index-page{
+  .result-list-item{
+    border-bottom: 1px dashed $border-gray;
+    &:last-child{
+      border-bottom:none;
+    }
+  }
+}
