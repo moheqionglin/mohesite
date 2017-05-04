@@ -1,12 +1,19 @@
-{% macro commentItem(index='', authorImg='', articleTitle='', articleContent='', authorName='', articleTime='') %}
-<div class="media divider-bottom-dashed comment-item">
+{% import "./_comment_child_item.html" as commentItem %}
+<div class="media comment-item">
     <div class="pull-left media-middle author-img">
-        <img class="media-object" src="{{authorImg}}">
+        <img class="media-object" src="/images/author.jpg">
     </div>
     <div class="media-body comment-title">
-        <h1 class="media-heading">{{articleTitle}}</h1>
-        <small class="comment-meta">#{{index + 1}} {{authorName}}.{{articleTime}}</small>
-        <p>{{articleContent}}</p>
+        <h1 class="media-heading"><a href="#">文章标题</a> </h1>
+        <small class="comment-meta"> 墨荷琼林.4小时前</small>
+        <p>正文话题正文话题正文话题正文话题</p>
+        {% for i in range(0, 5)%}
+        {% set img = '/images/author.jpg' %}
+        {{commentItem.commentItem(i, img, '怎么才能写好面向对象的js','文章正文文章正文文章正文文章正文文章正文文章正文文章正文文章正文' , '沧海一粟', '3小时前')}}
+        {% endfor %}
+    </div>
+    <div class="text-center comment-action-grp">
+        <a href="/answer/question-answer-detail.html"><i class="icon-list-bullet"></i> 查看全部</a>
+        <a href="#"><i class="icon-reply-outline"></i> 回复评论</a>
     </div>
 </div>
-{% endmacro %}

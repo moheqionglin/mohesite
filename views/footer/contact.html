@@ -27,8 +27,12 @@
 </head>
 <body class="contact-page">
 {% include '../common/_header.html' %}
+{% import '../common/_breadCrumb.html' as breadCrumb%}
+
 <section class="features section-padding" id="intro">
     <div class="container">
+        {%set breadcrumbData = [{title: '联系'}]%}
+        {{breadCrumb.breadcrumb(breadcrumbData)}}
         <div class="row">
             <div class="col-md-12">
                 <h2 class="text-center"><i class="icon-paper-plane-empty"></i></h2>

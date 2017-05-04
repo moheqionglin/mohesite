@@ -29,9 +29,15 @@
 {% include '../common/_header.html' %}
 {% import "../common/_result-list-item.html" as resultListItem %}
 {% import "../common/_pagination.html" as pagationTool %}
+{% import '../common/_breadCrumb.html' as breadCrumb%}
+
 <div class="container blog-page" >
     <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            {%set breadcrumbData = [{title: '编程日志', url:'/blogs/blog-list.html'},
+            {title: '如何在Camel中使用swagger实现REST SDL'}]%}
+            {{breadCrumb.breadcrumb(breadcrumbData)}}
+
             {% include "../common/_article.html"%}
         </div>
         <div class="col-lg-3 col-md-3 hidden-sm hidden-xs  ">

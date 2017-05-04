@@ -29,14 +29,15 @@
 {% include '../common/_header.html' %}
 {% import "../common/_author-article-list.html" as authorArticleList %}
 {% import "../common/_pagination.html" as pagationTool %}
+{% import '../common/_breadCrumb.html' as breadCrumb%}
+
 <div class="container question-answer-list-page" >
     <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-            <ol class="breadcrumb">
-                <li><a href="#">首页</a></li>
-                <li><a href="#">墨荷问答</a></li>
-                <li>JavaScript教程</li>
-            </ol>
+            {%set breadcrumbData = [{title: '墨荷问答', url:'/answer/question-answer-block-list.html'},
+            {title: 'JavaScript教程'}]%}
+            {{breadCrumb.breadcrumb(breadcrumbData)}}
+
             {% for i in range(0, 10)%}
             {% set img = '/images/author.jpg' %}
             {{authorArticleList.acrotArticleList(img, '怎么才能写好面向对象的js','/answer/question-answer-detail.html' , '沧海一粟', '3小时前')}}

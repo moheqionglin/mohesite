@@ -1,3 +1,35 @@
 .question-answer-detail-page{
-  margin-top: 35px;
+  margin-top: $content-to-header-maring;
+  .comment-action-grp{
+    display: none;
+  }
+  .article-comment{
+    margin-bottom: 45px;
+    margin-top: 45px;
+    textarea{
+      padding: 10px 15px;
+      width: 100%;
+      height: 80px;
+      font-size: 13px;
+      border: 1px solid #dcdcdc;
+      border-radius: 4px;
+      background-color: hsla(0,0%,71%,.1);
+      resize: none;
+      display: inline-block;
+      vertical-align: top;
+      outline-style: none;
+    }
+    a{
+      border: 1px solid $color-green;
+      min-height: 25px;
+      height: 30px;
+      display: inline-block;
+      line-height: 30px;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 25px;
+    }
+  }
 }

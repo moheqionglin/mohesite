@@ -1,0 +1,38 @@
+.comment-item{
+  p{
+    font-size: 14px;
+  }
+  .author-img{
+    img{
+      border-radius: 50%;
+      border: 1px solid $border-gray;
+    }
+  }
+  .comment-meta{
+    color: $font-gray;
+  }
+  .comment-title{
+    h1{
+      font-size: 15px;
+      color: $color-green;
+    }
+    margin-bottom: 10px;
+  }
+  .comment-action-grp{
+    margin-bottom: 10px;
+    a{
+      border: 1px solid $color-green;
+      min-height: 25px;
+      margin-right: 35px;
+      display: inline-block;
+      line-height: 25px;
+      padding-left: 15px;
+      padding-right: 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      &:last-child{
+        margin-right: 0;
+      }
+    }
+  }
+}

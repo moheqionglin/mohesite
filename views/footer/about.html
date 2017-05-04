@@ -27,8 +27,12 @@
 </head>
 <body>
 {% include '../common/_header.html' %}
+{% import '../common/_breadCrumb.html' as breadCrumb%}
 <div class="container about-page" >
     <div class="row">
+        {%set breadcrumbData = [{title: '关于'}]%}
+        {{breadCrumb.breadcrumb(breadcrumbData)}}
+
         <div class="col-md-12">
             <h1 class="inner-title text-center">About Me</h1>
         </div>

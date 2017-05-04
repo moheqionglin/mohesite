@@ -29,14 +29,13 @@
 {% include '../common/_header.html' %}
 {% import "../common/_result-list-item.html" as resultListItem %}
 {% import "../common/_pagination.html" as pagationTool %}
+{% import '../common/_breadCrumb.html' as breadCrumb%}
 <div class="container question-answer-block-list-page" >
-
     <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-            <ol class="breadcrumb">
-                <li><a href="#">首页</a></li>
-                <li>墨荷问答</li>
-            </ol>
+            {%set breadcrumbData = [{title: '墨荷问答'}]%}
+            {{breadCrumb.breadcrumb(breadcrumbData)}}
+
             {% for i in range(0, 10)%}
             {% set img = '/images/indexImg/'+ loop.index +'.jpg'%}
             {{resultListItem.resultListDisplay(img, 'JavaScript教程','/answer/question-answer-list.html' , '速发展的第7个年头，第三方支付市场已成为互联网金融领域最为成熟的行业，并作为基础服务广泛应用于各行业。', '3小时前', '234', '45')}}
