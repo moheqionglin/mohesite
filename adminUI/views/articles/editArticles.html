@@ -13,7 +13,7 @@
                 </div>
                 <ul class="list-group">
                     <li class="list-group-item" ng-class="{'active' : article.id === selectedArticleId}" ng-click="selectedArticleTitle(article)" ng-repeat="article in articles">
-                        {{blog.title}}
+                        {{article.title}}
                         <mohe-popover class="blog-list-mohe-popover" ng-show="article.id === selectedArticleId">
                             <mohe-popover-btn>
                                 <span class="glyphicon glyphicon-cog"></span>

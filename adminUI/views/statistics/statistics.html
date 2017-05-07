@@ -1,0 +1,33 @@
+<div class="row statistics-page" >
+    <div class="col-lg-12">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href=".PV-statistics" aria-controls="PV-statistics" role="tab" data-toggle="tab">PV统计</a></li>
+            <li role="presentation"><a href=".IP-statistics" aria-controls="IP-statistics" role="tab" data-toggle="tab">IP统计</a></li>
+            <li role="presentation"><a href=".sponsor" aria-controls="sponsor" role="tab" data-toggle="tab">赞助统计</a></li>
+            <li role="presentation"><a href=".hot-click" aria-controls="hot-click" role="tab" data-toggle="tab">热门点击</a></li>
+            <li role="presentation"><a href=".hot-reply" aria-controls="hot-reply" role="tab" data-toggle="tab">热门回答</a></li>
+
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" class="PV-statistics">
+                <canvas id="line" class="chart chart-line" chart-data="PVStatisticsData"
+                        chart-labels = "PVStatisticsLabels" chart-options ="options"
+                        chart-click="onClick">
+                </canvas>
+            </div>
+            <div role="tabpanel" class="tab-pane" class="IP-statistics">...</div>
+            <div role="tabpanel" class="tab-pane" class="sponsor">...</div>
+            <div role="tabpanel" class="tab-pane" class="hot-click">
+                <canvas id="radar" class="chart chart-radar" chart-data="hotClickData"
+                        chart-options="options" chart-labels="hotClickLabels">
+                </canvas>
+            </div>
+            <div role="tabpanel" class="tab-pane" class="hot-reply">...</div>
+        </div>
+
+    </div>
+
+</div>
