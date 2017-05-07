@@ -1,10 +1,6 @@
-angular.module('mhWeb', [
+angular.module('mhWeb', ['chart.js',
     'ngRoute',
-    'blog',
-    'books',
     'home',
-    'questions',
-    'serilaze',
     'statistics',
     'common',
     'articles',
