@@ -27,11 +27,11 @@
     <![endif]-->
 </head>
 <body >
-{% include '../common/_header.html' %}
+{% import '../common/_header.html' as headerNav%}
 {% import "../common/_author-article-list.html" as authorArticleList %}
 {% import "../common/_pagination.html" as pagationTool %}
 {% import '../common/_breadCrumb.html' as breadCrumb%}
-
+{{headerNav.headerNav('answer')}}
 <div class="container question-answer-list-page" >
     <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
@@ -41,7 +41,7 @@
             <div class="text-right"><a href="/answer/question-answer-new-q.html" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>创建话题</a></div>
 
             {% for i in range(0, 10)%}
-            {% set img = '/images/author.jpg' %}
+            {% set img = 'http://opkhviyav.bkt.clouddn.com/image/test/author.jpg' %}
             {{authorArticleList.acrotArticleList(img, '怎么才能写好面向对象的js','/answer/question-answer-detail.html' , '沧海一粟', '3小时前')}}
             {% endfor %}
             <div class="row">

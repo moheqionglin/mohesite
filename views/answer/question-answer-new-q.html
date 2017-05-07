@@ -27,10 +27,10 @@
     <![endif]-->
 </head>
 <body >
-{% include '../common/_header.html' %}
+{% import '../common/_header.html' as headerNav%}
 {% import "../common/_pagination.html" as pagationTool%}
 {% import '../common/_breadCrumb.html' as breadCrumb%}
-
+{{headerNav.headerNav('answer')}}
 <div class="container question-answer-new-page" >
     <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">

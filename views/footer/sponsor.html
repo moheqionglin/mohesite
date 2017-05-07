@@ -27,9 +27,9 @@
     <![endif]-->
 </head>
 <body>
-{% include '../common/_header.html' %}
+{% import '../common/_header.html' as headerNav%}
 {% import '../common/_breadCrumb.html' as breadCrumb%}
-
+{{headerNav.headerNav('sponsor')}}
 <div class="container sponsor-page">
     {%set breadcrumbData = [{title: '慷慨赞助'}]%}
     {{breadCrumb.breadcrumb(breadcrumbData)}}
@@ -48,9 +48,9 @@
             <label class="text-center">支付方式</label>
             <div class="method ">
                 <input type="radio" name="pay-method" value="wx_pub_qr">
-                <img src="/images/wechart.png" class="day wechat">
+                <img src="http://opkhviyav.bkt.clouddn.com/image/test/wechart.png" class="day wechat">
                 <input type="radio" name="pay-method" value="alipay">
-                <img src="/images/alipay.png" class="day alipay">
+                <img src="http://opkhviyav.bkt.clouddn.com/image/test/alipay.png" class="day alipay">
             </div>
         </div>
         <div class="form-group text-center">

@@ -30,8 +30,9 @@
     <![endif]-->
 </head>
 <body>
-    {% include './common/_header.html' %}
+    {% import './common/_header.html' as headerNav%}
     {% import "./common/_result-list-item.html" as resultListItem %}
+    {{headerNav.headerNav()}}
     <div class="jumbotron">
         <div class="container">
             <div class="row mohe-jumbotron">
@@ -60,7 +61,7 @@
         <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 {% for i in range(0, 10)%}
-                    {% set img = '/images/indexImg/'+ loop.index +'.jpg'%}
+                {% set img = 'http://opkhviyav.bkt.clouddn.com/image/test/'+ loop.index +'.jpg'%}
                     {{resultListItem.resultListDisplay(img, '如何在Camel中使用swagger实现REST SDL', '/blogs/blog-details.html', '速发展的第7个年头，第三方支付市场已成为互联网金融领域最为成熟的行业，并作为基础服务广泛应用于各行业。', '3小时前', '234', '')}}
                 {% endfor %}
             </div>
@@ -72,7 +73,7 @@
     {% include './footer/_footer.html'%}
     <!--待删除-->
     <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/bootstrap-offcanvas/dist/js/bootstrap.offcanvas.min.js"></script>
     <script src="/bower_components/bootstrap/js/dropdown.js"></script>
+    <script src="/bower_components/bootstrap-offcanvas/dist/js/bootstrap.offcanvas.min.js"></script>
 </body>
 </html>

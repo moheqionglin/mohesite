@@ -28,9 +28,10 @@
     <![endif]-->
 </head>
 <body >
-{% include '../common/_header.html' %}
+{% import '../common/_header.html' as headerNav%}
 {% import "../common/_pagination.html" as pagationTool %}
 {% import '../common/_breadCrumb.html' as breadCrumb%}
+{{headerNav.headerNav('serilaze')}}
 <div class="container book-detail-page" >
     {%set breadcrumbData = [{title: '连载教程', url:'/serilaze/serilaze-grid.html'},{title:'后端开发'}]%}
     {{breadCrumb.breadcrumb(breadcrumbData)}}
@@ -45,6 +46,7 @@
     </div>
 </div>
 {% include '../footer/_footer.html'%}
+
 <!--待删除-->
 <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/bower_components/bootstrap-offcanvas/dist/js/bootstrap.offcanvas.js"></script>

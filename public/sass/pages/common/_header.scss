@@ -1,0 +1,12 @@
+@media (min-width: $screen-xs) {
+  .navbar-offcanvas .dropdown-menu.shown{
+    display:inline-block;
+  }
+}
+.navbar-header{
+  .navbar-brand{
+    img{
+      width:150px;
+    }
+  }
+}
