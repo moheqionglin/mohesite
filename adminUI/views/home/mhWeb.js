@@ -7,5 +7,6 @@ angular.module('mhWeb', [
     'serilaze',
     'statistics',
     'common',
+    'articles',
     'ui.tree'
 ]);
