@@ -20,7 +20,6 @@
                             </mohe-popover-btn>
                             <mohe-popover-content>
                                 <ul class="edit-blog-popver-menu">
-                                    <li><a href="#"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;移动文章</a></li>
                                     <li><a href="#"><span class="glyphicon glyphicon-trash"></span>&nbsp;删除文章</a></li>
                                 </ul>
                             </mohe-popover-content>
@@ -28,7 +27,6 @@
                     </li>
                 </ul>
 
-                <mohe-pagination></mohe-pagination>
             </div>
         </div>
 
@@ -36,7 +34,58 @@
     </div>
 
     <div class="col-lg-9">
-        <mohe-article></mohe-article>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label  class="col-sm-2 control-label text-left">文章位置</label>
+                <div class="col-sm-10">
+                    <select ng-options="m.id as m.title for m in menus" ng-model="article.position.menu"
+                            ng-change="selectedMenu()">
+                    </select>
+
+                    <select ng-hide="article.position.menu === 'blog'" ng-options="b.id as b.title for b in books"
+                            ng-change="selectedBook()" ng-model="article.position.book">
+                        <option><a class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> 新增</a></option>
+                    </select>
+                    <select ng-hide="article.position.menu === 'blog'" ng-options="head1.id as head1.title for head1 in head1s"
+                        ng-change="selectedHead1()" ng-model="article.position.head1">
+                    </select>
+                    <select ng-hide="article.position.menu === 'blog'" ng-options="head2.id as head2.title for head2 in head2s"
+                            ng-change="selectedHead2()" ng-model="article.position.head2">
+                    </select>
+                    <select ng-hide="article.position.menu === 'blog'" ng-options="head3.id as head3.title for head3 in head3s"
+                            ng-change="selectedHead3()" ng-model="article.position.head3">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-sm-2 control-label text-left">文章标题(32字)</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control"  ng-model="article.title" size="32"  placeholder="输入文章标题,最长只支持32个字符">
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-sm-2 control-label text-left">文章概要(128字)</label>
+                <div class="col-sm-10">
+                    <textarea type="text" rows="3" cols="62" class="form-control" placeholder="输入文章概要,最长只支持128个字符">
+                    </textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-sm-2 control-label text-left">关键词(256字)</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control"  ng-model="article.title" size="32"  placeholder="输入文章关键词,最长只支持32个字符">
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-sm-2 control-label text-left">文章封面</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control"  ng-model="article.img" size="32"  placeholder="输入图片URL...">
+                </div>
+            </div>
+            <label>文章正文</label>
+            <mohe-markdown-editor></mohe-markdown-editor>
+        </form>
+
     </div>
 
 </div>

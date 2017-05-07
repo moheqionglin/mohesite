@@ -4,5 +4,5 @@ angular.module('mhWeb', ['chart.js',
     'statistics',
     'common',
     'articles',
-    'ui.tree'
+    'questions'
 ]);

@@ -17,4 +17,19 @@
     float: right;
     font-size: 12px;
   }
+  select{
+    height: 35px;
+    font-size: 14px;
+    color: $color-green;
+    margin-right: 20px;
+    &:last-child{
+      margin-right: 0;
+    };
+    option{
+      height: 35px;
+      font-size: 14px;
+      color: #1ABC9C;
+      margin-top:20px;
+    }
+  }
 }
