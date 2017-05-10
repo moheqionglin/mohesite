@@ -1,3 +1,6 @@
+/**
+ * Created by zhouwanli on 03/04/2017.
+ */
 'use strict';
 const isProd = process.env.NODE_ENV === 'production';
 const log4js = require('log4js');

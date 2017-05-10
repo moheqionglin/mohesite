@@ -7,6 +7,7 @@ var index = async (ctx, next) => {
     ctx.render('./index.html');
     await next();
 };
+
 module.exports = {
     "GET /index.html " : index,
     "GET /" : index

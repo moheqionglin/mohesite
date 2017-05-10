@@ -1,3 +1,7 @@
+/**
+ * Created by zhouwanli on 18/04/2017.
+ */
+'use strict';
 const log4js = require('log4js');
 
 var initLog = function(server){

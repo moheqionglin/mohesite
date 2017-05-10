@@ -1,3 +1,6 @@
+/**
+ * Created by zhouwanli on 03/04/2017.
+ */
 'use strict';
 const fs = require('fs');
 const _ = require('underscore');
@@ -52,7 +55,7 @@ function getAllControllerFile (dir){
 function addHtmlController (router){
     router.get('/:page', async(ctx, next) =>{
         if(ctx.params.page.endsWith('.html')){
-            log.info(`Process html : page is : ${ctx.params.page}`);
+            log.trace(`Process html : page is : ${ctx.params.page}`);
             ctx.render('./' + ctx.params.page);
         }
         await next();
@@ -60,21 +63,21 @@ function addHtmlController (router){
     //add regex to html
     router.get('/:dir1/:page', async(ctx, next) =>{
         if(ctx.params.page.endsWith('.html')){
-            log.info(`Process html : dir1 is : ${ctx.params.dir1}, page is : ${ctx.params.page}`);
+            log.trace(`Process html : dir1 is : ${ctx.params.dir1}, page is : ${ctx.params.page}`);
             ctx.render(ctx.params.dir1 + '/' + ctx.params.page);
         }
         await next();
     });
     router.get('/:dir1/:dir2/:page', async(ctx, next) =>{
         if(ctx.params.page.endsWith('.html')){
-            log.info(`Process html : dir1 is : ${ctx.params.dir1}, dir2 is : ${ctx.params.dir2}, page is : ${ctx.params.page}`);
+            log.trace(`Process html : dir1 is : ${ctx.params.dir1}, dir2 is : ${ctx.params.dir2}, page is : ${ctx.params.page}`);
             ctx.render(ctx.params.dir1 + '/' + ctx.params.dir2 + '/' + ctx.params.page);
         }
         await next();
     });
     router.get('/:dir1/:dir2/dir3/:page', async(ctx, next) =>{
         if(ctx.params.page.endsWith('.html')){
-            log.info(`Process html : dir1 is : ${ctx.params.dir1}, dir2 is : ${ctx.params.dir2}, dir3 is : ${ctx.params.dir3}, page is : ${ctx.params.page}`);
+            log.trace(`Process html : dir1 is : ${ctx.params.dir1}, dir2 is : ${ctx.params.dir2}, dir3 is : ${ctx.params.dir3}, page is : ${ctx.params.page}`);
             ctx.render(ctx.params.dir1 + '/' + ctx.params.dir2 + '/' + ctx.params.dir3 + '/' + ctx.params.page);
         }
         await next();
