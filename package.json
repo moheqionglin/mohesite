@@ -44,7 +44,8 @@
     "underscore.string":"3.3.4",
     "marked":"0.3.x",
     "lodash": "~3.10.1",
-    "simplemde": "^1.11.2"
+    "simplemde": "^1.11.2",
+    "lru-cache":"^4.0.2"
   },
   "devDependencies":{
 

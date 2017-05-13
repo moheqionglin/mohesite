@@ -10,10 +10,6 @@ var Collections = entityManager.define('collections', {
             type: Sequelize.BIGINT,
             primaryKey: true
         },
-        userId: {
-            type: Sequelize.BIGINT,
-            field: 'user_id'
-        },
         title: Sequelize.STRING(32),
         introduction: Sequelize.STRING(128),
         image:Sequelize.STRING(128),
@@ -22,7 +18,10 @@ var Collections = entityManager.define('collections', {
            type: Sequelize.BIGINT,
            field: 'read_count'
         },
-        type: Sequelize.STRING(16),
+        collectionType: {
+            type: Sequelize.STRING(16),
+            field: 'collection_type'
+        },
         parentId: {
             type: Sequelize.BIGINT,
             field: 'parent_id'
@@ -31,6 +30,7 @@ var Collections = entityManager.define('collections', {
             type: Sequelize.STRING(256),
             field: 'key_word'
         },
+        status: Sequelize.BOOLEAN,
         createdAt: Sequelize.DATE,
         updatedAt: Sequelize.DATE
     }, {

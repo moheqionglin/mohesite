@@ -16,7 +16,7 @@ var Topic = entityManager.define('topic', {
         },
         collectionId: {
             type: Sequelize.BIGINT,
-            field: 'source_id'
+            field: 'collection_id'
         },
         title: Sequelize.STRING(32),
         content:Sequelize.STRING(1024),
