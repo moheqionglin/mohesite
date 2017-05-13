@@ -7,26 +7,38 @@ const Sequelize = require('sequelize');
 
 var Topic = entityManager.define('topic', {
         id: {
-            type: Sequelize.BIGINT,
+            type: Sequelize.INTEGER,
             primaryKey: true
         },
         userId: {
-            type: Sequelize.BIGINT,
-            field: 'user_id'
+            type: Sequelize.INTEGER,
+            field: 'user_id',
+            allowNull: false
         },
         collectionId: {
-            type: Sequelize.BIGINT,
+            type: Sequelize.INTEGER,
             field: 'collection_id'
         },
-        title: Sequelize.STRING(32),
-        content:Sequelize.STRING(1024),
-        createdAt: Sequelize.DATE,
-        updatedAt: Sequelize.DATE
+        title: {
+            type: Sequelize.STRING(32),
+            allowNull: false
+        },
+        content: {
+            type: Sequelize.STRING(1024),
+            allowNull: false
+        },
+        createdAt: {
+            type: Sequelize.DATE,
+            allowNull: false
+        },
+        updatedAt: {
+            type: Sequelize.DATE,
+            allowNull: false
+        }
     }, {
         timestamps: false,
         tableName: 'topic'
     }
-
 );
 
 module.exports = Topic;

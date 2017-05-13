@@ -12,6 +12,8 @@ const staticFile = require('koa-static');
 const router = require('koa-router')();
 const log = log4js.getLogger('app');
 const registerController = require('./middleware/registerController');
+const preAuth = require('./middleware/preAuth');
+
 
 log4js.configure('log4js.json', { reloadSecs: 300, cwd: __dirname });
 {//中间件 [1] url Filter.需要放在静态资源和Router前面,监控所有请求。
@@ -32,7 +34,11 @@ log4js.configure('log4js.json', { reloadSecs: 300, cwd: __dirname });
     server.use(staticFile(__dirname + '/../public',styleOpts));
 }
 
-{//中间件 [3]post body解析中间件
+{//中间件 [3-1] pre-auth 注入user
+    server.user(preAuth());
+}
+
+{//中间件 [3-2] post body解析中间件
     server.use(bodyParser());
 }
 

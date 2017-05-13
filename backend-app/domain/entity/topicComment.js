@@ -7,20 +7,31 @@ const Sequelize = require('sequelize');
 
 var TopicComment = entityManager.define('topic_comment', {
         id: {
-            type: Sequelize.BIGINT,
+            type: Sequelize.INTEGER,
             primaryKey: true
         },
         userId: {
-            type: Sequelize.BIGINT,
-            field: 'user_id'
+            type: Sequelize.INTEGER,
+            field: 'user_id',
+            allowNull: false
         },
         topicId: {
-            type: Sequelize.BIGINT,
-            field: 'topic_id'
+            type: Sequelize.INTEGER,
+            field: 'topic_id',
+            allowNull: false
         },
-        content: Sequelize.STRING(1024),
-        createdAt: Sequelize.DATE,
-        updatedAt: Sequelize.DATE
+        content: {
+            type: Sequelize.STRING(1024),
+            allowNull: false
+        },
+        createdAt: {
+            type: Sequelize.DATE,
+            allowNull: false
+        },
+        updatedAt: {
+            type: Sequelize.DATE,
+            allowNull: false
+        }
     }, {
         timestamps: false,
         tableName: 'topic_comment'

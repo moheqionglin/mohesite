@@ -7,14 +7,34 @@ const Sequelize = require('sequelize');
 
 var User = entityManager.define('users', {
         id: {
-            type: Sequelize.BIGINT,
+            type: Sequelize.INTEGER,
             primaryKey: true
         },
-        name: Sequelize.STRING(32),
+        email: {
+            type: Sequelize.STRING(64),
+            allowNull:  false
+        },
+        name: {
+            type: Sequelize.STRING(32),
+            allowNull:  false
+        },
         password: Sequelize.STRING(64),
-        role: Sequelize.STRING(16),
-        createdAt: Sequelize.DATE,
-        updatedAt: Sequelize.DATE
+        image: {
+            type: Sequelize.STRING(128),
+            allowNull:  false
+        },
+        role: {
+            type: Sequelize.STRING(16),
+            allowNull:false
+        },
+        createdAt: {
+            type: Sequelize.DATE,
+            allowNull:false
+        },
+        updatedAt: {
+            type: Sequelize.DATE,
+            allowNull:false
+        }
     }, {
         timestamps: false
     }

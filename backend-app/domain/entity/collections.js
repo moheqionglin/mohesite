@@ -7,36 +7,60 @@ const Sequelize = require('sequelize');
 
 var Collections = entityManager.define('collections', {
         id: {
-            type: Sequelize.BIGINT,
+            type: Sequelize.INTEGER,
             primaryKey: true
         },
-        title: Sequelize.STRING(32),
-        introduction: Sequelize.STRING(128),
-        image:Sequelize.STRING(128),
-        content: Sequelize.TEXT,
+        title: {
+            type: Sequelize.STRING(32),
+            allowNull: false
+        },
+        introduction: {
+            type: Sequelize.STRING(128),
+            allowNull: false
+        },
+        image: {
+            type: Sequelize.STRING(128),
+            allowNull: false
+        },
+        content: {
+            type: Sequelize.TEXT,
+            allowNull: false
+        },
         readCount: {
-           type: Sequelize.BIGINT,
-           field: 'read_count'
+            type: Sequelize.INTEGER,
+            field: 'read_count',
+            allowNull: false
         },
         collectionType: {
             type: Sequelize.STRING(16),
-            field: 'collection_type'
+            field: 'collection_type',
+            allowNull: false
         },
         parentId: {
-            type: Sequelize.BIGINT,
-            field: 'parent_id'
-        } ,
+            type: Sequelize.INTEGER,
+            field: 'parent_id',
+            allowNull: false
+        },
         keyWord: {
             type: Sequelize.STRING(256),
-            field: 'key_word'
+            field: 'key_word',
+            allowNull: false
         },
-        status: Sequelize.BOOLEAN,
-        createdAt: Sequelize.DATE,
-        updatedAt: Sequelize.DATE
+        status: {
+            type: Sequelize.BOOLEAN,
+            allowNull: false
+        },
+        createdAt: {
+            type: Sequelize.DATE,
+            allowNull: false
+        },
+        updatedAt: {
+            type: Sequelize.DATE,
+            allowNull: false
+        }
     }, {
         timestamps: false
     }
-
 );
 
 module.exports = Collections;

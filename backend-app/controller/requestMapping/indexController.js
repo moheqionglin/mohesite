@@ -2,7 +2,7 @@
 
 const log = require('log4js').getLogger('index controller');
 const Collection = require('../../domain/entity/collections');
-const pagiation = require('../webConst').pagiation;
+const pagiation = require('../../webConf').pagiation;
 
 var index = async (ctx, next) => {
     await Collection.findAndCountAll({

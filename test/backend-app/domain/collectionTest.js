@@ -8,6 +8,7 @@ co.create({
     image: 'test - image',
     collectionType: 'type',
     parentId: -1 ,
+    status: true,
     keyWord: 'test - key_word',
     createdAt: new Date(),
     updatedAt: new Date()

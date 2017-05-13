@@ -2,11 +2,14 @@
 /*CREATE DATABASE moheweb DEFAULT CHARSET utf8 COLLATE utf8_general_ci;*/
 use moheweb;
 /*创建user表, role是ADMIN的时候,共管理员登录,默认是USER*/
+/*1.0版本 用户权限只支持单权限,2.0扩展用户权限*/
 CREATE TABLE users(
   id INT NOT NULL AUTO_INCREMENT COMMENT '用户表主键',
+  email VARCHAR(64) NOT NULL  COMMENT '注册用户邮箱',
   name VARCHAR(32) NOT NULL  COMMENT '用户名/昵称',
   password VARCHAR(64)  COMMENT '加密密码',
-  role VARCHAR(16)  DEFAULT 'USER' COMMENT '目前两种简单角色: ADMIN, USER',
+  image VARCHAR(128) NOT NULL COMMENT '用户头像',
+  role VARCHAR(16) NOT NULL COMMENT '目前两种简单角色: ADMIN, GUEST',
   createdAt TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP  COMMENT '创建时间',
   PRIMARY KEY(id),
@@ -68,4 +71,21 @@ CREATE TABLE topic_comment(
   PRIMARY KEY(id),
   INDEX(user_id),
   INDEX(topic_id)
+);
+/*
+  topic 表的评论, 评论不可嵌套评论
+*/
+CREATE TABLE authentication_tokens(
+  id INT NOT NULL AUTO_INCREMENT  COMMENT '主键',
+  userId INT NOT NULL COMMENT '用户 ID',
+  localToken VARCHAR(37) NOT NULL COMMENT 'local token',
+  expiresAt TIMESTAMP NOT NULL COMMENT '超期时间',
+  oauth2AuthId VARCHAR(100) NOT NULL COMMENT 'oauth2 认证ID',
+  oauth2AuthToken VARCHAR(128) COMMENT 'oauth2 认证token',
+  oauthProvider VARCHAR(10) COMMENT 'oauth2 认证机构 weibo/weixin',
+  createdAt TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP  COMMENT '创建时间',
+  PRIMARY KEY(id),
+  INDEX(userId),
+  INDEX(localToken)
 );
