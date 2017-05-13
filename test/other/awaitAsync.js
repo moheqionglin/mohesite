@@ -53,12 +53,12 @@
 {// await async
 
     var k = 0;
-    function sleep(ms) {
+    var sleep = function(ms) {
         return new Promise(function(resolve, reject){
             setTimeout(function () {
                 console.log('promise-执行好了');
                 k++;
-                if (k >= 2) resolve('j>=2');
+                if (k < 2) resolve('j>=2');
                 else reject(new Error('k==' + k));
             }, ms);
         });
@@ -68,7 +68,8 @@
     (async ()=>{
         try{
             console.log('before await');
-            await sleep(1000);
+            var result = await sleep(1000);
+            console.log(result)
             console.log('after await');
         }catch(e){
             console.log('error ->' + e)
@@ -76,4 +77,14 @@
 
     })();
     console.log('主线程--->2')
+}
+{// 正常的返回
+
+    var getValue = function (){
+        return 1;
+    };
+    (async () =>{
+        var a = await getValue();
+        console.log(a)
+    })();
 }

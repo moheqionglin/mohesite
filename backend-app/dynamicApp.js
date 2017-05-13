@@ -35,7 +35,7 @@ log4js.configure('log4js.json', { reloadSecs: 300, cwd: __dirname });
 }
 
 {//中间件 [3-1] pre-auth 注入user
-    server.user(preAuth());
+    server.use(preAuth());
 }
 
 {//中间件 [3-2] post body解析中间件

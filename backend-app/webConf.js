@@ -7,7 +7,7 @@ module.exports = {
         COMMENT_SIZE: 5
     },
     cookie:{
-        AUTH_COOKIE_NAME: 'AUTH_TOKEN',
+        AUTH_COOKIE_NAME: 'Auth_token',
         TTL: 1000 * 60 * 60 * 24 * 7
     },
     cache:{

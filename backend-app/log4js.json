@@ -3,12 +3,14 @@
     {
       "type": "dateFile",
       "filename": "logs/access.log",
+      "level": "TRACE",
       "pattern": "-yyyy-MM-dd",
       "category": "http"
     },
     {
       "type": "file",
       "filename": "logs/app.log",
+      "level": "TRACE",
       "maxLogSize": 10485760,
       "numBackups": 3
     },

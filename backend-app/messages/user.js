@@ -13,6 +13,42 @@ var User = function(id, name, email, localToken, role, image){
 
 User.prototype = {
     constructor: User,
+    setId: function(id){
+        this.id = id;
+    },
+    getId: function(){
+        return this.id;
+    },
+    setName: function(name){
+        this.name = name;
+    },
+    getName: function(){
+        return this.name;
+    },
+    setEmail: function(email){
+        this.email = email;
+    },
+    getEmail: function(){
+        return this.email;
+    },
+    setLocalToken: function(localToken){
+        this.localToken = localToken;
+    },
+    getLocalToken: function(){
+        return this.localToken;
+    },
+    setRole: function(role){
+        this.role = role;
+    },
+    getRole: function(){
+        return this.role;
+    },
+    setImaghe: function(image){
+        this.image = image;
+    },
+    getImage: function(){
+        return this.image;
+    },
     setExpiresAt: function(expiresAt){
         this.expiresAt = expiresAt;
     },
@@ -37,7 +73,6 @@ User.prototype = {
     getOauthProvider: function(){
         return this.oauthProvider;
     }
-    
 }
 
 module.exports = User;
