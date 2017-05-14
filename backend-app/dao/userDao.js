@@ -40,8 +40,46 @@ var getUserByAuthTokenAndCache = async function(localToken){
     authUser.setOauthProvider(authTokenInfo.oauthProvider);
     cache.set(localToken, authUser);
     return authUser;
-}
+};
 
+var findUserByEmail = async (email) =>{
+    if(!email){
+        return null;
+    }
+    var user = await userModal.findOne({
+        where: {
+            email : email
+        }
+    });
+    return user;
+};
+var createUser = async (oauth2AuthResponse) =>{
+    var user = {
+        name: oauth2AuthResponse.name,
+        email: oauth2AuthResponse.email,
+        image: oauth2AuthResponse.image,
+        password: '',
+        role: oauth2AuthResponse.role,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    };
+    var user = await userModal.create(user);
+    return user;
+};
+var updateUser = async (updateUserField, userId)=>{
+    if(!updateUserField || !userId){
+        return ;
+    }
+    var updateUser = await userModal.update(updateUserField,
+        {
+            where: {
+                id: userId
+            }
+        });
+}
 module.exports = {
-    getUserByAuthTokenAndCache : getUserByAuthTokenAndCache
+    getUserByAuthTokenAndCache : getUserByAuthTokenAndCache,
+    findUserByEmail: findUserByEmail,
+    createUser: createUser,
+    updateUser: updateUser
 }

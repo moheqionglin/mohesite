@@ -64,24 +64,26 @@
         });
 
     }
-    console.log('主线程--->1');
+    console.log('主线程--->前');
     (async ()=>{
         try{
-            console.log('before await');
-            var result = await sleep(1000);
-            console.log(result)
-            console.log('after await');
+            await console.log('before await');
+            var result = await sleep(2000);
+            await console.log(result);
+            var a = await 1;
+            console.log(a);
+            await console.log('after await');
         }catch(e){
             console.log('error ->' + e)
         }
 
     })();
-    console.log('主线程--->2')
+    console.log('主线程--->后')
 }
 {// 正常的返回
 
     var getValue = function (){
-        return 1;
+        return 333;
     };
     (async () =>{
         var a = await getValue();

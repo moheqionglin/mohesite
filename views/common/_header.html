@@ -1,4 +1,4 @@
-{%macro headerNav(activeItem='')%}
+{%macro headerNav(activeItem='', authUser='', currentPage='')%}
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -15,25 +15,34 @@
         <div class="navbar-offcanvas navbar-offcanvas-right" id="js-bootstrap-offcanvas">
             <ul class="nav navbar-nav">
                 {% if activeItem == 'blogs' %}<li class="active">{%else%}<li>{%endif%}
-                    <a href="/blogs/blog-list.html">编程日志</a></li>
+                    <a href="/site/blogs/blog-list.html">编程日志</a></li>
                 {% if activeItem == 'books' %}<li class="active">{%else%}<li>{%endif%}
-                    <a href="/books/book-grid.html">跟我读书</a></li>
+                    <a href="/site/books/book-grid.html">跟我读书</a></li>
                 {% if activeItem == 'serilaze' %}<li class="active">{%else%}<li>{%endif%}
-                    <a href="/serilaze/serilaze-grid.html" >连载教程</a></li>
+                    <a href="/site/serilaze/serilaze-grid.html" >连载教程</a></li>
                 {% if activeItem == 'answer' %}<li class="active">{%else%}<li>{%endif%}
-                    <a href="/answer/question-answer-block-list.html">墨荷问答</a></li>
+                    <a href="/site/answer/question-answer-block-list.html">墨荷问答</a></li>
                 {% if activeItem == 'sponsor' %}<li class="active">{%else%}<li>{%endif%}
-                    <a href="/footer/sponsor.html">慷慨赞助</a></li>
+                    <a href="/site/footer/sponsor.html">慷慨赞助</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+             {% if(authUser) %}
                 <li class="dropdown">
-                    <a href="#" id="dLabel" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">墨荷琼林<span class="caret"></span></a>
+                    <a href="#" id="dLabel" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
+                        {{authUser.name}}
+                        <span class="caret"></span>
+                    </a>
                     <ul class="dropdown-menu" aria-labelledby="dLabel">
-                        <li><a href="#">个人资料</a></li>
-                        <li><a href="#">退出</a></li>
+                        <li><a href="/site/authenticate/profile">个人资料</a></li>
+                        <li><a href="/site/authenticate/logout">退出</a></li>
                     </ul>
                 </li>
-            </ul>
+             {%else%}
+                <li>
+                    <a href="/site/authenticate/login?forward={{currentPage}}">登录</a>
+                </li>
+             {%endif%}
+        </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>

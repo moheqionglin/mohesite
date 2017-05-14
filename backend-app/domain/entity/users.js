@@ -8,7 +8,8 @@ const Sequelize = require('sequelize');
 var User = entityManager.define('users', {
         id: {
             type: Sequelize.INTEGER,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         email: {
             type: Sequelize.STRING(64),

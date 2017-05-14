@@ -3,7 +3,6 @@
  */
 'use strict';
 const nunjucks = require('nunjucks');
-
 const DEFAULT_VIEW_PATH = 'views';
 
 function createEnv(path, opts) {
@@ -36,7 +35,12 @@ function templating(path, opts) {
         // 给ctx绑定render函数:
         ctx.render = function (view, model) {
             // 把render后的内容赋值给response.body:
-            ctx.response.body = env.render(view, Object.assign({}, ctx.state || {}, model || {}));
+            var model = model || {};
+            if(ctx.request.authUser){
+                model.authUser = ctx.request.authUser;
+            }
+            
+            ctx.response.body = env.render(view, model);
             // 设置Content-Type:
             ctx.response.type = 'text/html';
         };

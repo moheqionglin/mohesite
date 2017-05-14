@@ -1,0 +1,51 @@
+.login-page{
+  margin-top: $content-to-header-maring;
+  height: 100%;
+  .login-panel{
+    width:400px;
+    border:1px solid $border-gray;
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(0,0,0,.1);
+    vertical-align: middle;
+    margin: 5px auto;
+  }
+  h3{
+    margin: 25px auto;
+    color:$color-logo-green
+  }
+  .login-content{
+    img{
+      width: 80%;
+      margin: 15px auto;
+    }
+    h3{
+      margin: 35px auto;
+      color: $color-green;
+    }
+    h4{
+      margin: 15px auto 65px auto;
+      color: $color-green;
+    }
+    h5{
+      color:$color-logo-green
+    }
+  }
+
+  .login-method{
+    margin-top: 15px;
+    margin-bottom: 45px;
+    padding-left: 0;
+    li{
+      width: 45px;
+      height: 45px;
+      border: 1px solid $border-gray;
+      display: inline-block;
+      line-height: 45px;
+      border-radius: 50%;
+      font-size: 22px;
+      margin-left: 15px;
+
+    }
+  }
+
+}

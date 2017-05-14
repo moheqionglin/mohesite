@@ -8,7 +8,8 @@ const Sequelize = require('sequelize');
 var TopicComment = entityManager.define('topic_comment', {
         id: {
             type: Sequelize.INTEGER,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         userId: {
             type: Sequelize.INTEGER,

@@ -13,13 +13,12 @@
     <meta name="renderer" content="webkit">
     <link rel="icon" href="/images/favicon.ico">
 
-    <title>墨荷琼林官网-连载教程</title>
+    <title>墨荷琼林官网-登录</title>
     <!-- Bootstrap core CSS -->
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Loading Flat UI -->
     <!--<link href="/bower_components/flat-ui/dist/css/flat-ui.css" rel="stylesheet">-->
     <link href="/bower_components/animate.css/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/bower_components/bootstrap-offcanvas/dist/css/bootstrap.offcanvas.min.css"/>
     <!-- Custom styles for this template -->
     <link href="/stylesheets/main.min.css" rel="stylesheet">
 
@@ -29,27 +28,35 @@
     <script src="/javascripts/bootstrap/vender/respond.min.js"></script>
     <![endif]-->
 </head>
-<body >
-{% import '../common/_header.html' as headerNav%}
-{% import "../common/_pagination.html" as pagationTool %}
-{% import '../common/_breadCrumb.html' as breadCrumb%}
-{{headerNav.headerNav('books', authUser, '/site/books/book-detail.html')}}
-<div class="container book-detail-page" >
-    {%set breadcrumbData = [{title: '跟我读书', url:'/site/books/book-grid.html'},{title:'软技能代码之外的生存技能'}]%}
-    {{breadCrumb.breadcrumb(breadcrumbData)}}
+<body>
+
+<div class="container login-page">
     <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12  ">
-            {% include "../common/_catalog.html" %}
-        </div>
-        <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
-            {% include "../common/_article.html"%}
+        <div class="col-sm-12 text-center">
+           <div class="login-panel row">
+               <h3 >登录</h3>
+               <div class="col-sm-12 login-content">
+                   <img src="http://opkhviyav.bkt.clouddn.com/image/test/logo.gif">
+                   <h3>墨荷琼林官网</h3>
+                   <h4>一个学习 & 分享IT知识的港湾</h4>
+                   <div class="divider-top"></div>
+                   <h5 >登录方式</h5>
+
+                   <ul class="login-method text-center">
+                       <!--<li class="text-center"><a href="#"> <i class="icon-wechat" ></i></a></li>-->
+                       <li class="text-center">
+                           <a href="https://api.weibo.com/oauth2/authorize?client_id={{clientId}}&response_type=code&redirect_uri={{redirectUri}}">
+                               <i class="icon-weibo"></i>
+                           </a>
+                       </li>
+                       <!--<li class="text-center"><a href="#"> <i class="icon-github-squared" ></i></a></li>-->
+                   </ul>
+               </div>
+
+           </div>
         </div>
     </div>
 </div>
-{% include '../footer/_footer.html'%}
-<!--待删除-->
-<script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="/bower_components/bootstrap-offcanvas/dist/js/bootstrap.offcanvas.js"></script>
-<script src="/bower_components/bootstrap/js/dropdown.js"></script>
+
 </body>
 </html>

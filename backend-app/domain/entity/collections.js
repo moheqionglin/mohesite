@@ -8,7 +8,8 @@ const Sequelize = require('sequelize');
 var Collections = entityManager.define('collections', {
         id: {
             type: Sequelize.INTEGER,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         title: {
             type: Sequelize.STRING(32),

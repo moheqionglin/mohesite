@@ -2,13 +2,18 @@
  * Created by zhouwanli on 13/05/2017.
  */
 'use strict';
-var User = function(id, name, email, localToken, role, image){
+var User = function(id, name, email, localToken, role, image, 
+                    expiresAt, oauth2AuthId, oauth2AuthToken, oauthProvider){
     this.id = id;
     this.name = name;
     this.email = email;
     this.localToken = localToken;
     this.role = role;
     this.image = image;
+    this.expiresAt = expiresAt;
+    this.oauth2AuthId = oauth2AuthId;
+    this.oauth2AuthToken = oauth2AuthToken;
+    this.oauthProvider = oauthProvider;
 }
 
 User.prototype = {

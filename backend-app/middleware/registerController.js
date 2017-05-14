@@ -6,9 +6,11 @@ const fs = require('fs');
 const _ = require('underscore');
 var _s = require("underscore.string");
 const log = require('log4js').getLogger("registerController");
+
 //必须要传路径
 var register = function(router, controllerDirs){
-
+    //网页静态化 待定
+    // addHtmlController(router);
     _.each(controllerDirs, function(controllerDir){
         log.trace(`process controller dir : ${controllerDir}...`);
         var js_files = getAllControllerFile(controllerDir);
@@ -40,7 +42,6 @@ var register = function(router, controllerDirs){
         });
 
     });
-    addHtmlController(router);
     return router.routes();
 }
 
@@ -55,32 +56,41 @@ function getAllControllerFile (dir){
 function addHtmlController (router){
     router.get('/:page', async(ctx, next) =>{
         if(ctx.params.page.endsWith('.html')){
+            // router.use('/:page', preAuth());
             log.trace(`Process html : page is : ${ctx.params.page}`);
             ctx.render('./' + ctx.params.page);
+        }else{
+            next();
         }
-        await next();
+
     });
     //add regex to html
     router.get('/:dir1/:page', async(ctx, next) =>{
         if(ctx.params.page.endsWith('.html')){
+            // router.use('/:dir1/:page', preAuth());
             log.trace(`Process html : dir1 is : ${ctx.params.dir1}, page is : ${ctx.params.page}`);
             ctx.render(ctx.params.dir1 + '/' + ctx.params.page);
+        }else{
+            next();
         }
-        await next();
     });
     router.get('/:dir1/:dir2/:page', async(ctx, next) =>{
         if(ctx.params.page.endsWith('.html')){
+            // router.use('/:dir1/:dir2/:page', preAuth());
             log.trace(`Process html : dir1 is : ${ctx.params.dir1}, dir2 is : ${ctx.params.dir2}, page is : ${ctx.params.page}`);
             ctx.render(ctx.params.dir1 + '/' + ctx.params.dir2 + '/' + ctx.params.page);
+        }else{
+            next();
         }
-        await next();
     });
     router.get('/:dir1/:dir2/dir3/:page', async(ctx, next) =>{
         if(ctx.params.page.endsWith('.html')){
+            // router.use('/:dir1/:dir2/dir3/:page', preAuth());
             log.trace(`Process html : dir1 is : ${ctx.params.dir1}, dir2 is : ${ctx.params.dir2}, dir3 is : ${ctx.params.dir3}, page is : ${ctx.params.page}`);
             ctx.render(ctx.params.dir1 + '/' + ctx.params.dir2 + '/' + ctx.params.dir3 + '/' + ctx.params.page);
+        }else{
+            next();
         }
-        await next();
     });
 }
 module.exports = register;

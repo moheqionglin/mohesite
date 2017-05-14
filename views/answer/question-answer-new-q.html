@@ -30,12 +30,12 @@
 {% import '../common/_header.html' as headerNav%}
 {% import "../common/_pagination.html" as pagationTool%}
 {% import '../common/_breadCrumb.html' as breadCrumb%}
-{{headerNav.headerNav('answer')}}
+{{headerNav.headerNav('answer', authUser, '/site/answer/question-answer-new-q.html')}}
 <div class="container question-answer-new-page" >
     <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-            {%set breadcrumbData = [{title: '墨荷问答', url:'/answer/question-answer-block-list.html'},
-            {title: 'JavaScript教程', url:'/answer/question-answer-list.html'},
+            {%set breadcrumbData = [{title: '墨荷问答', url:'/site/answer/question-answer-block-list.html'},
+            {title: 'JavaScript教程', url:'/site/answer/question-answer-list.html'},
             {title: '创建新话题'}]%}
             {{breadCrumb.breadcrumb(breadcrumbData)}}
 
@@ -49,7 +49,7 @@
                     <textarea type="text" rows="15" cols="62" class="form-control" placeholder="输入文章概要,最长只支持1024个字符"></textarea>
                 </div>
             </div>
-            <div class="text-right"><a href="/answer/question-answer-new-q.html" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>提交话题</a></div>
+            <div class="text-right"><a href="/site/answer/question-answer-new-q.html" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>提交话题</a></div>
 
         </div>
         <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">

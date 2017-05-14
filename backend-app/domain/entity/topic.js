@@ -8,7 +8,8 @@ const Sequelize = require('sequelize');
 var Topic = entityManager.define('topic', {
         id: {
             type: Sequelize.INTEGER,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         userId: {
             type: Sequelize.INTEGER,

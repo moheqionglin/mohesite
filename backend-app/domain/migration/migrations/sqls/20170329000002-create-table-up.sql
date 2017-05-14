@@ -5,7 +5,7 @@ use moheweb;
 /*1.0版本 用户权限只支持单权限,2.0扩展用户权限*/
 CREATE TABLE users(
   id INT NOT NULL AUTO_INCREMENT COMMENT '用户表主键',
-  email VARCHAR(64) NOT NULL  COMMENT '注册用户邮箱',
+  email VARCHAR(64) NOT NULL UNIQUE COMMENT '注册用户邮箱',
   name VARCHAR(32) NOT NULL  COMMENT '用户名/昵称',
   password VARCHAR(64)  COMMENT '加密密码',
   image VARCHAR(128) NOT NULL COMMENT '用户头像',
@@ -14,6 +14,7 @@ CREATE TABLE users(
   updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP  COMMENT '创建时间',
   PRIMARY KEY(id),
   INDEX(name),
+  INDEX(email),
   INDEX(role)
 );
 /*创建集合, 跟我读书>每本书就是一个集合, 连载教程>每个教程就是一个集合*/

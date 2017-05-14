@@ -30,7 +30,7 @@
 {% import '../common/_header.html' as headerNav%}
 {% import "../common/_pagination.html" as pagationTool %}
 {% import '../common/_breadCrumb.html' as breadCrumb%}
-{{headerNav.headerNav('books')}}
+{{headerNav.headerNav('books', authUser, '/site/books/book-grid.html')}}
 <div class="container book-page" >
     <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 book-article-grade">

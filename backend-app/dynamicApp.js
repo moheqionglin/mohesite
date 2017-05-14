@@ -9,7 +9,7 @@ const server = new Koa();
 const viewResolver = require('./middleware/viewResolver');
 const bodyParser = require('koa-bodyparser');
 const staticFile = require('koa-static');
-const router = require('koa-router')();
+const Router = require('koa-router');
 const log = log4js.getLogger('app');
 const registerController = require('./middleware/registerController');
 const preAuth = require('./middleware/preAuth');
@@ -34,11 +34,7 @@ log4js.configure('log4js.json', { reloadSecs: 300, cwd: __dirname });
     server.use(staticFile(__dirname + '/../public',styleOpts));
 }
 
-{//中间件 [3-1] pre-auth 注入user
-    server.use(preAuth());
-}
-
-{//中间件 [3-2] post body解析中间件
+{//中间件 [3] post body解析中间件
     server.use(bodyParser());
 }
 
@@ -49,11 +45,29 @@ log4js.configure('log4js.json', { reloadSecs: 300, cwd: __dirname });
     }));
 }
 
+
+
 {//中间件 [5]加载中间件requestMapping
-   server.use(registerController(router,
-       [__dirname + '/controller/requestMapping/'
-        ]
-   ));
+   var router = new Router({
+        prefix: '/site'
+   });
+    {//中间件 [5-1] pre-auth 注入user
+        router.use(preAuth()) ;
+    }
+
+    {//中间件 [5-2] 注册所有router 到 /site下面
+        server.use(registerController(router,
+            [__dirname + '/controller/requestMapping/',
+             __dirname + '/controller/authenticate/'
+            ]
+        ));
+    }
+
+    {//中间件 [5-3] 防止 preAuth 模块拦截 css js 图片等url
+        var router2 = new Router();
+        router2.redirect('/', '/site/index.html');
+        server.use(router2.routes());
+    }
 }
 var port = process.argv[2] || 9988;
 server.listen(port);

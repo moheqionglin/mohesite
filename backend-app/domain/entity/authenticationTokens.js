@@ -8,7 +8,8 @@ const Sequelize = require('sequelize');
 var AuthenticationTokens = entityManager.define('authentication_tokens', {
         id: {
             type: Sequelize.INTEGER,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         userId: {
             type: Sequelize.INTEGER,

@@ -30,12 +30,12 @@
 {% import '../common/_header.html' as headerNav%}
 {% import "../common/_pagination.html" as pagationTool%}
 {% import '../common/_breadCrumb.html' as breadCrumb%}
-{{headerNav.headerNav('answer')}}
+{{headerNav.headerNav('answer', authUser, '/site/answer/question-answer-detail.html')}}
 <div class="container question-answer-detail-page" >
     <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-            {%set breadcrumbData = [{title: '墨荷问答', url:'/answer/question-answer-block-list.html'},
-            {title: 'JavaScript教程', url:'/answer/question-answer-list.html'},
+            {%set breadcrumbData = [{title: '墨荷问答', url:'/site/answer/question-answer-block-list.html'},
+            {title: 'JavaScript教程', url:'/site/answer/question-answer-list.html'},
             {title: '怎么才能写好面向对象的js'}]%}
             {{breadCrumb.breadcrumb(breadcrumbData)}}
             <div class="text-right"><a href="#" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> 问题来源</a></div>
