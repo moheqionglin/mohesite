@@ -9,6 +9,6 @@ var renderHtml = function(path){
     };
 };
 module.exports = {
-    'GET /serilaze/serilaze-detail.html': renderHtml('serilaze/serilaze-detail.html'),
-    'GET /serilaze/serilaze-grid.html': renderHtml('serilaze/serilaze-grid.html')
+    'GET /serilaze/:id/detail.html': renderHtml('serilaze/serilaze-detail.html'),
+    'GET /serilaze/:id/list.html': renderHtml('serilaze/serilaze-grid.html')
 };

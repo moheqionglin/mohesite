@@ -9,6 +9,6 @@ var renderHtml = function(path){
     };
 };
 module.exports = {
-    'GET /books/book-detail.html': renderHtml('books/book-detail.html'),
-    'GET /books/book-grid.html': renderHtml('books/book-grid.html')
+    'GET /books/:id/detail.html': renderHtml('books/book-detail.html'),
+    'GET /books/:id/list.html': renderHtml('books/book-grid.html')
 };

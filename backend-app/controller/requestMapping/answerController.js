@@ -9,8 +9,8 @@ var renderHtml = function(path){
     };
 };
 module.exports = {
-    'GET /answer/question-answer-block-list.html': renderHtml('answer/question-answer-block-list.html'),
-    'GET /answer/question-answer-detail.html': renderHtml('answer/question-answer-detail.html'),
-    'GET /answer/question-answer-list.html': renderHtml('answer/question-answer-list.html'),
-    'GET /answer/question-answer-new-q.html': renderHtml('answer/question-answer-new-q.html'),
+    'GET /answer/:id/division.html': renderHtml('answer/question-answer-block-list.html'),
+    'GET /answer/:id/detail.html': renderHtml('answer/question-answer-detail.html'),
+    'GET /answer/:id/list.html': renderHtml('answer/question-answer-list.html'),
+    'GET /answer/:id/new': renderHtml('answer/question-answer-new-q.html'),
 };

@@ -1,18 +1,22 @@
-{% macro resultListDisplay(image='http://opkhviyav.bkt.clouddn.com/image/test/1.jpg', title='', titleUrl = '', introduction='', date='', readCount='', totalArticleCount='')%}
+{% macro resultListDisplay(collection)%}
+<!--image='http://opkhviyav.bkt.clouddn.com/image/test/1.jpg', title='', titleUrl = '', introduction='', date='', readCount='', totalArticleCount=''
+collection.image, collection.title, '/site/blogs/blog-details/' + id, collection.introduction, collection.createdAt, collection.readCount, ''
+
+-->
 <div class="row result-list-item">
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 result-list-img">
-        <a href="{{titleUrl}}"><img src="{{image}}"></a>
+        <a href="'/site/blogs/blog-details/'{{collection.id}}"><img src="{{collection.image}}"></a>
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 result-list-metadata">
-        <h3 class="result-list-title"><a href="{{titleUrl}}">{{title}}</a></h3>
+        <h3 class="result-list-title"><a href="/site/blogs/{{collection.id}}/detail.html">{{collection.title}}</a></h3>
         <ul class="result-list-attribute">
-            <li><i class="icon-calendar"></i>{{date}}</li>
-            <li><i class="icon-eye"></i>{{readCount}}</li>
-            {% if totalArticleCount%}
-                <li><i class="icon-docs"></i>{{totalArticleCount}}</li>
+            <li><i class="icon-calendar"></i>{{collection.createdAt | dataParse}}</li>
+            <li><i class="icon-eye"></i>{{collection.readCount}}</li>
+            {% if collection.totalArticleCount%}
+                <li><i class="icon-docs"></i>{{collection.totalArticleCount}}</li>
             {% endif %}
         </ul>
-        <p class="result-list-introduction">{{introduction}}</p>
+        <p class="result-list-introduction">{{collection.introduction}}</p>
     </div>
 </div>
 {% endmacro %}
