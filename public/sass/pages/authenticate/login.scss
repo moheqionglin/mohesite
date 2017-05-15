@@ -1,21 +1,8 @@
-@media (min-width: $screen-xs) {
-  .login-page{
-    .login-panel{
-      width:400px;
-      border:1px solid $border-gray;
-      border-radius: 5px;
-      box-shadow: 0 0 8px rgba(0,0,0,.1);
-      vertical-align: middle;
-      margin: 5px auto;
-    }
-  }
-}
-
 .login-page{
   margin-top: $content-to-header-maring;
   height: 100%;
   .login-panel{
-    width: 100%;
+    width:400px;
     border:1px solid $border-gray;
     border-radius: 5px;
     box-shadow: 0 0 8px rgba(0,0,0,.1);
@@ -61,4 +48,11 @@
     }
   }
 
+}
+@media (max-width: $screen-xs) {
+  .login-page{
+    .login-panel{
+      width: 100%;
+    }
+  }
 }
