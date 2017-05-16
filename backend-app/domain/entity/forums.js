@@ -1,35 +1,22 @@
 /**
- * Created by zhouwanli on 08/05/2017.
+ * Created by zhouwanli on 09/05/2017.
  */
 'use strict';
 const entityManager = require('../entityManager');
 const Sequelize = require('sequelize');
 
-var Topic = entityManager.define('topic', {
+var Forums = entityManager.define('forums', {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        userId: {
-            type: Sequelize.INTEGER,
-            field: 'user_id',
-            allowNull: false
-        },
-        collectionId: {
-            type: Sequelize.INTEGER,
-            field: 'collection_id'
-        },
         title: {
             type: Sequelize.STRING(32),
             allowNull: false
         },
-        content: {
-            type: Sequelize.STRING(1024),
-            allowNull: false
-        },
-        forumId:{
-            type: Sequelize.INTEGER,
+        introduction: {
+            type: Sequelize.STRING(128),
             allowNull: false
         },
         createdAt: {
@@ -42,8 +29,8 @@ var Topic = entityManager.define('topic', {
         }
     }, {
         timestamps: false,
-        tableName: 'topic'
+        tableName: 'forums'
     }
 );
 
-module.exports = Topic;
+module.exports = Forums;

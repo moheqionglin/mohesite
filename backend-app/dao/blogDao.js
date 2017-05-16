@@ -14,8 +14,7 @@ var getBlockListByPage = async(currentPage) =>{
     var blogs = await collectionModal.findAndCountAll({
         attributes: ['id', 'title', 'introduction', 'image', 'readCount', 'collectionType', 'keyWord', 'createdAt' ],
         where:{
-            collectionType: collectionType.BLOG,
-            status: true
+            collectionType: collectionType.BLOG
         },
         limit: pagiationConf.PAGE_SIZE,
         offset: (currentPage - 1) * pagiationConf.PAGE_SIZE

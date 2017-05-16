@@ -31,20 +31,19 @@
 {% import "../common/_result-list-item.html" as resultListItem %}
 {% import "../common/_pagination.html" as pagationTool %}
 {% import '../common/_breadCrumb.html' as breadCrumb%}
-{{headerNav.headerNav('answer', authUser, '/site/answer/1/division.html')}}
+{{headerNav.headerNav('answer', authUser, '/site/answer/1/forum.html')}}
 <div class="container question-answer-block-list-page" >
     <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
             {%set breadcrumbData = [{title: '墨荷问答'}]%}
             {{breadCrumb.breadcrumb(breadcrumbData)}}
 
-            {% for i in range(0, 10)%}
-            {% set img = 'http://opkhviyav.bkt.clouddn.com/image/test/'+ loop.index +'.jpg'%}
-            {{resultListItem.resultListDisplay(img, 'JavaScript教程','/site/answer/1/list.html' , '速发展的第7个年头，第三方支付市场已成为互联网金融领域最为成熟的行业，并作为基础服务广泛应用于各行业。', '3小时前', '234', '45')}}
+            {% for forum in forums.rows%}
+                {{resultListItem.resultListDisplay(forum, '/site/answer/^^/topic-list.html')}}
             {% endfor %}
             <div class="row">
                 <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                    {{ pagationTool.pagation()}}
+                    {{ pagationTool.pagation('/site/answer/^^/forum.html', forums.totalPage, forums.currentPage)}}
                 </div>
             </div>
         </div>

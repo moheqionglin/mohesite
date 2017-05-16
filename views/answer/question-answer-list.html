@@ -31,11 +31,11 @@
 {% import "../common/_author-article-list.html" as authorArticleList %}
 {% import "../common/_pagination.html" as pagationTool %}
 {% import '../common/_breadCrumb.html' as breadCrumb%}
-{{headerNav.headerNav('answer', authUser, '/site/answer/1/list.html')}}
+{{headerNav.headerNav('answer', authUser, '/site/answer/1/topic-list.html')}}
 <div class="container question-answer-list-page" >
     <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-            {%set breadcrumbData = [{title: '墨荷问答', url:'/site/answer/1/division.html'},
+            {%set breadcrumbData = [{title: '墨荷问答', url:'/site/answer/1/forum.html'},
             {title: 'JavaScript教程'}]%}
             {{breadCrumb.breadcrumb(breadcrumbData)}}
             <div class="text-right"><a href="/site/answer/1/new" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>创建话题</a></div>

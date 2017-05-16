@@ -14,12 +14,11 @@ var renderHtml = function(path){
 };
 var getBlockList = async (ctx, next) =>{
     var currentPage = ctx.params.page || 1;
-    log.info(`----> ${currentPage}`);
+    log.debug(`Get Blog page : ${currentPage}`);
     var result = await blogDao.getBlockListByPage(currentPage);
     ctx.render('blogs/blog-list.html', {
         blogs: result
     });
-    log.debug(result);
     next();
 };
 

@@ -10,9 +10,6 @@ const log = require('log4js').getLogger('index controller');
 var findTop10CollectionMetaData = async function(){
     var collections = await collectionModal.findAll({
         attributes: ['id', 'title', 'introduction', 'image', 'readCount', 'collectionType', 'keyWord', 'createdAt' ],
-        where:{
-            status: true
-        },
         order:'readCount desc, id desc',
         limit:10
     });
