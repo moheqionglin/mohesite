@@ -69,7 +69,7 @@ function addDataParseFilter(env){
             return Math.ceil(minusTime / (1000 * 60 * 60)) + '小时前';
         }
         if(minusTime < 1000 * 60 * 60 * 24 * 10){//月份相同 6天前
-            return Math.abs(minusTime / (1000 * 60 * 60 * 24)) + '天前';
+            return Math.ceil(minusTime / (1000 * 60 * 60 * 24)) + '天前';
         }
         if(dateYear === today.getFullYear()){//年相同 3月5日 12:30
             return dateMonth + '月' + dateDate +'日 ' + dateHour + ':' +  date.getMinutes();
