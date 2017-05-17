@@ -1,15 +1,14 @@
 {% import "./_comment_child_item.html" as commentItem %}
 <div class="media comment-item">
     <div class="pull-left media-middle author-img">
-        <img class="media-object" src="http://opkhviyav.bkt.clouddn.com/image/test/author.jpg">
+        <img class="media-object" src="{{topic.user.image}}">
     </div>
     <div class="media-body comment-title">
-        <h1 class="media-heading"><a href="#">文章标题</a> </h1>
-        <small class="comment-meta"> 墨荷琼林.4小时前</small>
-        <p>正文话题正文话题正文话题正文话题</p>
-        {% for i in range(0, 5)%}
-        {% set img = '/images/author.jpg' %}
-        {{commentItem.commentItem(i, img, '怎么才能写好面向对象的js','文章正文文章正文文章正文文章正文文章正文文章正文文章正文文章正文' , '沧海一粟', '3小时前')}}
+        <h1 class="media-heading"><a href="#">{{topic.title}}</a> </h1>
+        <small class="comment-meta"> {{topic.user.name}}.{{topic.createdAt |dataParse }}</small>
+        <p>{{topic.content}}</p>
+        {% for comment in topic.commentLists%}
+            {{commentItem.commentItem(comment)}}
         {% endfor %}
     </div>
     <div class="text-center comment-action-grp">

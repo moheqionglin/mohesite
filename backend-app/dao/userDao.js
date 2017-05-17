@@ -53,6 +53,18 @@ var findUserByEmail = async (email) =>{
     });
     return user;
 };
+var findUserById = async (id) =>{
+    if(!id){
+        return null;
+    }
+    var user = await userModal.findOne({
+        where: {
+            id : id
+        }
+    });
+    return user;
+};
+
 var createUser = async (oauth2AuthResponse) =>{
     var user = {
         name: oauth2AuthResponse.name,
@@ -81,5 +93,6 @@ module.exports = {
     getUserByAuthTokenAndCache : getUserByAuthTokenAndCache,
     findUserByEmail: findUserByEmail,
     createUser: createUser,
-    updateUser: updateUser
+    updateUser: updateUser,
+    findUserById: findUserById
 }

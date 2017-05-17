@@ -1,13 +1,15 @@
 const authToken = require('../../../backend-app/domain/entity/authenticationTokens');
 const _ = require('lodash');
 var addAuthUser = async () =>{
+    var date = new Date();
+    date.setTime(date.getTime() + 60 * 60 * 1000 * 7 * 24);
     var authUser = await authToken.create({
         userId: 1,
-        localToken: 'test- localToken',
-        expiresAt: new Date(),
-        oauth2AuthId: 'test - oauth2AuthId',
-        oauth2AuthToken: 'test oauth2AuthToken',
-        oauthProvider: 'oauthProvi',
+        localToken: 'df681250-3b0e-11e7-96c4-af64547e098c',
+        expiresAt: date,
+        oauth2AuthId: '1986472333',
+        oauth2AuthToken: '2.002MC8KC0pzhTy469560df73LieHXC',
+        oauthProvider: 'weibo',
         createdAt: new Date(),
         updatedAt: new Date()
     });
@@ -30,4 +32,4 @@ var delteAuthUser = async () =>{
     console.log(delAs);
 };
 
-delteAuthUser();
+addAuthUser();

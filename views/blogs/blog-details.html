@@ -40,6 +40,8 @@
             {{breadCrumb.breadcrumb(breadcrumbData)}}
 
             {% include "../common/_article.html"%}
+            <div class="text-center"><a href="javascript:loadTopic()" class="btn btn-default">加载评论共{{article.topicCount}}条评论...</a></div>
+            <div class="article-topic-div"></div>
         </div>
         <div class="col-lg-3 col-md-3 hidden-sm hidden-xs  ">
             {% include "../common/_right_side_self_introduce.html" %}
@@ -64,8 +66,16 @@
                 qr.addData(currentURL);
                 qr.make();
                 document.getElementById('placeHolder').innerHTML = qr.createImgTag();
+
+                $(".article-topic-div").on('click', '.pagination a', function(){
+                    $('.article-topic-div').load(this.href);
+                    return false;
+                });
             }
     );
+    function loadTopic(){
+        $('.article-topic-div').load('/site/collection/{{article.id}}/comments/1/topic.html');
+    }
 </script>
 </body>
 </html>

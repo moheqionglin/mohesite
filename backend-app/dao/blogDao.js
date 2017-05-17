@@ -30,6 +30,20 @@ var getBlockListByPage = async(currentPage) =>{
     return result;
 };
 
+var getBlogDetail = async(blogId) =>{
+    var blog = await collectionModal.findOne({
+        where:{
+            id: blogId,
+            collectionType: collectionType.BLOG
+        }
+    });
+    if(blog){
+        return blog.dataValues;
+    }
+    return null;
+
+}
 module.exports = {
-    getBlockListByPage : getBlockListByPage
+    getBlockListByPage : getBlockListByPage,
+    getBlogDetail: getBlogDetail
 };

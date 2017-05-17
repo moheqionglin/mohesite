@@ -12,4 +12,11 @@ var getBlockListByPageTest = async () =>{
     console.log(result.totalPage);
     console.log(result.currentPage)
 };
-getBlockListByPageTest();
+
+var getBlogDetailTest = async (id) => {
+    var result = await blogDao.getBlogDetail(id);
+    console.log(result);
+};
+
+// getBlockListByPageTest();
+getBlogDetailTest(1)

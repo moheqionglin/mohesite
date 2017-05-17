@@ -1,12 +1,13 @@
-{% macro commentItem(index='', authorImg='', articleTitle='', articleContent='', authorName='', articleTime='') %}
+{% macro commentItem(comment) %}
+<!--index='', authorImg='', articleTitle='', articleContent='', authorName='', articleTime=''-->
+<!--i, img, '怎么才能写好面向对象的js','文章正文文章正文文章正文文章正文文章正文文章正文文章正文文章正文' , '沧海一粟', '3小时前'-->
 <div class="media divider-bottom-dashed comment-item">
     <div class="pull-left media-middle author-img">
-        <img class="media-object" src="{{authorImg}}">
+        <img class="media-object" src="{{comment.user.image}}">
     </div>
     <div class="media-body comment-title">
-        <h1 class="media-heading">{{articleTitle}}</h1>
-        <small class="comment-meta">#{{index + 1}} {{authorName}}.{{articleTime}}</small>
-        <p>{{articleContent}}</p>
+        <small class="comment-meta">{{comment.user.name}}.{{comment.createdAt | dataParse}}</small>
+        <p>{{comment.content}}</p>
     </div>
 </div>
 {% endmacro %}

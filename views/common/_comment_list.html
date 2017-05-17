@@ -1,6 +1,12 @@
-
+{% import "./_pagination.html" as pagationTool %}
 <div class="comment-lists">
-    {% for i in range(0,5)%}
+    {% for topic in topics.rows%}
     {% include './_comment_item.html'%}
     {%endfor%}
+</div>
+<div class="row">
+    <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+        {%set url = '/site/collection/' + collectionId + '/comments/^^/topic.html'%}
+        {{ pagationTool.pagation(url, topics.totalPage, topics.currentPage)}}
+    </div>
 </div>
