@@ -26,7 +26,9 @@ var finaAllForumsByPage = async (currentPage) =>{
         totalPage: Math.ceil(forums.count / pagiationConf.PAGE_SIZE)
     };
     _.each(forums.rows, function(forum){
-        result.rows.push(forum.dataValues);
+        var forumData = forum.dataValues;
+        forumData.collectionType = collectionType.FORUM;
+        result.rows.push(forumData);
     });
     return result;
 

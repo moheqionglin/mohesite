@@ -75,4 +75,6 @@ var findAllCollection = async () =>{
 // for(var i= 1133; i<= 1142; i++){
 //     addBookOrSerilzeCollection(collectionType.SERILAZE, 'http://opkhviyav.bkt.clouddn.com/image/test/AWS_ac_ra_ecommerce_marketing_15.gif', i);
 // }
-addBlogCollection();
+// addBlogCollection();
+
+    addBookOrSerilzeCollection(collectionType.SERIALIZE, 'http://opkhviyav.bkt.clouddn.com/image/test/b1.jpg', -1);

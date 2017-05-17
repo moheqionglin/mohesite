@@ -29,7 +29,7 @@
 <body>
 {% import '../common/_breadCrumb.html' as breadCrumb%}
 {% import '../common/_header.html' as headerNav%}
-{{headerNav.headerNav('serilaze', authUser, '/site/footer/sponsor.html')}}
+{{headerNav.headerNav('', authUser, '/site/footer/sponsor.html')}}
 <div class="container sponsor-page">
     {%set breadcrumbData = [{title: '慷慨赞助'}]%}
     {{breadCrumb.breadcrumb(breadcrumbData)}}

@@ -3,7 +3,7 @@
  */
 'use strict';
 const blogDao = require('../../dao/blogDao');
-const log = require('log4js').getLogger('index controller');
+const log = require('log4js').getLogger('Blog controller');
 const _ = require('lodash');
 
 var renderHtml = function(path){

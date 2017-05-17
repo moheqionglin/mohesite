@@ -3,7 +3,7 @@
  */
 'use strict';
 const answerDao = require('../../dao/answerDao');
-const log = require('log4js').getLogger('index controller');
+const log = require('log4js').getLogger('Answer controller');
 
 var renderHtml = function(path){
     return async (ctx, next) =>{

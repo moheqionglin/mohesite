@@ -17,7 +17,7 @@ angular.module('articles').controller('editArticlesCtrl', function($scope){
         id: 'books',
         title: '跟我读书'
     },{
-        id: 'serilaze',
+        id: 'serialize',
         title: '连载教程'
     }];
 

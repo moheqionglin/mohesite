@@ -16,6 +16,7 @@
     <title>墨荷琼林官网-连载教程</title>
     <!-- Bootstrap core CSS -->
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bower_components/animate.css/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/bower_components/bootstrap-offcanvas/dist/css/bootstrap.offcanvas.min.css"/>
     <!-- Custom styles for this template -->
     <link href="/stylesheets/main.min.css" rel="stylesheet">
@@ -30,24 +31,17 @@
 {% import '../common/_header.html' as headerNav%}
 {% import "../common/_pagination.html" as pagationTool %}
 {% import '../common/_breadCrumb.html' as breadCrumb%}
-{{headerNav.headerNav('serilaze', authUser, '/site/serilaze/1/list.html')}}
-<div class="container book-page" >
-    {%set breadcrumbData = [{title: '连载教程'}]%}
+{{headerNav.headerNav('serialize', authUser, '/site/serialize/serialize-detail.html')}}
+<div class="container book-detail-page" >
+    {%set breadcrumbData = [{title: '连载教程', url:'/site/serialize/1/list.html'},{title:'后端开发'}]%}
     {{breadCrumb.breadcrumb(breadcrumbData)}}
+
     <div class="row">
-        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 book-article-grade">
-            <h1 class="text-center">跟我读书</h1>
-            {% for i in range(0,4)%}
-                {%include "../common/_grid-list-row.html"%}
-            {% endfor%}
-            <div class="row">
-                <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                    {{ pagationTool.pagation()}}
-                </div>
-            </div>
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12  ">
+            {% include "../common/_catalog.html" %}
         </div>
-        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
-            {% include "../common/_right_side_self_introduce.html" %}
+        <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+            {% include "../common/_article.html"%}
         </div>
     </div>
 </div>
@@ -57,5 +51,21 @@
 <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/bower_components/bootstrap-offcanvas/dist/js/bootstrap.offcanvas.js"></script>
 <script src="/bower_components/bootstrap/js/dropdown.js"></script>
+<script src="/bower_components/bootstrap/js/modal.js"></script>
+
+<script src="/javascripts/qrcode.js"></script>
+<script>
+    $(document).ready(
+            function(){
+                var typeNumber = 4;
+                var errorCorrectionLevel = 'L';
+                var qr = qrcode(typeNumber, errorCorrectionLevel);
+                var currentURL= window.location.href;
+                qr.addData(currentURL);
+                qr.make();
+                document.getElementById('placeHolder').innerHTML = qr.createImgTag();
+            }
+    );
+</script>
 </body>
 </html>

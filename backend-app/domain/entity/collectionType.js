@@ -6,5 +6,7 @@
 module.exports ={
     'BLOG': 'BLOG',
     'BOOK': 'BOOK',
-    'SERILAZE': 'SERILAZE'
+    'SERIALIZE': 'SERIALIZE',
+    'FORUM': 'FORUM',
+    'TOPIC': 'TOPIC'
 }

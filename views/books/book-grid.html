@@ -30,6 +30,7 @@
 {% import '../common/_header.html' as headerNav%}
 {% import "../common/_pagination.html" as pagationTool %}
 {% import '../common/_breadCrumb.html' as breadCrumb%}
+{% import "../common/_grid-list-row.html" as gridListRow%}
 {{headerNav.headerNav('books', authUser, '/site/books/1/list.html')}}
 <div class="container book-page" >
     <div class="row">
@@ -38,12 +39,10 @@
             {{breadCrumb.breadcrumb(breadcrumbData)}}
 
             <h1 class="text-center">跟我读书</h1>
-            {% for i in range(0,4)%}
-                {%include "../common/_grid-list-row.html"%}
-            {% endfor%}
+            {{gridListRow.gridListRow(books.rows)}}
             <div class="row">
                 <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                    {{ pagationTool.pagation()}}
+                    {{ pagationTool.pagation('/site/books/^^/list.html', books.totalPage, books.currentPage)}}
                 </div>
             </div>
         </div>
