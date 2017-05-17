@@ -33,7 +33,7 @@
 {% import '../common/_header.html' as headerNav%}
 {% import "../common/_pagination.html" as pagationTool %}
 {% import '../common/_breadCrumb.html' as breadCrumb%}
-{{headerNav.headerNav('books', authUser, '/site/books/1/detail.html')}}
+{{headerNav.headerNav('books', authUser, '/site/books/1/detail.html', 'true')}}
 <div class="container book-detail-page" >
     {%set breadcrumbData = [{title: '跟我读书', url:'/site/books/1/list.html'},{title:'软技能代码之外的生存技能'}]%}
     {{breadCrumb.breadcrumb(breadcrumbData)}}
