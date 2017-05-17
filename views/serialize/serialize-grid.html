@@ -34,11 +34,11 @@
 
 {{headerNav.headerNav('serialize', authUser, '/site/serialize/1/list.html')}}
 <div class="container book-page" >
-    {%set breadcrumbData = [{title: '连载教程'}]%}
-    {{breadCrumb.breadcrumb(breadcrumbData)}}
     <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 book-article-grade">
-            <h1 class="text-center">跟我读书</h1>
+            {%set breadcrumbData = [{title: '连载教程'}]%}
+            {{breadCrumb.breadcrumb(breadcrumbData)}}
+            <h1 class="text-center">连载教程</h1>
             {{gridListRow.gridListRow(serializes.rows)}}
             <div class="row">
                 <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
