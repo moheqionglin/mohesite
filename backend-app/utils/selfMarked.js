@@ -3,9 +3,13 @@
  */
 'use strict';
 const marked = require('marked');
+marked.setOptions({
+    highlight: function (code) {
+        return require('highlight.js').highlightAuto(code).value;
+    }
+});
 var render = new marked.Renderer();
 render.table = function (header, body) {
-
     return '<div class="table-responsive"><table class="table table-bordered">'  + header + body + '</table></div>';
 }
 

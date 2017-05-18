@@ -47,6 +47,16 @@ if __name__ == '__main__':
     # A comment
     print 'hello world'
 ```
+```java
+
+public class SomeClass{
+    private Integer inta;
+    public SomeClass(){
+
+    }
+}
+
+```
 
 ### 4. 高效绘制 [流程图](https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#7-流程图)
 
