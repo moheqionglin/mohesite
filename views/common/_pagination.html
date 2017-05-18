@@ -1,4 +1,6 @@
-{% macro pagation(url, totalpage, currentPage)%}
+{% macro pagation(url, totalPage, currentPage)%}
+{%set totalPage = totalPage| int%}
+{%set currentPage = currentPage| int%}
 <nav aria-label="Page navigation">
     <ul class="pagination">
         <li>
@@ -6,13 +8,12 @@
                 <span aria-hidden="true">首页</span>
             </a>
         </li>
-
-        {%if totalpage <= 5%}
-            {%set end = totalpage %}
+        {%if totalPage <= 5%}
+            {%set end = totalPage %}
         {%elif currentPage + 2 <= 5%}
             {%set end = 5 %}
-        {%elif currentPage + 2 > totalpage%}
-            {%set end = totalpage %}
+        {%elif currentPage + 2 > totalPage%}
+            {%set end = totalPage %}
         {%else%}
             {%set end = currentPage + 2 %}
         {%endif%}
@@ -22,13 +23,12 @@
         {%else%}
             {%set start = end - 4%}
         {%endif%}
-
         {%for i in range(start, end + 1)%}
             {%if currentPage == i%}<li class="active">{%else%}<li >{%endif%}
             <a href="{{url | replace('^^', i)}}">{{i}}</a></li>
         {%endfor%}
         <li>
-            <a href="{{url | replace('^^', totalpage)}}" aria-label="Next">
+            <a href="{{url | replace('^^', totalPage)}}" aria-label="Next">
                 <span aria-hidden="true">末页</span>
             </a>
         </li>

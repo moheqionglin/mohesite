@@ -5,7 +5,7 @@
 const blogDao = require('../../dao/blogDao');
 const log = require('log4js').getLogger('Blog controller');
 const _ = require('lodash');
-const marked = require('marked');
+const selfMarked = require('../../utils/selfMarked');
 const commentDao = require('../../dao/commentDao');
 
 var getBlockList = async (ctx, next) =>{
@@ -34,7 +34,7 @@ var getBlogDetail = async(ctx, next) =>{
         return ;
     }
     var blogTopicCount = await commentDao.getTopicCountByCollectionId(blogId);
-    blog.content = marked(blog.content);
+    blog.content = selfMarked.marked(blog.content, {renderer: selfMarked.render});
     blog.topicCount = blogTopicCount;
     ctx.render('blogs/blog-details.html', {
         article: blog

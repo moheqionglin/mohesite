@@ -28,11 +28,32 @@
         <li class="text-center"><a href="http://weibo.com/moheqionglin" target="_blank"><i class="icon-weibo"></i></a></li>
         <li class="text-center"><a href="#" data-toggle="modal" data-target="#qr-code-modal"> <i class="icon-qrcode" ></i></a></li>
     </ul>
-    <div class="article-comment text-center">
-        <textarea>asfd</textarea>
-        <a href="#"><i class="icon-reply-outline"></i> 评论文章</a>
-    </div>
+    {%if(authUser)%}
+        <div class="article-comment ">
+            <div class="form-group">
+                <label  >评论标题</label>
+                <input type="text" class="form-control"  placeholder="标题">
+            </div>
+            <div class="form-group">
+                <label>评论内容</label>
+                <textarea name="text"></textarea>
+            </div>
+            <div class="text-center">
+                <a href="javascript:void(0);" onclick="submitArticleComment(this)"><i class="icon-reply-outline"></i> 评论文章</a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="result-message"></span>
+                {%if article.topicCount %}
+                    <a href="javascript:loadTopic()" >加载评论(共{{article.topicCount}}条)</a>
+                {%endif%}
+            </div>
+        </div>
+    {%else%}
+        <div class="article-comment text-center">
+            <script type="text/javascript">
+                document.write('<a href="/site/authenticate/login?forward=' + window.location.pathname + '"><i class="icon-reply-outline"></i>登录发表评论</a>');
+            </script>
+        </div>
+    {%endif%}
 
+    <div class="article-topic-div"></div>
 </div>
 <div class="modal fade" id="qr-code-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">

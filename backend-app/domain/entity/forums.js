@@ -19,6 +19,10 @@ var Forums = entityManager.define('forums', {
             type: Sequelize.STRING(128),
             allowNull: false
         },
+        relateCollectionId: {
+            type: Sequelize.INTEGER,
+            allowNull: true
+        },
         createdAt: {
             type: Sequelize.DATE,
             allowNull: false

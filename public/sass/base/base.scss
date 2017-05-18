@@ -9,9 +9,6 @@
 .color-logo-green{
   color: $color-logo-green;
 }
-.color-logo-green{
-  color: $color-logo-green;
-}
 .color-white {
   color:$color-white;
 }
@@ -33,7 +30,9 @@
 .color-black{
   color: $color-black;
 };
-
+.color-danger{
+  color:$state-danger-text;
+}
 .cursor-pointer{
   cursor: pointer;
 };

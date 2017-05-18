@@ -30,7 +30,7 @@
 {% import '../common/_header.html' as headerNav%}
 {% import "../common/_pagination.html" as pagationTool %}
 {% import '../common/_breadCrumb.html' as breadCrumb%}
-{{headerNav.headerNav('blogs', authUser, '/site/blogs/blog-details.html')}}
+{{headerNav.headerNav('blogs', authUser)}}
 
 <div class="container blog-page" >
     <div class="row">
@@ -40,8 +40,7 @@
             {{breadCrumb.breadcrumb(breadcrumbData)}}
 
             {% include "../common/_article.html"%}
-            <div class="text-center"><a href="javascript:loadTopic()" class="btn btn-default">加载评论共{{article.topicCount}}条评论...</a></div>
-            <div class="article-topic-div"></div>
+
         </div>
         <div class="col-lg-3 col-md-3 hidden-sm hidden-xs  ">
             {% include "../common/_right_side_self_introduce.html" %}
@@ -58,21 +57,51 @@
 <script src="/javascripts/qrcode.js"></script>
 <script>
     $(document).ready(
-            function(){
-                var typeNumber = 4;
-                var errorCorrectionLevel = 'L';
-                var qr = qrcode(typeNumber, errorCorrectionLevel);
-                var currentURL= window.location.href;
-                qr.addData(currentURL);
-                qr.make();
-                document.getElementById('placeHolder').innerHTML = qr.createImgTag();
+        function(){
+            var typeNumber = 4;
+            var errorCorrectionLevel = 'L';
+            var qr = qrcode(typeNumber, errorCorrectionLevel);
+            var currentURL= window.location.href;
+            qr.addData(currentURL);
+            qr.make();
+            document.getElementById('placeHolder').innerHTML = qr.createImgTag();
+            //load comment
+            $(".article-topic-div").on('click', '.pagination a', function(){
+                $('.article-topic-div').load(this.href);
+                return false;
+            });
 
-                $(".article-topic-div").on('click', '.pagination a', function(){
-                    $('.article-topic-div').load(this.href);
-                    return false;
-                });
-            }
+        }
     );
+
+    function submitArticleComment(_this){
+        var node = $(_this).parents(".article-comment");
+        var commentNode = node.find("textarea");
+        var titleNode = node.find("input");
+        if(!commentNode.val() ){
+            return false;
+        }
+        var collectionId = {{article.id}};
+
+        var postData = {
+            collectionId: collectionId,
+            collectionType: 'BLOG',
+            title: titleNode.val(),
+            comment: commentNode.val()
+
+        }
+        $.post("/site/comment/submit", postData,function(result){
+            node.find('.result-message').removeClass('color-danger').text('');
+            loadTopic();
+            commentNode.val('');
+            titleNode.val('');
+        }).error(function(result) {
+            node.find('.result-message').removeClass('color-logo-green')
+                    .addClass('color-danger').text('提交失败请重试');
+        });
+
+    }
+
     function loadTopic(){
         $('.article-topic-div').load('/site/collection/{{article.id}}/comments/1/topic.html');
     }

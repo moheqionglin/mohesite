@@ -21,7 +21,9 @@
   .comment-action-grp{
     margin-bottom: 10px;
     a{
-      border: 1px solid $color-green;
+      border: 1px solid $border-gray;
+      color:$color-gray;
+      font-size: 12px;
       min-height: 25px;
       margin-right: 35px;
       display: inline-block;

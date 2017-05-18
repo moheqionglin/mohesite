@@ -16,7 +16,7 @@ var finaAllForumsByPage = async (currentPage) =>{
         currentPage = 1;
     }
     var forums = await forumModal.findAndCountAll({
-        sort: 'id asc',
+        order: 'id asc',
         limit: pagiationConf.PAGE_SIZE,
         offset: (currentPage - 1) * pagiationConf.PAGE_SIZE
     });

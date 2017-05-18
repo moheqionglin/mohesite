@@ -7,7 +7,6 @@ const pagiationConf = require('../webConf').pagiation;
 const _ = require('lodash');
 const commentModal = require('../domain/entity/topicComment');
 const userDao = require('../dao/userDao');
-
 var getTopicCountByCollectionId = async (collectionId) =>{
     var count = await topicModal.count({
         where: {
@@ -21,7 +20,7 @@ var findTop5CommentForTopic = async (topicId) =>{
         where:{
             topicId: topicId
         },
-        sort : 'id desc',
+        order : 'id desc',
         limit: pagiationConf.COMMENT_SIZE
     });
     var result = [];
@@ -40,7 +39,7 @@ var getTopicListForCollectionByPage = async (collectionId, currentPage) => {
         where:{
             collectionId: collectionId
         },
-        sort: 'id desc',
+        order: 'id desc',
         limit: pagiationConf.COMMENT_SIZE,
         offset: (currentPage - 1) * pagiationConf.COMMENT_SIZE
     });
@@ -62,7 +61,12 @@ var getTopicListForCollectionByPage = async (collectionId, currentPage) => {
 
 };
 
+var saveComment = async (comment) =>{
+    topicModal.create(comment);
+};
+
 module.exports = {
     getTopicCountByCollectionId: getTopicCountByCollectionId,
-    getTopicListForCollectionByPage: getTopicListForCollectionByPage
+    getTopicListForCollectionByPage: getTopicListForCollectionByPage,
+    saveComment: saveComment
 };

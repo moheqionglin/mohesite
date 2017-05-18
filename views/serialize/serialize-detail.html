@@ -31,7 +31,7 @@
 {% import '../common/_header.html' as headerNav%}
 {% import "../common/_pagination.html" as pagationTool %}
 {% import '../common/_breadCrumb.html' as breadCrumb%}
-{{headerNav.headerNav('serialize', authUser, '/site/serialize/serialize-detail.html', 'true')}}
+{{headerNav.headerNav('serialize', authUser, 'true')}}
 <div class="container book-detail-page" >
     {%set breadcrumbData = [{title: '连载教程', url:'/site/serialize/1/list.html'},{title:'后端开发'}]%}
     {{breadCrumb.breadcrumb(breadcrumbData)}}

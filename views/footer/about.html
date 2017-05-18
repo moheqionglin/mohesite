@@ -29,7 +29,7 @@
 <body>
 {% import '../common/_header.html' as headerNav%}
 {% import '../common/_breadCrumb.html' as breadCrumb%}
-{{headerNav.headerNav('', authUser, '/site/footer/about.html')}}
+{{headerNav.headerNav('', authUser)}}
 <div class="container about-page" >
     <div class="row">
         {%set breadcrumbData = [{title: '关于'}]%}
