@@ -47,7 +47,7 @@
     "simplemde": "^1.11.2",
     "lru-cache":"^4.0.2",
     "request":"^2.81.0",
-    "highlight.js":"https://github.com/isagalaev/highlight.js.git"
+    "highlight.js":""
   },
   "devDependencies":{
 
