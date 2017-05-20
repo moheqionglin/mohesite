@@ -13,7 +13,7 @@ const Router = require('koa-router');
 const log = log4js.getLogger('app');
 const registerController = require('./middleware/registerController');
 const preAuth = require('./middleware/preAuth');
-
+const loadDataToCache = require('./bootstrap/loadDataToCache');
 
 log4js.configure('log4js.json', { reloadSecs: 300, cwd: __dirname });
 {//中间件 [1] url Filter.需要放在静态资源和Router前面,监控所有请求。
@@ -68,6 +68,13 @@ log4js.configure('log4js.json', { reloadSecs: 300, cwd: __dirname });
         router2.redirect('/', '/site/index.html');
         server.use(router2.routes());
     }
+}
+
+{//最后加载 bootstrap开机加载项
+    (async() =>{
+        var result = await loadDataToCache.loadCatalogToCache();
+        log.debug(`Cache Catalog data success for ${result}`);
+    })();
 }
 var port = process.argv[2] || 9988;
 server.listen(port);

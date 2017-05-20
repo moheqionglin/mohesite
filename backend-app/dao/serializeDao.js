@@ -6,15 +6,15 @@ const collectionModal = require('../domain/entity/collections');
 const collectionType = require('../domain/entity/collectionType');
 const _ = require('lodash');
 const pagiationConf = require('../webConf').pagiation;
-
+const em = require('../domain/entityManager');
 
 var findSerializeMetaByPage = async (currentPage) =>{
 
     var serializes = await collectionModal.findAndCountAll({
-        attributes: ['id', 'title', 'introduction', 'image', 'readCount', 'collectionType', 'keyWord', 'createdAt' ],
+        attributes: ['id', 'title', 'introduction', 'image', 'readCount', 'catalogNum', 'collectionType', 'keyWord', 'createdAt' ],
         where:{
             collectionType: collectionType.SERIALIZE,
-            parentId: -1
+            catalogNum: em.where(em.fn('char_length', em.col('catalogNum')), 5)
         },
         limit: pagiationConf.PAGE_SIZE,
         offset: (currentPage - 1) * pagiationConf.PAGE_SIZE

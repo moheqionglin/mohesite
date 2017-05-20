@@ -65,8 +65,10 @@ var saveComment = async (comment) =>{
     topicModal.create(comment);
 };
 
+
 module.exports = {
     getTopicCountByCollectionId: getTopicCountByCollectionId,
     getTopicListForCollectionByPage: getTopicListForCollectionByPage,
     saveComment: saveComment
+
 };

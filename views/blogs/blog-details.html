@@ -17,6 +17,8 @@
     <!-- Bootstrap core CSS -->
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/bower_components/bootstrap-offcanvas/dist/css/bootstrap.offcanvas.min.css"/>
+    <link rel="stylesheet" href="/bower_components/highlight.js/src/styles/default.css">
+
     <!-- Custom styles for this template -->
     <link href="/stylesheets/main.min.css" rel="stylesheet">
 
@@ -25,9 +27,6 @@
     <script src="/javascripts/bootstrap/vender/html5shiv.min.js"></script>
     <script src="/javascripts/bootstrap/vender/respond.min.js"></script>
     <![endif]-->
-    <link rel="stylesheet" href="/bower_components/highlight.js/src/styles/default.css">
-    <!--<script src="/path/to/highlight.pack.js"></script>-->
-    <!--<script>hljs.initHighlightingOnLoad();</script>-->
 </head>
 <body >
 {% import '../common/_header.html' as headerNav%}
@@ -58,56 +57,6 @@
 <script src="/bower_components/bootstrap/js/modal.js"></script>
 
 <script src="/javascripts/qrcode.js"></script>
-<script>
-    $(document).ready(
-        function(){
-            var typeNumber = 4;
-            var errorCorrectionLevel = 'L';
-            var qr = qrcode(typeNumber, errorCorrectionLevel);
-            var currentURL= window.location.href;
-            qr.addData(currentURL);
-            qr.make();
-            document.getElementById('placeHolder').innerHTML = qr.createImgTag();
-            //load comment
-            $(".article-topic-div").on('click', '.pagination a', function(){
-                $('.article-topic-div').load(this.href);
-                return false;
-            });
-
-        }
-    );
-
-    function submitArticleComment(_this){
-        var node = $(_this).parents(".article-comment");
-        var commentNode = node.find("textarea");
-        var titleNode = node.find("input");
-        if(!commentNode.val() ){
-            return false;
-        }
-        var collectionId = {{article.id}};
-
-        var postData = {
-            collectionId: collectionId,
-            collectionType: 'BLOG',
-            title: titleNode.val(),
-            comment: commentNode.val()
-
-        }
-        $.post("/site/comment/submit", postData,function(result){
-            node.find('.result-message').removeClass('color-danger').text('');
-            loadTopic();
-            commentNode.val('');
-            titleNode.val('');
-        }).error(function(result) {
-            node.find('.result-message').removeClass('color-logo-green')
-                    .addClass('color-danger').text('提交失败请重试');
-        });
-
-    }
-
-    function loadTopic(){
-        $('.article-topic-div').load('/site/collection/{{article.id}}/comments/1/topic.html');
-    }
-</script>
+<script src="/javascripts/article.js"></script>
 </body>
 </html>

@@ -31,7 +31,7 @@
     {%if(authUser)%}
         <div class="article-comment ">
             <div class="form-group">
-                <label  >评论标题</label>
+                <label  >评论标题*</label>
                 <input type="text" class="form-control"  placeholder="标题">
             </div>
             <div class="form-group">
@@ -39,9 +39,9 @@
                 <textarea name="text"></textarea>
             </div>
             <div class="text-center">
-                <a href="javascript:void(0);" onclick="submitArticleComment(this)"><i class="icon-reply-outline"></i> 评论文章</a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="result-message"></span>
+                <a href="javascript:void(0);" onclick="submitArticleComment(this, '{{article.collectionType}}', '{{article.id}}')"><i class="icon-reply-outline"></i> 评论文章</a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="result-message"></span>
                 {%if article.topicCount %}
-                    <a href="javascript:loadTopic()" >加载评论(共{{article.topicCount}}条)</a>
+                    <a href="javascript:loadTopic('{{article.id}}')" >加载评论(共{{article.topicCount}}条)</a>
                 {%endif%}
             </div>
         </div>

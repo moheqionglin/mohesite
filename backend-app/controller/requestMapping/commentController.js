@@ -40,15 +40,15 @@ var saveComment = async(ctx, next) =>{
     }
     var forumId = null;
     if(collectionType.BLOG === collectionType){
-        forumId = forumIdConfig.BLOG_ID;
+        forumId = await forumDao.findForumIdByRelateCatalogNum(forumIdConfig.BLOG_ID);
     }else if('OTHER' === collectionType){
-        forumId = forumIdConfig.OTHER_ID;
+        forumId = await forumDao.findForumIdByRelateCatalogNum(forumIdConfig.OTHER_ID);
     }else{
-        // forumId = await forumDao.getForumIdByCollectionId(collectionId);
+        forumId = await forumDao.getForumIdByCollectionId(collectionId);
     }
 
     if(forumId == null){
-        forumId = forumIdConfig.OTHER_ID;
+        forumId = await forumDao.findForumIdByRelateCatalogNum(forumIdConfig.OTHER_ID);
     }
 
     var comment = {

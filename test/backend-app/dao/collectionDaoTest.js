@@ -12,4 +12,11 @@ var findTop10CollectionMetaDataTest = async () =>{
     });
     console.log(collecations);
 };
-findTop10CollectionMetaDataTest();
+// findTop10CollectionMetaDataTest();
+
+var findBooksOrSerializeIdsTest = async() =>{
+    var ids = await collectionDao.findBooksOrSerializeIds();
+    console.log(ids);
+};
+
+findBooksOrSerializeIdsTest();

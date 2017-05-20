@@ -34,6 +34,7 @@ function templating(path, opts) {
     // 创建Nunjucks的env对象:
     var env = createEnv(path, opts);
     addDataParseFilter(env);
+    addParentCatalogNum(env);
     return async (ctx, next) => {
         // 给ctx绑定render函数:
         ctx.render = function (view, model) {
@@ -50,6 +51,14 @@ function templating(path, opts) {
         // 继续处理请求:
         await next();
     };
+}
+function addParentCatalogNum(env){
+    env.addFilter('parentCatalogNum', function(dataStr) {
+        if(!dataStr || dataStr.length <= 3){
+            return '';
+        }
+        return dataStr.slice(0, dataStr.length - 3);
+    });
 }
 function addDataParseFilter(env){
     env.addFilter('dataParse', function(dateStr) {

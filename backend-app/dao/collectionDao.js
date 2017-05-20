@@ -6,6 +6,8 @@ const collectionModal = require('../domain/entity/collections');
 const collectionType = require('../domain/entity/collectionType');
 const _ = require('lodash');
 const log = require('log4js').getLogger('index controller');
+const em = require('../domain/entityManager');
+const CatalogItem = require('../messages/CatalogItem');
 
 var findTop10CollectionMetaData = async function(){
     var collections = await collectionModal.findAll({
@@ -21,5 +23,5 @@ var findTop10CollectionMetaData = async function(){
 };
 
 module.exports={
-    findTop10CollectionMetaData: findTop10CollectionMetaData
+    findTop10CollectionMetaData: findTop10CollectionMetaData,
 };

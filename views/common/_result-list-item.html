@@ -1,9 +1,7 @@
 {% macro resultListDisplay(collection)%}
 {% set urlMapping = {'FORUM': '/site/answer/^^/topic-list.html',
                     'TOPIC': '/answer/^^/detail.html',
-                    'BLOG': '/site/blogs/^^/detail.html',
-                    'BOOK': '/site/books/^^/detail.html',
-                    'SERIALIZE': '/site/serialize/^^/detail.html'}%}
+                    'BLOG': '/site/blogs/^^/detail.html'}%}
 
 <div class="row result-list-item">
     {%if collection.image %}

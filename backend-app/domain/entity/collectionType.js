@@ -8,5 +8,9 @@ module.exports ={
     'BOOK': 'BOOK',
     'SERIALIZE': 'SERIALIZE',
     'FORUM': 'FORUM',
-    'TOPIC': 'TOPIC'
+    'TOPIC': 'TOPIC',
+    catalogID:{
+        'BOOK': '01',
+        'SERIALIZE': '02',
+    }
 }

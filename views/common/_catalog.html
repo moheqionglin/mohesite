@@ -1,183 +1,29 @@
 <div class="divider-right catalog-side-page navbar-offcanvas navbar-offcanvas-left"  id="catalog-offcanvas">
-    <div class="catalog-books">
-        <p class="text-left"><strong>所有书籍</strong></p>
-
-        <ul>
-            <li><a href="/site/getting-started.html">算技能代码之外的生存法则</a></li>
-            <li><a href="/site/templating.html">高性能网站建设指南</a></li>
-            <li><a href="/site/api.html">java微服务</a></li>
-            <li><a href="/site/faq.html">javascript微服务</a></li>
-        </ul>
-    </div>
-
     <div class="catalog-detail ">
-        <p class="text-left"><strong>java微服务</strong></p>
+        <p class="text-center">目录</p>
+        {%if catalog.catalogNum == activeCatalogNum%}<p class="text-left catalog-active-li">{%else%}<p class="text-left">{%endif%}<a href="/site/books/{{catalog.catalogNum}}/detail.html"><strong>{{catalog.title}}</strong></a></p>
         <ul>
-            <li>
-                <a href="/site/books/1/detail.html">API</a>
-                <ul>
-                    <li class="catalog-active-li">
-                        <a href="/site/books/1/detail.html">Simple API</a>
+            {%for cnForH1, h1 in catalog.h1Lists%}
+                {%if cnForH1 == activeCatalogNum%}<li class="catalog-active-li">{%else%}<li>{%endif%}<a href="/site/books/{{cnForH1}}/detail.html">{{h1.title}}|{{h1.displayOrder}}</a>
+                    {%if catalog.h2Lists[cnForH1]%}
                         <ul>
-                            <li>
-                                <a href="/site/books/1/detail.html">render</a>
-                            </li>
-                            <li>
-                                <a href="#renderstring">renderString</a>
-                            </li>
-                            <li>
-                                <a href="#compile">compile</a>
-                            </li>
-                            <li>
-                                <a href="#configure">configure</a>
-                            </li>
-                            <li>
-                                <a href="#installjinjacompat">installJinjaCompat</a>
-                            </li>
+                            {%for h2 in catalog.h2Lists[cnForH1]%}
+                                {%if h2.catalogNum == activeCatalogNum%}<li class="catalog-active-li">{%else%}<li>{%endif%}<a href="/site/books/{{h2.catalogNum}}/detail.html">{{h2.title}}|{{h2.displayOrder}}</a>
+                                    {%if catalog.h3Lists[h2.catalogNum]%}
+                                        <ul>
+                                            {%for h3 in catalog.h3Lists[h2.catalogNum]%}
+                                                {%if h3.catalogNum == activeCatalogNum%}<li class="catalog-active-li">{%else%}<li>{%endif%}
+                                                    <a href="/site/books/{{h3.catalogNum}}/detail.html">{{h3.title}}|{{h3.displayOrder}}</a>
+                                                </li>
+                                            {%endfor%}
+                                        </ul>
+                                    {%endif%}
+                                </li>
+                            {%endfor%}
                         </ul>
-                    </li>
-                    <li>
-                        <a href="#environment">Environment</a>
-                        <ul>
-                            <li>
-                                <a href="#constructor">constructor</a>
-                            </li>
-                            <li>
-                                <a href="#render">render</a>
-                            </li>
-                            <li>
-                                <a href="#renderstring">renderString</a>
-                            </li>
-                            <li>
-                                <a href="#addfilter">addFilter</a>
-                            </li>
-                            <li>
-                                <a href="#getfilter">getFilter</a>
-                            </li>
-                            <li>
-                                <a href="#addextension">addExtension</a>
-                            </li>
-                            <li>
-                                <a href="#removeextension">removeExtension</a>
-                            </li>
-                            <li>
-                                <a href="#getextension">getExtension</a>
-                            </li>
-                            <li>
-                                <a href="#hasextension">hasExtension</a>
-                            </li>
-                            <li>
-                                <a href="#addglobal">addGlobal</a>
-                            </li>
-                            <li>
-                                <a href="#getglobal">getGlobal</a>
-                            </li>
-                            <li>
-                                <a href="#gettemplate">getTemplate</a>
-                            </li>
-                            <li>
-                                <a href="#express">express</a>
-                            </li>
-                            <li>
-                                <a href="#opts-autoescape">opts.autoescape</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#template">Template</a>
-                        <ul>
-                            <li>
-                                <a href="#constructor">constructor</a>
-                            </li>
-                            <li>
-                                <a href="#render">render</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#loader">Loader</a>
-                        <ul>
-                            <li>
-                                <a href="#filesystemloader">FileSystemLoader</a>
-                            </li>
-                            <li>
-                                <a href="#webloader">WebLoader</a>
-                            </li>
-                            <li>
-                                <a href="#writing-a-loader">Writing a Loader</a>
-                                <ul>
-                                    <li>
-                                        <a href="#asynchronous">Asynchronous</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#browser-usage">Browser Usage</a>
-                        <ul>
-                            <li>
-                                <a href="#recommended-setups">Recommended Setups</a>
-                                <ul>
-                                    <li>
-                                        <a href="#setup-1-only-precompile-in-production">Setup #1: only precompile in production</a>
-                                    </li>
-                                    <li>
-                                        <a href="#setup-2-always-precompile">Setup #2: always precompile</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#precompiling">Precompiling</a>
-                        <ul>
-                            <li>
-                                <a href="#api">API</a>
-                            </li>
-                            <li>
-                                <a href="#precompile">precompile</a>
-                            </li>
-                            <li>
-                                <a href="#precompilestring">precompileString</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#asynchronous-support">Asynchronous Support</a>
-                        <ul>
-                            <li>
-                                <a href="#be-careful">Be Careful!</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#autoescaping">Autoescaping</a>
-                    </li>
-                    <li>
-                        <a href="#customizing-syntax">Customizing Syntax</a>
-                    </li>
-                    <li>
-                        <a href="#custom-filters">Custom Filters</a>
-                        <ul>
-                            <li>
-                                <a href="#keyword-default-arguments">Keyword/Default Arguments</a>
-                            </li>
-                            <li>
-                                <a href="#asynchronous">Asynchronous</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#custom-tags">Custom Tags</a>
-                        <ul>
-                            <li>
-                                <a href="#asynchronous">Asynchronous</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
+                    {%endif%}
+                </li>
+            {%endfor%}
         </ul>
 
     </div>

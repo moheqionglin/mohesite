@@ -1,15 +1,14 @@
 /**
- * Created by zhouwanli on 09/05/2017.
+ * Created by zhouwanli on 20/05/2017.
  */
 'use strict';
 const entityManager = require('../entityManager');
 const Sequelize = require('sequelize');
 
-var Forums = entityManager.define('forums', {
-        id: {
-            type: Sequelize.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
+var Catalog = entityManager.define('catalog', {
+        catalogNum: {
+            type: Sequelize.STRING(12),
+            primaryKey: true
         },
         title: {
             type: Sequelize.STRING(32),
@@ -19,8 +18,17 @@ var Forums = entityManager.define('forums', {
             type: Sequelize.STRING(128),
             allowNull: false
         },
-        relateCatalogNum: {
-            type: Sequelize.STRING(14),
+        displayOrder: {
+            type: Sequelize.INTEGER,
+            allowNull: false
+        },
+        collectionType: {
+            type: Sequelize.STRING(16),
+            field: 'collection_type',
+            allowNull: false
+        },
+        articleId: {
+            type: Sequelize.INTEGER,
             allowNull: false
         },
         createdAt: {
@@ -33,8 +41,8 @@ var Forums = entityManager.define('forums', {
         }
     }, {
         timestamps: false,
-        tableName: 'forums'
+        tableName: 'catalog'
     }
 );
 
-module.exports = Forums;
+module.exports = Catalog;

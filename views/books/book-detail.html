@@ -20,6 +20,8 @@
     <!--<link href="/bower_components/flat-ui/dist/css/flat-ui.css" rel="stylesheet">-->
     <link href="/bower_components/animate.css/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/bower_components/bootstrap-offcanvas/dist/css/bootstrap.offcanvas.min.css"/>
+    <link rel="stylesheet" href="/bower_components/highlight.js/src/styles/default.css">
+
     <!-- Custom styles for this template -->
     <link href="/stylesheets/main.min.css" rel="stylesheet">
 
@@ -54,18 +56,6 @@
 <script src="/bower_components/bootstrap/js/modal.js"></script>
 
 <script src="/javascripts/qrcode.js"></script>
-<script>
-    $(document).ready(
-            function(){
-                var typeNumber = 4;
-                var errorCorrectionLevel = 'L';
-                var qr = qrcode(typeNumber, errorCorrectionLevel);
-                var currentURL= window.location.href;
-                qr.addData(currentURL);
-                qr.make();
-                document.getElementById('placeHolder').innerHTML = qr.createImgTag();
-            }
-    );
-</script>
+<script src="/javascripts/article.js"></script>
 </body>
 </html>

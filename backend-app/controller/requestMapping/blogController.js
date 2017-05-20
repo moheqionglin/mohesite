@@ -23,6 +23,7 @@ var getBlogDetail = async(ctx, next) =>{
     var blogId = ctx.params.id;
     if(!blogId){
         ctx.body = "404 NOT FOUND!";
+        ctx.status = 404;
         return ;
     }
     log.debug(`Get Blog Detail : ${blogId}`);

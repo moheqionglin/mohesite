@@ -12,7 +12,7 @@ var testRawQuery = async () =>{
 
 var testTypeQuery = async () =>{
     var user = await em.query('select * from users where id = :id',
-        { replacements: {id: 1}, type: em.QueryTypes.SELECT });
+        { replacements: {id: 5}, type: em.QueryTypes.SELECT });
     console.log(user);
 };
 

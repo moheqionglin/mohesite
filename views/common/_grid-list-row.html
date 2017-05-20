@@ -1,26 +1,24 @@
 {%macro gridListRow(books)%}
     {% set urlMapping = {'BOOK': '/site/books/^^/detail.html',
                     'SERIALIZE': '/site/serialize/^^/detail.html'}%}
-    {%for book in books%}
-        {%if loop.index0 % 2 == 0%}
-            <div class="row grid-list-row">
-        {%endif%}
-        {%if loop.index0 % 2 == 0%}
+    {%for bookBatch in books | batch(2)%}
+        <div class="row grid-list-row">
+            {%for book in bookBatch%}
+               {%if loop.first %}
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-10 grid-list-item">
-        {%else%}
+               {%else%}
                 <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-10 grid-list-item">
-        {%endif%}
-            <a href="{{urlMapping[book.collectionType] | replace('^^', book.id)}}">
-                <div class="book-img"><img src="{{book.image}}"></div>
-                <h2 class="book-name">{{book.title}}</h2>
-                <p>{{book.introduction}}</p>
-            </a>
-            <div class="text-center"><a href="{{urlMapping[book.collectionType] | replace('^^', book.id)}}" class="read-more"><i class="icon-plus"></i>阅读</a></div>
-            <hr class="line"><!--234篇文章.-->
-            <div class="text-center"><span>{{book.readCount}}人阅读</span></div>
+               {%endif%}
+                    <a href="{{urlMapping[book.collectionType] | replace('^^', book.catalogNum)}}">
+                        <div class="book-img"><img src="{{book.image}}"></div>
+                        <h2 class="book-name">{{book.title}}</h2>
+                        <p>{{book.introduction}}</p>
+                    </a>
+                    <div class="text-center"><a href="{{urlMapping[book.collectionType] | replace('^^', book.catalogNum)}}" class="read-more"><i class="icon-plus"></i>阅读</a></div>
+                    <hr class="line"><!--234篇文章.-->
+                    <div class="text-center"><span>{{book.readCount}}人阅读</span></div>
+                </div>
+            {%endfor%}
         </div>
-        {%if loop.index0 % 2 == 1%}
-            </div>
-        {%endif%}
     {%endfor%}
 {%endmacro%}

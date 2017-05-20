@@ -23,7 +23,7 @@ module.exports = {
         DEFAULT_USER_IMG: 'http://opkhviyav.bkt.clouddn.com/image/test/author.jpg'
     },
     forumId:{
-        OTHER_ID: -3,
-        BLOG_ID: -2
+        OTHER_ID: '-3',
+        BLOG_ID: '-2'
     }
 }

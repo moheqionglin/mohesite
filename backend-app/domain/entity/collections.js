@@ -37,11 +37,6 @@ var Collections = entityManager.define('collections', {
             field: 'collection_type',
             allowNull: false
         },
-        parentId: {
-            type: Sequelize.INTEGER,
-            field: 'parent_id',
-            allowNull: false
-        },
         keyWord: {
             type: Sequelize.STRING(256),
             field: 'key_word',
@@ -49,6 +44,10 @@ var Collections = entityManager.define('collections', {
         },
         status: {
             type: Sequelize.BOOLEAN,
+            allowNull: false
+        },
+        catalogNum: {
+            type: Sequelize.STRING(12),
             allowNull: false
         },
         createdAt: {

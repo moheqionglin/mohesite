@@ -9,4 +9,11 @@ var findBooksMetaByPageTest = async () => {
     var results = await bookDao.findBooksMetaByPage(1);
     console.log(results);
 };
-findBooksMetaByPageTest();
+
+// findBooksMetaByPageTest();
+
+var getBookDetailByCatalogNumTest = async() =>{
+    var book = await bookDao.getBookDetailByCatalogNum('01001007005002');
+    console.log(book);
+};
+getBookDetailByCatalogNumTest();
