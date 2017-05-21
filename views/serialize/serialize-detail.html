@@ -34,7 +34,7 @@
 {% import '../common/_breadCrumb.html' as breadCrumb%}
 {{headerNav.headerNav('serialize', authUser, 'true')}}
 <div class="container book-detail-page" >
-    {%set breadcrumbData = [{title: '连载教程', url:'/site/serialize/1/list.html'},{title:'后端开发'}]%}
+    {%set breadcrumbData = [{title: '连载教程', url:'/site/serialize/1/list.html'},{title: article.title}]%}
     {{breadCrumb.breadcrumb(breadcrumbData)}}
 
     <div class="row">

@@ -35,18 +35,24 @@
     <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
             {%set breadcrumbData = [{title: '墨荷问答', url:'/site/answer/1/forum.html'},
-            {title: 'JavaScript教程', url:'/site/answer/1/topic-list.html'},
-            {title: '怎么才能写好面向对象的js'}]%}
+            {title: topic.forumTitle, url:'/site/answer/' + topic.forumId + '/1/topic-list.html'},
+            {title: topic.title}]%}
             {{breadCrumb.breadcrumb(breadcrumbData)}}
-            <div class="text-right"><a href="#" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> 问题来源</a></div>
+            {%if topic.collectionId%}
+                <div class="text-right">
+                    <a href="/site/topic/source/{{topic.collectionId}}" class="btn btn-default">
+                        <span class="glyphicon glyphicon-arrow-left"></span> 问题来源
+                    </a>
+                </div>
+            {%endif%}
             {% include '../common/_comment_item.html'%}
             <div class="article-comment text-center">
-                <textarea>asfd</textarea>
+                <textarea></textarea>
                 <a href="#"><i class="icon-reply-outline"></i> 回复评论</a>
             </div>
             <div class="row">
                 <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                    {{ pagationTool.pagation()}}
+                    {{ pagationTool.pagation('/site/answer/' + topic.id + '/^^/detail.html' , topic.commentLists.totalPage, topic.commentLists.currentPage)}}
                 </div>
             </div>
         </div>

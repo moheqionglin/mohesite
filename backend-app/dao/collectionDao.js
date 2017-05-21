@@ -22,6 +22,13 @@ var findTop10CollectionMetaData = async function(){
     return result;
 };
 
+var findCollectionMetaDataByCollectionId = async(collectionId) =>{
+    var collectionQuery =  await em.query('select id, collection_type as collectionType, catalogNum from collections where id = ?',{ replacements: [collectionId], type: em.QueryTypes.SELECT });
+    var collectionMeta = collectionQuery[0];
+    return collectionMeta;
+};
+
 module.exports={
     findTop10CollectionMetaData: findTop10CollectionMetaData,
+    findCollectionMetaDataByCollectionId: findCollectionMetaDataByCollectionId
 };

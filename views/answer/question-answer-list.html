@@ -36,17 +36,15 @@
     <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
             {%set breadcrumbData = [{title: '墨荷问答', url:'/site/answer/1/forum.html'},
-            {title: 'JavaScript教程'}]%}
+            {title: topics.forumTitle}]%}
             {{breadCrumb.breadcrumb(breadcrumbData)}}
             <div class="text-right"><a href="/site/answer/1/new" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>创建话题</a></div>
-
-            {% for i in range(0, 10)%}
-            {% set img = 'http://opkhviyav.bkt.clouddn.com/image/test/author.jpg' %}
-            {{authorArticleList.acrotArticleList(img, '怎么才能写好面向对象的js','/site/answer/1/detail.html' , '沧海一粟', '3小时前')}}
+            {% for topic in topics.rows%}
+                {{authorArticleList.acrotArticleList(topic)}}
             {% endfor %}
             <div class="row">
                 <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                    {{ pagationTool.pagation()}}
+                    {{ pagationTool.pagation('/site/answer/' + forumId + '/^^/topic-list.html', topics.totalPage, topics.currentPage)}}
                 </div>
             </div>
         </div>

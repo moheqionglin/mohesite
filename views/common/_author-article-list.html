@@ -1,12 +1,13 @@
-{% macro acrotArticleList(imgUrl='', articleTitle='', articleLink='', actor='', writeTime='')%}
+{% macro acrotArticleList(topic)%}
+
 <div class="media divider-bottom-dashed author-articlt-list">
     <div class="pull-left author-img">
-        <img class="media-object" src="{{imgUrl}}">
+        <img class="media-object" src="{{topic.image}}">
     </div>
     <div class="media-body author-article-title">
-        <h1 class="media-heading"><a href="{{articleLink}}">{{articleTitle}}</a> </h1>
-        <small><strong>{{actor}}&nbsp;.&nbsp;</strong></small>
-        <small>{{writeTime}}</small>
+        <h1 class="media-heading"><a href="/site/answer/{{topic.topicId}}/1/detail.html">{{topic.title}}</a> </h1>
+        <small><strong>{{topic.name}}&nbsp;.&nbsp;</strong></small>
+        <small>{{topic.createdAt | dataParse}}</small>
     </div>
 </div>
 {% endmacro %}

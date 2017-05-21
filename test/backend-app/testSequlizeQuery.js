@@ -17,4 +17,15 @@ var testTypeQuery = async () =>{
 };
 
 
-testTypeQuery();
+// testTypeQuery();
+(async () =>{
+    var count = await em.query('SELECT  count(1) as count from topic where forumId = ?',{ replacements: [2], type: em.QueryTypes.SELECT });
+    console.log(count[0].count)
+})();
+(async () =>{
+    var currentPage = 1;
+    var PAGE_SIZE = 4;
+var topicsQuery = await em.query(' select t.id as topicId  ,t.title, t.createdAt, u.image, u.id userId, u.name from topic t left join users u  on t.user_id = u.id where t.forumId = ? order by topicId  desc limit ?, ?',
+    { replacements: [2, (currentPage - 1) * PAGE_SIZE, (currentPage - 1) * PAGE_SIZE + PAGE_SIZE], type: em.QueryTypes.SELECT });
+console.log(topicsQuery)
+})();

@@ -1,19 +1,20 @@
 <div class="divider-right catalog-side-page navbar-offcanvas navbar-offcanvas-left"  id="catalog-offcanvas">
+    {%set urls ={BOOK: '/site/books/^^/detail.html', SERIALIZE: '/site/serialize/^^/detail.html'}%}
     <div class="catalog-detail ">
         <p class="text-center">目录</p>
         {%if catalog.catalogNum == activeCatalogNum%}<p class="text-left catalog-active-li">{%else%}<p class="text-left">{%endif%}<a href="/site/books/{{catalog.catalogNum}}/detail.html"><strong>{{catalog.title}}</strong></a></p>
         <ul>
             {%for cnForH1, h1 in catalog.h1Lists%}
-                {%if cnForH1 == activeCatalogNum%}<li class="catalog-active-li">{%else%}<li>{%endif%}<a href="/site/books/{{cnForH1}}/detail.html" display-order="{{h1.displayOrder}}">{{h1.title}}</a>
+                {%if cnForH1 == activeCatalogNum%}<li class="catalog-active-li">{%else%}<li>{%endif%}<a href="{{urls[article.collectionType] | replace('^^', cnForH1)}}" display-order="{{h1.displayOrder}}">{{h1.title}}</a>
                     {%if catalog.h2Lists[cnForH1]%}
                         <ul>
                             {%for h2 in catalog.h2Lists[cnForH1]%}
-                                {%if h2.catalogNum == activeCatalogNum%}<li class="catalog-active-li">{%else%}<li>{%endif%}<a href="/site/books/{{h2.catalogNum}}/detail.html" display-order="{{h2.displayOrder}}">{{h2.title}}</a>
+                                {%if h2.catalogNum == activeCatalogNum%}<li class="catalog-active-li">{%else%}<li>{%endif%}<a href="{{urls[article.collectionType] | replace('^^', h2.catalogNum)}}" display-order="{{h2.displayOrder}}">{{h2.title}}</a>
                                     {%if catalog.h3Lists[h2.catalogNum]%}
                                         <ul>
                                             {%for h3 in catalog.h3Lists[h2.catalogNum]%}
                                                 {%if h3.catalogNum == activeCatalogNum%}<li class="catalog-active-li">{%else%}<li>{%endif%}
-                                                    <a href="/site/books/{{h3.catalogNum}}/detail.html" display-order="{{h3.displayOrder}}">{{h3.title}}</a>
+                                                    <a href="{{urls[article.collectionType] | replace('^^', h3.catalogNum)}}" display-order="{{h3.displayOrder}}">{{h3.title}}</a>
                                                 </li>
                                             {%endfor%}
                                         </ul>

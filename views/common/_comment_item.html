@@ -7,7 +7,7 @@
         <h1 class="media-heading"><a href="#">{{topic.title}}</a> </h1>
         <small class="comment-meta"> {{topic.user.name}}.{{topic.createdAt |dataParse }}</small>
         <p>{{topic.content}}</p>
-        {% for comment in topic.commentLists%}
+        {% for comment in topic.commentLists.rows%}
             {{commentItem.commentItem(comment)}}
         {% endfor %}
     </div>
