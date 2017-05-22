@@ -47,8 +47,11 @@
             {%endif%}
             {% include '../common/_comment_item.html'%}
             <div class="article-comment text-center">
-                <textarea></textarea>
-                <a href="#"><i class="icon-reply-outline"></i> 回复评论</a>
+                <form action="/site/create/topic/{{topic.id}}/comment" method="post" onsubmit="return submitTopicComment(this)">
+                    <label class="label-title">评论内容*(最长1000个字符)</label>
+                    <textarea name="content"></textarea>
+                    <button class="btn btn-default" type="submit"><i class="icon-reply-outline"></i> 回复评论</button>
+                </form>
             </div>
             <div class="row">
                 <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
@@ -66,5 +69,14 @@
 <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/bower_components/bootstrap-offcanvas/dist/js/bootstrap.offcanvas.js"></script>
 <script src="/bower_components/bootstrap/js/dropdown.js"></script>
+<script>
+    function submitTopicComment(_this){
+
+        var contentNode = $(_this).find('textarea');
+        if(!contentNode.val() || contentNode.val().length > 1024){
+            return false;
+        }
+    }
+</script>
 </body>
 </html>

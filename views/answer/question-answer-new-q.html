@@ -37,19 +37,22 @@
             {title: 'JavaScript教程', url:'/site/answer/question-answer-list.html'},
             {title: '创建新话题'}]%}
             {{breadCrumb.breadcrumb(breadcrumbData)}}
+            <form action="/site/comment/submit" method="post" onSubmit="return submitTopic(this)">
+                <div class="create-comment">
 
-            <div class="create-comment">
-                <div class="form-group">
-                    <label class="label-title">文章标题(32字)</label>
-                    <input type="text" class="form-control"  ng-model="article.title" size="32"  placeholder="输入文章标题,最长只支持32个字符">
+                        <div class="form-group">
+                            <label class="label-title">文章标题*(32字)</label>
+                            <input type="text" class="form-control" name="title" size="32"  placeholder="输入文章标题,最长只支持32个字符">
+                        </div>
+                        <div class="form-group">
+                            <label class="label-title">文章概要*(1000字)</label>
+                            <textarea type="text" rows="15" cols="62" name="comment" class="form-control" placeholder="输入文章概要,最长只支持1024个字符"></textarea>
+                        </div>
+                        <input type="text" hidden name="requestFromAnswer" value="true">
+                        <input type="text" hidden name="forumId" value="{{forumId}}">
                 </div>
-                <div class="form-group">
-                    <label class="label-title">文章概要(1024字)</label>
-                    <textarea type="text" rows="15" cols="62" class="form-control" placeholder="输入文章概要,最长只支持1024个字符"></textarea>
-                </div>
-            </div>
-            <div class="text-right"><a href="/site/answer/1/new" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>提交话题</a></div>
-
+                <div class="text-right"><button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>提交话题</button></div>
+            </form>
         </div>
         <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
             {% include "../common/_right_side_self_introduce.html" %}
@@ -61,5 +64,16 @@
 <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/bower_components/bootstrap-offcanvas/dist/js/bootstrap.offcanvas.js"></script>
 <script src="/bower_components/bootstrap/js/dropdown.js"></script>
+<script>
+    function submitTopic(_this){
+
+        var titleNode = $(_this).find('input');
+        var contentNode = $(_this).find('textarea');
+        if(!contentNode.val() || !titleNode.val() ||
+                titleNode.val().length > 32 || contentNode.val().length > 1024){
+            return false;
+        }
+    }
+</script>
 </body>
 </html>

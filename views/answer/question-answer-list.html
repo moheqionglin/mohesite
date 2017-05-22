@@ -38,7 +38,7 @@
             {%set breadcrumbData = [{title: '墨荷问答', url:'/site/answer/1/forum.html'},
             {title: topics.forumTitle}]%}
             {{breadCrumb.breadcrumb(breadcrumbData)}}
-            <div class="text-right"><a href="/site/answer/1/new" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>创建话题</a></div>
+            <div class="text-right"><a href="/site/answer/{{forumId}}/new" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>创建话题</a></div>
             {% for topic in topics.rows%}
                 {{authorArticleList.acrotArticleList(topic)}}
             {% endfor %}

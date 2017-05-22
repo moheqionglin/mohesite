@@ -7,6 +7,7 @@ const log = require('log4js').getLogger('Answer controller');
 const commentDao = require('../../dao/commentDao');
 const collectionDao = require('../../dao/collectionDao');
 const collectionType = require('../../domain/entity/collectionType');
+const forumDao = require('../../dao/forumDao');
 
 var renderHtml = function(path){
     return async (ctx, next) =>{
@@ -90,10 +91,23 @@ var redirectToSource = async (ctx, next) =>{
     }
     ctx.response.redirect(url);
 };
+var createNewTopic = async (ctx, next) =>{
+    var forumId = ctx.params.forumId;
+    var verifyTopicId = await forumDao.verifyForumId(forumId);
+    if(!verifyTopicId){
+        ctx.body = "404 NOT FOUND!";
+        ctx.status = 404;
+        return ;
+    }
+    ctx.render('answer/question-answer-new-q.html', {
+        forumId: forumId
+    });
+    next();
+};
 module.exports = {
     'GET /answer/:page/forum.html': findForumByPage,
     'GET /answer/:topicId/:page/detail.html': getAnswerDetailByTopicId,
     'GET /answer/:forumId/:page/topic-list.html': getTopicListByForumId,
-    'GET /answer/:page/new': renderHtml('answer/question-answer-new-q.html'),
+    'GET /answer/:forumId/new': createNewTopic,
     'GET /topic/source/:collectionId': redirectToSource
 };

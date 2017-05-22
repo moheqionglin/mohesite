@@ -28,7 +28,13 @@ var findForumIdByRelateCatalogNum = async(relateCatalogNum) =>{
     }
     return null;
 };
+var verifyForumId = async (forumId) =>{
+    var forumCount = await em.query("select count(1) as count from forums where id = ?", { replacements: [forumId], type: em.QueryTypes.SELECT });
+    return forumCount[0].count > 0;
+};
+
 module.exports = {
     getForumIdByCollectionId: getForumIdByCollectionId,
-    findForumIdByRelateCatalogNum: findForumIdByRelateCatalogNum
+    findForumIdByRelateCatalogNum: findForumIdByRelateCatalogNum,
+    verifyForumId: verifyForumId
 };

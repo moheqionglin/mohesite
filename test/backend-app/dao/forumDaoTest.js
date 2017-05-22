@@ -15,4 +15,11 @@ var findForumIdByRelateCatalogNumTest = async(id) =>{
 }
 
 // getForumIdByCollectionIdTest(9770);
-findForumIdByRelateCatalogNumTest('-2');
+// findForumIdByRelateCatalogNumTest('-2');
+
+var verifyForumIdTest = async(forumId) => {
+    var verify = await forumDao.verifyForumId(forumId);
+    console.log(verify);
+};
+
+verifyForumIdTest(1);

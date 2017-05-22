@@ -24,7 +24,7 @@ function submitArticleComment(_this, collectionType, collectionId){
     var node = $(_this).parents(".article-comment");
     var commentNode = node.find("textarea");
     var titleNode = node.find("input");
-    if(!commentNode.val() ){
+    if(!commentNode.val() || !titleNode.val() || titleNode.val().length > 32 || commentNode.val() .length > 1024){
         return false;
     }
 
@@ -49,4 +49,20 @@ function submitArticleComment(_this, collectionType, collectionId){
 
 function loadTopic(articleId){
     $('.article-topic-div').load('/site/collection/' + articleId + '/comments/1/topic.html');
+}
+
+function submitTopicComment(_this, topicId){
+    var textAreaNode = $(_this).siblings('textarea');
+    if(!textAreaNode.val()){
+        return false;
+    }
+    $.post("/site/comment/submit", postData,function(result){
+        node.find('.result-message').removeClass('color-danger').text('');
+        loadTopic(collectionId);
+        commentNode.val('');
+        titleNode.val('');
+    }).error(function(result) {
+        node.find('.result-message').removeClass('color-logo-green')
+            .addClass('color-danger').text('提交失败请重试');
+    });
 }

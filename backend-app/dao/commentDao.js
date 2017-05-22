@@ -5,10 +5,9 @@
 const topicModal = require('../domain/entity/topic');
 const pagiationConf = require('../webConf').pagiation;
 const _ = require('lodash');
-const commentModal = require('../domain/entity/topicComment');
+const topicCommentModal = require('../domain/entity/topicComment');
 const userDao = require('../dao/userDao');
 const em = require('../domain/entityManager');
-
 var getTopicCountByCollectionId = async (collectionId) =>{
     var count = await topicModal.count({
         where: {
@@ -73,7 +72,7 @@ var getTopicListForCollectionByPage = async (collectionId, currentPage) => {
 };
 
 var saveComment = async (comment) =>{
-    topicModal.create(comment);
+    await topicModal.create(comment);
 };
 
 var getForumTitleByForumId = async (forumId) =>{
@@ -98,10 +97,13 @@ var getTopicDetailByTopicId = async (topicId, currentPage) =>{
     return topic;
 };
 
+var createTopicComment = async(topicComment) =>{
+    await topicCommentModal.create(topicComment);
+};
 module.exports = {
     getTopicCountByCollectionId: getTopicCountByCollectionId,
     getTopicListForCollectionByPage: getTopicListForCollectionByPage,
     saveComment: saveComment,
-    getTopicDetailByTopicId: getTopicDetailByTopicId
-
+    getTopicDetailByTopicId: getTopicDetailByTopicId,
+    createTopicComment: createTopicComment
 };
