@@ -25,12 +25,6 @@
       "src": "fontawesome"
     },
     {
-      "uid": "8b80d36d4ef43889db10bc1f0dc9a862",
-      "css": "user",
-      "code": 59398,
-      "src": "fontawesome"
-    },
-    {
       "uid": "a3f89e106175a5c5c4e9738870b12e55",
       "css": "tags",
       "code": 59392,
@@ -67,48 +61,6 @@
       "src": "fontawesome"
     },
     {
-      "uid": "72686f3e46dda4b891938886eca27c59",
-      "css": "doc-remove",
-      "code": 59396,
-      "src": "typicons"
-    },
-    {
-      "uid": "bd517dbd6ccbc464f6d80efca97abb7d",
-      "css": "doc-add",
-      "code": 59401,
-      "src": "typicons"
-    },
-    {
-      "uid": "9e0404ba55575a540164db9a5ad511df",
-      "css": "doc-new",
-      "code": 59402,
-      "src": "elusive"
-    },
-    {
-      "uid": "94089b37297572e936b0943bcfa041d3",
-      "css": "angle-circled-right",
-      "code": 61752,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "c35e0796f6f806945a44b1655ce7bbe7",
-      "css": "angle-circled-down",
-      "code": 61754,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "310ffd629da85142bc8669f010556f2d",
-      "css": "file-word",
-      "code": 61890,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "c8585e1e5b0467f28b70bce765d5840c",
-      "css": "docs",
-      "code": 61637,
-      "src": "fontawesome"
-    },
-    {
       "uid": "fd45bb961d08f9f2092f0df3fba29fe9",
       "css": "qrcode",
       "code": 59400,
@@ -125,6 +77,30 @@
       "css": "list-bullet",
       "code": 61642,
       "src": "fontawesome"
+    },
+    {
+      "uid": "657ff9fe5df74f1993937aa4b19cf909",
+      "css": "qq",
+      "code": 61910,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "8e04c98c8f5ca0a035776e3001ad2638",
+      "css": "facebook",
+      "code": 61594,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "5e0a374728ffa8d0ae1f331a8f648231",
+      "css": "github",
+      "code": 61715,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "b945f4ac2439565661e8e4878e35d379",
+      "css": "gplus",
+      "code": 62223,
+      "src": "entypo"
     }
   ]
 }

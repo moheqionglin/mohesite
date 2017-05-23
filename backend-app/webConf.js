@@ -17,7 +17,9 @@ module.exports = {
     },
     oauth2Provider: {
         WEI_BO: 'weibo',
-        WEI_XIN: 'weixin'
+        QQ: 'qq',
+        GITHUB: 'github',
+        FACEBOOK: 'facebook'
     },
     img:{
         DEFAULT_USER_IMG: 'http://opkhviyav.bkt.clouddn.com/image/test/author.jpg'

@@ -2,8 +2,7 @@
  * Created by zhouwanli on 13/05/2017.
  */
 'use strict';
-const log = require('log4js').getLogger('Oauth2 Authenticate ');
-const request = require('request');
+const log = require('log4js').getLogger('Oauth2 Authenticate controller');
 const Oauth2AuthResponse = require('../../messages/oauth2AuthResponse');
 const UUID = require('uuid');
 const webConf = require('../../webConf');
@@ -12,38 +11,11 @@ const userDao = require('../../dao/userDao');
 const cache = require('../../domain/cache/lruCache')();
 const authenticateTokenDao = require('../../dao/authenticateTokenDao');
 const AuthUser = require('../../messages/user');
+const weiboAuthService = require('../../services/weiboAuthService');
+const qqAuthService = require('../../services/qqAuthService');
+const githubAuthService = require('../../services/githubAuthService');
+const facebookAuthService = require('../../services/facebookAuthService');
 
-var sendRequest = function(opts){
-    return new Promise(function(resolve, reject){
-        request(opts, function (err, res, body) {
-            if (err) {
-                reject(err);
-            }
-            if (res.statusCode !== 200) {
-                reject(new Error(`Bad response code: ${res.statusCode}`));
-            }
-            try {
-                resolve(JSON.parse(body));
-            } catch (e) {
-                reject(e)
-            }
-        });
-    });
-};
-var generateTokenRequest = function(clientId, clientSecret, redirectUri, code){
-    return {
-        method: 'POST',
-            uri: 'https://api.weibo.com/oauth2/access_token',
-        qs:{
-            client_id: clientId,
-            client_secret: clientSecret,
-            grant_type: 'authorization_code',
-            redirect_uri: redirectUri,
-            code: code,
-        },
-        timeout: 5000
-    };
-};
 var deleteAuthCookie = function(cookies, cookieName){
     cookies.set(cookieName, 'deleted', {
         path: '/',
@@ -51,19 +23,7 @@ var deleteAuthCookie = function(cookies, cookieName){
         expires: new Date(0)
     });
 };
-var gengrateUserApiRequest = function(accessToken, uid){
-    return {
-        method: 'GET',
-        uri: 'https://api.weibo.com/2/users/show.json',
-        headers: {
-            Authorization: 'OAuth2 ' + accessToken
-        },
-        qs:{
-            uid: uid
-        },
-        timeout: 5000
-    };
-};
+
 var getNeedUpdateUserField = (user, oauth2AuthResponse) =>{
     var needUpdate = {};
     var hadUpdatedField = false;
@@ -90,30 +50,36 @@ var getNeedUpdateUserField = (user, oauth2AuthResponse) =>{
     return null;
 };
 var oauth2AuthenticateFromWeibo = async (ctx, next) =>  {
-    var authProvider = ctx.params.authProvider;
+    var authProvider = ctx.params.provider;
     var code = ctx.query.code;
     var fromUrl = ctx.cookies.get(webConf.cookie.LOGIN_FROM_URL);
+    if(!authProvider){
+        ctx.response.redirect(fromUrl || '/');
+        return;
+    }
+    log.info(`Try to Authenticate from ${authProvider}, code: ${code}, fromUrl: ${fromUrl}`);
 
-    var authParams = generateTokenRequest(process.env.weibo_clientId, process.env.weibo_clientSecret, process.env.weibo_redirectUri, code);
     try{
+        var oauth2AuthResponse;
+        switch (authProvider){
+            case webConf.oauth2Provider.WEI_BO:
+                oauth2AuthResponse = await weiboAuthService.oauth2Authenticate();
+                break;
+            case webConf.oauth2Provider.QQ:
+                oauth2AuthResponse = await qqAuthService.oauth2Authenticate();
+                break;
+            case webConf.oauth2Provider.GITHUB:
+                oauth2AuthResponse = await githubAuthService.oauth2Authenticate();
+                break;
+            case webConf.oauth2Provider.FACEBOOK:
+                oauth2AuthResponse = await facebookAuthService.oauth2Authenticate();
+                break;
+        }
 
-        var authResult = await sendRequest(authParams);
-        log.info(authResult);
-
-        var userApiParams = gengrateUserApiRequest(authResult.access_token, authResult.uid);
-        var userApiResult = await sendRequest(userApiParams);
-        log.info(userApiResult);
-
-        var expiresAtLong = Date.now() + 1000 * Math.min(604800, authResult.expires_in);
-        var expiresAt = new Date();
-        expiresAt.setTime(expiresAtLong);
-
-        //localToken, oauth2AuthId, oauth2AuthToken,expiresAt, oauthProvider, email, name, image, role
-        var oauth2AuthResponse = new Oauth2AuthResponse(UUID.v1(), authResult.uid, authResult.access_token,
-            expiresAt, webConf.oauth2Provider.WEI_BO, authResult.uid + '@' + webConf.oauth2Provider.WEI_BO,
-            userApiResult.name, userApiResult.profile_image_url, roles.GUEST_ROLE
-        );
-
+       if(!oauth2AuthResponse){
+            ctx.response.redirect(fromUrl || '/');
+            return;
+       }
        var user = await userDao.findUserByEmail(oauth2AuthResponse.email);
        if(user == null){//如果第一次登录,那么要创建user, 否则更新user
            log.debug(`User: ${oauth2AuthResponse.email} First Login, Create it.`);
@@ -128,7 +94,6 @@ var oauth2AuthenticateFromWeibo = async (ctx, next) =>  {
         //保存最新的token
         var authUser = await authenticateTokenDao.createAuthUser(oauth2AuthResponse, user.id);
 
-        // id, name, email, localToken, role, image, expiresAt, oauth2AuthId, oauth2AuthToken, oauthProvider
         var cacheUser = new AuthUser(user.id, user.name, user.email, authUser.localToken,
             user.role, user.image, authUser.expiresAt, authUser.oauth2AuthId, authUser.oauth2AuthToken,
             authUser.oauthProvider);
@@ -149,13 +114,11 @@ var oauth2AuthenticateFromWeibo = async (ctx, next) =>  {
         ctx.response.redirect(fromUrl || '/authenticate/login.html');
         next();
     }
-    log.info(`Try to Authenticate from ${authProvider}, code: ${code}, fromUrl: ${fromUrl}`);
 
 };
 
 var logout = async (ctx, next)=>{
     if(!ctx.request.authUser){
-        await next();
         return ;
     }
     var authUser = ctx.request.authUser;
@@ -167,12 +130,12 @@ var logout = async (ctx, next)=>{
     ctx.response.redirect(forwardUrl || '/');
     next();
 };
+
 var login = async (ctx, next) =>{
    var forwardPage = ctx.query.forward || '/';
    log.debug(`Login From Page :  ${forwardPage}`);
    if(ctx.request.authUser){//如果已经登录,那么不允许在访问这个url
        ctx.response.redirect(forwardPage || '/');
-       next();
        return;
    }
    var expiredDate = new Date();
@@ -183,8 +146,14 @@ var login = async (ctx, next) =>{
         expires: expiredDate
    });
    ctx.render('authenticate/login.html', {
-       clientId: process.env.weibo_clientId,
-       redirectUri: process.env.weibo_redirectUri
+       weiboClientId: process.env.weibo_clientId,
+       weiboRedirectUri: process.env.weibo_redirectUri,
+       githubClientId: process.env.github_clientId,
+       githubRedirectUri: process.env.github_redirectUri,
+       qqClientId: process.env.qq_clientId,
+       qqRedirectUri: process.env.qq_redirectUri,
+       facebookClientId: process.env.facebook_clientId,
+       facebookRedirectUri: process.env.facebook_redirectUri
    });
    next();
 };
@@ -198,7 +167,7 @@ var profile = async (ctx, next) =>{
     next();
 };
 module.exports = {
-    'GET /authenticate/callback/weibo' : oauth2AuthenticateFromWeibo,
+    'GET /authenticate/callback/:provider' : oauth2AuthenticateFromWeibo,
     'GET /authenticate/logout': logout,
     'GET /authenticate/login': login,
     'GET /authenticate/profile': profile
