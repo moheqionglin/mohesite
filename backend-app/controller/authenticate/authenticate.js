@@ -3,10 +3,7 @@
  */
 'use strict';
 const log = require('log4js').getLogger('Oauth2 Authenticate controller');
-const Oauth2AuthResponse = require('../../messages/oauth2AuthResponse');
-const UUID = require('uuid');
 const webConf = require('../../webConf');
-const roles = require('../../domain/entity/role').roles;
 const userDao = require('../../dao/userDao');
 const cache = require('../../domain/cache/lruCache')();
 const authenticateTokenDao = require('../../dao/authenticateTokenDao');

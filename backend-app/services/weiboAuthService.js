@@ -6,7 +6,8 @@ const request = require('request');
 const log = require('log4js').getLogger('weibo Oauth2 Authenticate ');
 const webConf = require('../webConf');
 const Oauth2AuthResponse = require('../messages/oauth2AuthResponse');
-
+const UUID = require('uuid');
+const roles = require('../domain/entity/role').roles;
 
 var sendRequest = function(opts){
     return new Promise(function(resolve, reject){
