@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var oauth2Authenticate = async() =>{
+var oauth2Authenticate = async(code) =>{
 
 };
 

@@ -63,16 +63,16 @@ var oauth2AuthenticateFromWeibo = async (ctx, next) =>  {
         var oauth2AuthResponse;
         switch (authProvider){
             case webConf.oauth2Provider.WEI_BO:
-                oauth2AuthResponse = await weiboAuthService.oauth2Authenticate();
+                oauth2AuthResponse = await weiboAuthService.oauth2Authenticate(code);
                 break;
             case webConf.oauth2Provider.QQ:
-                oauth2AuthResponse = await qqAuthService.oauth2Authenticate();
+                oauth2AuthResponse = await qqAuthService.oauth2Authenticate(code);
                 break;
             case webConf.oauth2Provider.GITHUB:
-                oauth2AuthResponse = await githubAuthService.oauth2Authenticate();
+                oauth2AuthResponse = await githubAuthService.oauth2Authenticate(code);
                 break;
             case webConf.oauth2Provider.FACEBOOK:
-                oauth2AuthResponse = await facebookAuthService.oauth2Authenticate();
+                oauth2AuthResponse = await facebookAuthService.oauth2Authenticate(code);
                 break;
         }
 

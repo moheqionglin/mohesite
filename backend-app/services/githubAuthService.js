@@ -56,7 +56,7 @@ var generateUserApiRequest = function(accessToken){
 };
 
 
-var oauth2Authenticate = async (ctx, next) =>  {
+var oauth2Authenticate = async (code) =>  {
 
     var authParams = generateTokenRequest(process.env.github_clientId, process.env.github_clientSecret, process.env.github_redirectUri, code);
     try{

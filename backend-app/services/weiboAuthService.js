@@ -56,7 +56,7 @@ var generateUserApiRequest = function(accessToken, uid){
     };
 };
 
-var oauth2AuthenticateFromWeibo = async (ctx, next) =>  {
+var oauth2AuthenticateFromWeibo = async (code) =>  {
 
     var authParams = generateTokenRequest(process.env.weibo_clientId, process.env.weibo_clientSecret, process.env.weibo_redirectUri, code);
     try{
