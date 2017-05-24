@@ -37,7 +37,6 @@ var register = function(router, controllerDirs){
         });
 
     });
-    addHtmlController(router);
     return router.routes();
 }
 
@@ -47,30 +46,5 @@ function getAllControllerFile (dir){
         return f.endsWith('.js');
     });
     return js_files;
-}
-
-function addHtmlController (router){
-    //add regex to html
-    router.get('/:dir1/:page', async(ctx, next) =>{
-        if(ctx.params.page.endsWith('.html')){
-            log.info(`Process html : dir1 is : ${ctx.params.dir1}, page is : ${ctx.params.page}`);
-            ctx.render(ctx.params.dir1 + '/' + ctx.params.page);
-        }
-        await next();
-    });
-    router.get('/:dir1/:dir2/:page', async(ctx, next) =>{
-        if(ctx.params.page.endsWith('.html')){
-            log.info(`Process html : dir1 is : ${ctx.params.dir1}, dir2 is : ${ctx.params.dir2}, page is : ${ctx.params.page}`);
-            ctx.render(ctx.params.dir1 + '/' + ctx.params.dir2 + '/' + ctx.params.page);
-        }
-        await next();
-    });
-    router.get('/:dir1/:dir2/dir3/:page', async(ctx, next) =>{
-        if(ctx.params.page.endsWith('.html')){
-            log.info(`Process html : dir1 is : ${ctx.params.dir1}, dir2 is : ${ctx.params.dir2}, dir3 is : ${ctx.params.dir3}, page is : ${ctx.params.page}`);
-            ctx.render(ctx.params.dir1 + '/' + ctx.params.dir2 + '/' + ctx.params.dir3 + '/' + ctx.params.page);
-        }
-        await next();
-    });
 }
 module.exports = register;

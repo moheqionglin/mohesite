@@ -5,7 +5,7 @@ const Koa = require('koa');
 const server = new Koa();
 const bodyParser = require('koa-bodyparser');
 const staticFile = require('koa-static');
-const router = require('koa-router')();
+const Router = require('koa-router') ;
 const log = log4js.getLogger('app');
 const registerController = require('./middleware/registerController');
 
@@ -41,12 +41,14 @@ log4js.configure('log4js.json', { reloadSecs: 300, cwd: __dirname });
     server.use(bodyParser());
 }
 
-// {//中间件 [5]加载中间件requestMapping
-//    server.use(registerController(router,
-//        [__dirname + '/controller/requestMapping/',
-//         __dirname + '/controller/learnNunJucks/'
-//    ]));
-// }
+{//中间件 [5]加载中间件requestMapping
+    var router = new Router({
+        prefix: '/resources'
+    });
+   server.use(registerController(router,
+       [__dirname + '/controller/'
+   ]));
+}
 
 var port = process.argv[2] || 9999;
 server.listen(port);

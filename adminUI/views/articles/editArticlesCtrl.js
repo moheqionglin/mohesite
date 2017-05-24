@@ -1,14 +1,5 @@
-angular.module('articles').controller('editArticlesCtrl', function($scope){
-    $scope.articles = [{
-        id : 1,
-        title : '1 如何在camel中使用ftp上传工具上传文件传文件传文件传文件'
-    },{
-        id : 2,
-        title : '2 如何在camel中使用ftp上传工具上传文件传文件传文件传文件'
-    },{
-        id : 3,
-        title : '3 如何在camel中使用ftp上传工具上传文件传文件传文件传文件'
-    }];
+angular.module('articles').controller('editArticlesCtrl', function($scope, $http){
+    $scope.articles = [];
 
     $scope.menus = [{
         id: 'blog',
@@ -73,14 +64,12 @@ angular.module('articles').controller('editArticlesCtrl', function($scope){
         title: '新增三级标题'
     }];
 
-    $scope.article = {
-        position : {
-            menu : 'blog',
-            book : 1,
-            head1: 1,
-            head2: 1,
-            head3: 1
-        }
+    var position = {
+        menu : 'blog',
+        book : 1,
+        head1: 1,
+        head2: 1,
+        head3: 1
     };
 
     $scope.selectedArticleTitle = function(blog){
@@ -93,6 +82,19 @@ angular.module('articles').controller('editArticlesCtrl', function($scope){
         if('blog' === $scope.article.position.menu){
             $scope.article.position.book = undefined;
         }
+    };
+
+    $scope.search = function(){
+        $scope.articles = [];
+        $http.get('/resources/article/search/' + $scope.keyWord).then(function(data){
+            $scope.articles.push(data.data);
+        });
+    };
+
+    $scope.editArticle = function(article){
+        $http.get('/resources/article/' + article.id).then(function(data){
+            $scope.article = data.data;
+        });
     };
 
 });
