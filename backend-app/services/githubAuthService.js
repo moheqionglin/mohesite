@@ -42,7 +42,7 @@ var generateTokenRequest = function(clientId, clientSecret, redirectUri, code){
             redirect_uri: redirectUri,
             code: code
         },
-        timeout: 8000
+        timeout: 10000
     };
 };
 
@@ -54,7 +54,7 @@ var generateUserApiRequest = function(accessToken){
             Authorization: 'token ' + accessToken,
             'User-Agent': 'request'
         },
-        timeout: 8000
+        timeout: 10000
     };
 };
 
