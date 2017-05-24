@@ -1,16 +1,22 @@
 {% macro resultListDisplay(collection)%}
 {% set urlMapping = {'FORUM': '/site/answer/^^/1/topic-list.html',
                     'TOPIC': '/answer/^^/detail.html',
-                    'BLOG': '/site/blogs/^^/detail.html'}%}
-
+                    'BLOG': '/site/blogs/^^/detail.html',
+                    'BOOK': '/site/books/^^/detail.html',
+                    'SERIALIZE': '/site/serialize/^^/detail.html'}%}
+{%if 'SERIALIZE' == collection.collectionType or 'BOOK' == collection.collectionType %}
+    {%set url = urlMapping[collection.collectionType] | replace('^^', collection.catalogNum)%}
+{%else%}
+    {%set url = urlMapping[collection.collectionType] | replace('^^', collection.id)%}
+{%endif%}
 <div class="row result-list-item">
     {%if collection.image %}
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 result-list-img">
-        <a href="{{urlMapping[collection.collectionType] | replace('^^', collection.id)}}"><img src="{{collection.image}}"></a>
+        <a href="{{url}}"><img src="{{collection.image}}"></a>
     </div>
     {%endif%}
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 result-list-metadata">
-        <h3 class="result-list-title"><a href="{{urlMapping[collection.collectionType] | replace('^^', collection.id)}}">{{collection.title}}</a></h3>
+        <h3 class="result-list-title"><a href="{{url}}">{{collection.title}}</a></h3>
         <ul class="result-list-attribute">
             <li><i class="icon-calendar"></i>{{collection.createdAt | dataParse}}</li>
             {%if collection.readCount %}

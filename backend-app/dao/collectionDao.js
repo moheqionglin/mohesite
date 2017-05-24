@@ -11,7 +11,7 @@ const CatalogItem = require('../messages/CatalogItem');
 
 var findTop10CollectionMetaData = async function(){
     var collections = await collectionModal.findAll({
-        attributes: ['id', 'title', 'introduction', 'image', 'readCount', 'collectionType', 'keyWord', 'createdAt' ],
+        attributes: ['id', 'title', 'introduction', 'catalogNum', 'image', 'readCount', 'collectionType', 'keyWord', 'createdAt' ],
         order:'readCount desc, id desc',
         limit:10
     });
