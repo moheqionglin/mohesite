@@ -183,4 +183,8 @@ angular.module('articles').controller('editArticlesCtrl', function($scope, $http
         }
     };
 
+    $scope.deleteArticle = function(article){
+        $http.get('/resources/article/delete/' + article.id);
+    };
+
 });

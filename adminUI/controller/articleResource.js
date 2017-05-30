@@ -73,11 +73,25 @@ var modifyArticle = async(ctx, next) =>{
     next();
 };
 
+var deleteArticle = async(ctx, next) =>{
+    var id = ctx.params.id;
+    log.info(`Delete article ${id}`);
+
+    if(!id){
+        ctx.status = 404;
+        return;
+    }
+    var result = await articleDao.deleteArticle(id);
+    ctx.status = 200;
+    next();
+
+};
 
 module.exports = {
     'GET /article/search/:keyword': getArticleMetaByIdOrCatalogNum,
     'GET /article/:id': getArticleById,
     'GET /article/generateSubCatalog/:catalogNum': generateSubCatalog,
     'POST /article/create': createArticle,
-    'POST /article/modify': modifyArticle
+    'POST /article/modify': modifyArticle,
+    'GET /article/delete/:id': deleteArticle
 };

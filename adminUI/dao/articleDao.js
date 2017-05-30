@@ -164,11 +164,19 @@ var modifyArticle = async(article) =>{
         return null;
     }
 };
-
+var deleteArticle = async(id) =>{
+    await collectionModal.update({status: 0, updatedAt: new Date()},
+        {where:{
+            id: id
+        }}
+    );
+};
 module.exports = {
     getArticleByIdOrCatalogNum: getArticleByIdOrCatalogNum,
     getArticleById: getArticleById,
     generateSubCatalog: generateSubCatalog,
     createArticle: createArticle,
-    modifyArticle: modifyArticle
+    modifyArticle: modifyArticle,
+    deleteArticle: deleteArticle
+
 };
