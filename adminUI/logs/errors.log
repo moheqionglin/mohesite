@@ -1,0 +1,18 @@
+[2017-05-30 23:54:42.849] [ERROR] Article dao - ReferenceError: prefix is not defined
+[2017-05-30 23:54:57.514] [ERROR] Article dao - ReferenceError: t is not defined
+[2017-05-30 23:55:30.232] [ERROR] Article dao - SequelizeValidationError: notNull Violation: readCount cannot be null,
+notNull Violation: collectionType cannot be null,
+notNull Violation: status cannot be null,
+notNull Violation: createdAt cannot be null,
+notNull Violation: updatedAt cannot be null
+[2017-05-30 23:56:06.309] [ERROR] Article dao - SequelizeValidationError: notNull Violation: collectionType cannot be null,
+notNull Violation: status cannot be null,
+notNull Violation: createdAt cannot be null,
+notNull Violation: updatedAt cannot be null
+[2017-05-31 00:00:08.632] [ERROR] Article dao - SequelizeValidationError: notNull Violation: status cannot be null,
+notNull Violation: createdAt cannot be null,
+notNull Violation: updatedAt cannot be null
+[2017-05-31 00:00:41.334] [ERROR] Article dao - SequelizeValidationError: notNull Violation: createdAt cannot be null,
+notNull Violation: updatedAt cannot be null
+[2017-05-31 00:01:40.829] [ERROR] Article dao - ReferenceError: createdAt is not defined
+[2017-05-31 00:10:27.215] [ERROR] Article dao - Error: Missing where attribute in the options parameter passed to update.

@@ -2,7 +2,7 @@
     <div class="col-lg-3">
         <div class="panel panel-default">
             <div class="panel-heading text-center">编辑
-                <label class="new-blog-label"><a href="#"><span class="glyphicon glyphicon-plus" ></span>&nbsp;新建</a></label>
+                <label class="new-blog-label"><a href="javascript:void(0);" ng-click="createArticle()"><span class="glyphicon glyphicon-plus" ></span>&nbsp;新建</a></label>
             </div>
             <div class="panel-body">
                 <div class="input-group search-input">
@@ -40,23 +40,53 @@
             <div class="form-group">
                 <label  class="col-sm-2 control-label text-left">文章位置</label>
                 <div class="col-sm-10">
-                    <select ng-options="m.id as m.title for m in menus" ng-model="article.position.menu"
-                            ng-change="selectedMenu()">
-                    </select>
+                    <ol class="breadcrumb" ng-if="!createArticleFlag">
+                        <li ><a href="javascript:void(0);">{{article.collectionType}}</a></li>
+                        <li ng-if="article.bookName" title="{{article.catalogNum}}"><a href="javascript:void(0);">{{article.bookName}}</a></li>
+                        <li ng-if="article.h1Name" title="{{article.catalogNum}}"><a href="javascript:void(0);">{{article.h1Name}}</a></li>
+                        <li ng-if="article.h2Name" title="{{article.catalogNum}}"><a href="javascript:void(0);">{{article.h2Name}}</a></li>
+                        <li ng-if="article.h3Name" title="{{article.catalogNum}}"><a href="javascript:void(0);">{{article.h3Name}}</a></li>
+                    </ol>
 
-                    <select ng-hide="article.position.menu === 'blog'" ng-options="b.id as b.title for b in books"
-                            ng-change="selectedBook()" ng-model="article.position.book">
-                        <option><a class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> 新增</a></option>
-                    </select>
-                    <select ng-hide="article.position.menu === 'blog'" ng-options="head1.id as head1.title for head1 in head1s"
-                        ng-change="selectedHead1()" ng-model="article.position.head1">
-                    </select>
-                    <select ng-hide="article.position.menu === 'blog'" ng-options="head2.id as head2.title for head2 in head2s"
-                            ng-change="selectedHead2()" ng-model="article.position.head2">
-                    </select>
-                    <select ng-hide="article.position.menu === 'blog'" ng-options="head3.id as head3.title for head3 in head3s"
-                            ng-change="selectedHead3()" ng-model="article.position.head3">
-                    </select>
+                    <ol class="breadcrumb" ng-if="createArticleFlag">
+                        <li >
+                            <select ng-model="createdArticle.collectionType" ng-change="generateSubCatalog('collection')">
+                                <option value="BLOG">编程日志</option>
+                                <option value="01">跟我读书</option>
+                                <option value="02">连载教程</option>
+                            </select>
+                        </li>
+                        <li ng-if="createdArticle.collectionType == '01' || createdArticle.collectionType == '02'" >
+                            <select ng-model="createdArticle.catalogBook" ng-hide="showCreatedName" ng-change="generateSubCatalog('book')">
+                                <option ng-repeat="bookCatalog in bookCatalogs" value="{{bookCatalog.catalogNum}}">{{bookCatalog.title}}</option>
+                            </select>
+                            <input type="text" ng-model="article.title"  ng-show="showCreatedName">
+                            <a href="javascript:void(0);" ng-click="showCreatedNameInput()"  ng-hide="showCreatedName"><span class="glyphicon glyphicon-plus" ></span>&nbsp;新增</a>
+                        </li>
+                        <li ng-show="displayH1()" >
+                            <select ng-model="createdArticle.catalogH1" ng-change="generateSubCatalog('h1')" ng-hide="showCreatedH1">
+                                <option ng-repeat="catalogH1 in catalogH1s" value="{{catalogH1.catalogNum}}">{{catalogH1.title}}</option>
+                            </select>
+                            <input type="text" ng-model="article.title"  ng-show="showCreatedH1">
+                            <a href="javascript:void(0);" ng-click="showH1Input()"   ng-hide="showCreatedH1"><span class="glyphicon glyphicon-plus" ></span>&nbsp;新增</a>
+                        </li>
+                        <li ng-show="displayH2()" >
+                            <select ng-model="createdArticle.catalogH2" ng-change="generateSubCatalog('h2')" ng-hide="showCreatedH2">
+                                <option ng-repeat="catalogH2 in catalogH2s" value="{{catalogH2.catalogNum}}">{{catalogH2.title}}</option>
+                            </select>
+                            <input type="text" ng-model="article.title"  ng-show="showCreatedH2">
+                            <a href="javascript:void(0);" ng-click="showH2Input()"  ng-hide="showCreatedH2"><span class="glyphicon glyphicon-plus" ></span>&nbsp;新增</a>
+                        </li>
+                        <li ng-show="displayH3()" >
+                            <select ng-model="createdArticle.catalogH3" ng-hide="showCreatedH3">
+                                <option ng-repeat="catalogH3 in catalogH3s" value="{{catalogH3.catalogNum}}">{{catalogH3.title}}</option>
+                            </select>
+                            <input type="text" ng-model="article.title"  ng-show="showCreatedH3">
+                            <a href="javascript:void(0);" ng-click="showH3Input()"  ng-hide="showCreatedH3"><span class="glyphicon glyphicon-plus" ></span>&nbsp;新增</a>
+                        </li>
+                    </ol>
+
+
                 </div>
             </div>
             <div class="form-group">
@@ -85,7 +115,7 @@
                 </div>
             </div>
             <label>文章正文</label>
-            <mohe-markdown-editor ng-if="article.content" content="article.content"></mohe-markdown-editor>
+            <mohe-markdown-editor content="article.content" callback="submitArticle(content)"></mohe-markdown-editor>
         </form>
 
     </div>

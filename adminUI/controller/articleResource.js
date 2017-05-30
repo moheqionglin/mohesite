@@ -2,9 +2,8 @@
  * Created by zhouwanli on 24/05/2017.
  */
 'use strict';
-var articleDao = require('../dao/articleDao');
+const articleDao = require('../dao/articleDao');
 const log = require('log4js').getLogger("Article resource");
-
 
 var getArticleMetaByIdOrCatalogNum = async(ctx, next) => {
     var keyword = ctx.params.keyword;
@@ -29,7 +28,56 @@ var getArticleById = async(ctx, next) =>{
     ctx.response.body = article;
     next();
 };
+
+var generateSubCatalog = async (ctx, next) =>{
+    var catalogNum = ctx.params.catalogNum;
+    log.info(`Get All Book Or Serialize by ${catalogNum}`);
+    if(!catalogNum){
+        ctx.status = 404;
+        return;
+    }
+    var allBookOrSer = await articleDao.generateSubCatalog(catalogNum);
+    if(!allBookOrSer){
+        ctx.status = 404;
+        return;
+    }
+    ctx.response.body = allBookOrSer;
+    next();
+
+};
+
+var createArticle = async(ctx, next) =>{
+
+    var catalog = ctx.request.body.catalog;
+    var article = ctx.request.body.article;
+    log.info(`Create article ${JSON.stringify(catalog)} \n ${JSON.stringify(article)}`);
+
+    var result = await articleDao.createArticle(catalog, article);
+    if(!result){
+        ctx.status = 500;
+        return;
+    }
+    ctx.status = 200;
+    next();
+};
+
+var modifyArticle = async(ctx, next) =>{
+    var article = ctx.request.body.article;
+    log.info(`Modify article   ${JSON.stringify(article)}`);
+    var result = await articleDao.modifyArticle(article);
+    if(!result){
+        ctx.status = 500;
+        return;
+    }
+    ctx.status = 200;
+    next();
+};
+
+
 module.exports = {
     'GET /article/search/:keyword': getArticleMetaByIdOrCatalogNum,
-    'GET /article/:id': getArticleById
+    'GET /article/:id': getArticleById,
+    'GET /article/generateSubCatalog/:catalogNum': generateSubCatalog,
+    'POST /article/create': createArticle,
+    'POST /article/modify': modifyArticle
 };
