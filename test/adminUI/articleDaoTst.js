@@ -14,5 +14,10 @@ var generateSubCatalogTest = async(prefix) =>{
 };
 // getArticleByIdTest(10847);
 
+var getArticleByIdOrCatalogNumTest = async() =>{
+    var result = await articleDao.getArticleByIdOrCatalogNum(1);
+    console.log(result)
+};
+// generateSubCatalogTest('01013');
 
-generateSubCatalogTest('01013');
+getArticleByIdOrCatalogNumTest(1)

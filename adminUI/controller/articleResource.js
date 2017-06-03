@@ -4,6 +4,7 @@
 'use strict';
 const articleDao = require('../dao/articleDao');
 const log = require('log4js').getLogger("Article resource");
+const utils = require('./utils');
 
 var getArticleMetaByIdOrCatalogNum = async(ctx, next) => {
     var keyword = ctx.params.keyword;
@@ -87,11 +88,39 @@ var deleteArticle = async(ctx, next) =>{
 
 };
 
+var getArticleCatalog = async(ctx, next) =>{
+    var catalogNum = ctx.params.catalogNum;
+    log.info(`Delete article ${catalogNum}`);
+
+    if(!catalogNum){
+        ctx.status = 404;
+        return;
+    }
+    var result = await articleDao.getArticleCatalogByArticleCatalogNum(catalogNum);
+    ctx.response.body = result;
+    ctx.status = 200;
+    next();
+};
+
+var changeCatalog = async(ctx, next) =>{
+    var originalCatalog = ctx.request.body.originalCatalog;
+    var modifiedCatalog = ctx.request.body.modifiedCatalog;
+    log.info(`Original Catalog ${JSON.stringify(originalCatalog)} . Modified Catalog ${JSON.stringify(modifiedCatalog)}`);
+    if(!originalCatalog || !modifiedCatalog){
+        ctx.status = 500;
+        return;
+    }
+    if
+
+};
+
 module.exports = {
     'GET /article/search/:keyword': getArticleMetaByIdOrCatalogNum,
     'GET /article/:id': getArticleById,
     'GET /article/generateSubCatalog/:catalogNum': generateSubCatalog,
     'POST /article/create': createArticle,
     'POST /article/modify': modifyArticle,
-    'GET /article/delete/:id': deleteArticle
+    'GET /article/delete/:id': deleteArticle,
+    'GET /article/catalog/:catalogNum': getArticleCatalog,
+    'POST /change/catalog': changeCatalog
 };

@@ -11,7 +11,7 @@ const catalogModal = require('../../backend-app/domain/entity/catalog');
 var getArticleByIdOrCatalogNum = async(keyword) =>{
 
     var article = await collectionModal.findOne({
-        attributes: ['id', 'title', 'catalogNum' ],
+        attributes: ['id', 'title', 'catalogNum', 'collectionType' ],
         where:{
             $or:[{id: keyword}, {catalogNum: keyword}]
         }
@@ -31,6 +31,28 @@ var generateParentCatalogNums = function(catalogNum){
     return nums;
 };
 
+var initArticleCatalog = async(article) => {
+    var catalogSql = 'select catalogNum, title from catalog where catalogNum in ( :catalogs )';
+    var catalogs = await em.query(catalogSql, { replacements: {catalogs: generateParentCatalogNums(article.catalogNum)}, type: em.QueryTypes.SELECT });
+    for(var index in catalogs){
+        var tmpCatalog = catalogs[index];
+        switch (tmpCatalog.catalogNum.length){
+            case 5:
+                article.bookName = tmpCatalog.title;
+                break;
+            case 8:
+                article.h1Name = tmpCatalog.title;
+                break;
+            case 11:
+                article.h2Name = tmpCatalog.title;
+                break;
+            case 14:
+                article.h3Name = tmpCatalog.title;
+                break;
+        }
+    }
+};
+
 var getArticleById = async(id) =>{
     var article = await collectionModal.findOne({where:{
         id: id
@@ -41,25 +63,7 @@ var getArticleById = async(id) =>{
     var article = article.dataValues;
     if(article.collectionType === collectionType.BOOK
         || article.collectionType === collectionType.SERIALIZE){
-        var catalogSql = 'select catalogNum, title from catalog where catalogNum in ( :catalogs )';
-        var catalogs = await em.query(catalogSql, { replacements: {catalogs: generateParentCatalogNums(article.catalogNum)}, type: em.QueryTypes.SELECT });
-        for(var index in catalogs){
-            var tmpCatalog = catalogs[index];
-            switch (tmpCatalog.catalogNum.length){
-                case 5:
-                    article.bookName = tmpCatalog.title;
-                    break;
-                case 8:
-                    article.h1Name = tmpCatalog.title;
-                    break;
-                case 11:
-                    article.h2Name = tmpCatalog.title;
-                    break;
-                case 14:
-                    article.h3Name = tmpCatalog.title;
-                    break;
-            }
-        }
+        await initArticleCatalog(article);
     }
 
     return article;
@@ -171,12 +175,20 @@ var deleteArticle = async(id) =>{
         }}
     );
 };
+var getArticleCatalogByArticleCatalogNum = async (catalogNum) =>{
+    var article = {
+        catalogNum: catalogNum
+    };
+    await initArticleCatalog(article);
+    return article;
+};
 module.exports = {
     getArticleByIdOrCatalogNum: getArticleByIdOrCatalogNum,
     getArticleById: getArticleById,
     generateSubCatalog: generateSubCatalog,
     createArticle: createArticle,
     modifyArticle: modifyArticle,
-    deleteArticle: deleteArticle
+    deleteArticle: deleteArticle,
+    getArticleCatalogByArticleCatalogNum: getArticleCatalogByArticleCatalogNum
 
 };

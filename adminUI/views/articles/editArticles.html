@@ -22,7 +22,8 @@
                             <mohe-popover-content>
                                 <ul class="edit-blog-popver-menu">
                                     <li><a href="javascript:void(0);" ng-click="deleteArticle(article)"><span class="glyphicon glyphicon-trash"></span>&nbsp;删除文章</a></li>
-                                    <li><a href="javascript:void(0);" ng-click="editArticle(article)"><span class="glyphicon glyphicon-trash"></span>&nbsp;编辑文章</a></li>
+                                    <li><a href="javascript:void(0);" ng-click="editArticle(article)"><span class="glyphicon glyphicon-pencil"></span>&nbsp;编辑文章</a></li>
+                                    <li><a href="javascript:void(0);" ng-click="moveArticle(article)"><span class="glyphicon glyphicon-move"></span>&nbsp;移动文章</a></li>
                                 </ul>
                             </mohe-popover-content>
                         </mohe-popover>
@@ -43,9 +44,9 @@
                     <ol class="breadcrumb" ng-if="!createArticleFlag">
                         <li ><a href="javascript:void(0);">{{article.collectionType}}</a></li>
                         <li ng-if="article.bookName" title="{{article.catalogNum}}"><a href="javascript:void(0);">{{article.bookName}}</a></li>
-                        <li ng-if="article.h1Name" title="{{article.catalogNum}}"><a href="javascript:void(0);">{{article.h1Name}}</a></li>
-                        <li ng-if="article.h2Name" title="{{article.catalogNum}}"><a href="javascript:void(0);">{{article.h2Name}}</a></li>
-                        <li ng-if="article.h3Name" title="{{article.catalogNum}}"><a href="javascript:void(0);">{{article.h3Name}}</a></li>
+                        <li ng-if="article.h1Name" title="{{article.h1Name}}"><a href="javascript:void(0);">{{article.h1Name}}</a></li>
+                        <li ng-if="article.h2Name" title="{{article.h2Name}}"><a href="javascript:void(0);">{{article.h2Name}}</a></li>
+                        <li ng-if="article.h3Name" title="{{article.h3Name}}"><a href="javascript:void(0);">{{article.h3Name}}</a></li>
                     </ol>
 
                     <ol class="breadcrumb" ng-if="createArticleFlag">
@@ -121,3 +122,4 @@
     </div>
 
 </div>
+<catalog-modal></catalog-modal>

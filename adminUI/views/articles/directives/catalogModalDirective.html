@@ -3,14 +3,57 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">移动到</h4>
             </div>
             <div class="modal-body">
-                {{type}}/{{article}}
+                当前位置:
+                <ol class="breadcrumb">
+                    <li ><a href="javascript:void(0);">{{collectionType}}</a></li>
+                    <li ng-if="article.bookName" title="{{article.catalogNum}}"><a href="javascript:void(0);">{{article.bookName}}</a></li>
+                    <li ng-if="article.h1Name" title="{{article.h1Name}}"><a href="javascript:void(0);">{{article.h1Name}}</a></li>
+                    <li ng-if="article.h2Name" title="{{article.h2Name}}"><a href="javascript:void(0);">{{article.h2Name}}</a></li>
+                    <li ng-if="article.h3Name" title="{{article.h3Name}}"><a href="javascript:void(0);">{{article.h3Name}}</a></li>
+                </ol>
+                <h1>移动到</h1>
+                <ol class="breadcrumb" ng-hide="isOriginH1Book()">
+                    <li >
+                        <select ng-model="movedArticle.collectionType" ng-change="generateSubCatalog('collection')">
+                            <option value="BLOG">编程日志</option>
+                            <option value="BOOK">跟我读书</option>
+                            <option value="SERIALIZE">连载教程</option>
+                        </select>
+                    </li>
+
+                    <li ng-if="movedArticle.collectionType == '01' || movedArticle.collectionType == '02'" >
+                        <select ng-model="movedArticle.catalogBook" ng-change="generateSubCatalog('book')">
+                            <option ng-repeat="bookCatalog in bookCatalogs" value="{{bookCatalog.catalogNum}}">{{bookCatalog.title}}</option>
+                        </select>
+                    </li>
+
+                    <li ng-show="displayH1()" >
+                        <select ng-model="movedArticle.catalogH1"  >
+                            <option ng-repeat="catalogH1 in catalogH1s" value="{{catalogH1.catalogNum}}">{{catalogH1.title}}</option>
+                        </select>
+                        <a href="javascript:void(0)" ng-show="isOriginH2() || isOriginH3() " ng-click="expandSubSelection('h2')">展开>></a>
+                    </li>
+                    <li ng-show="displayH2()" >
+                        <select ng-model="movedArticle.catalogH2"   >
+                            <option ng-repeat="catalogH2 in catalogH2s" value="{{catalogH2.catalogNum}}">{{catalogH2.title}}</option>
+                        </select>
+                        <a href="javascript:void(0)" ng-show="isOriginH3()" ng-click="expandSubSelection('h3')">展开>></a>
+                    </li>
+                    <li ng-show="displayH3()" >
+                        <select ng-model="movedArticle.catalogH3" >
+                            <option ng-repeat="catalogH3 in catalogH3s" value="{{catalogH3.catalogNum}}">{{catalogH3.title}}</option>
+                        </select>
+                    </li>
+                </ol>
+                <div ng-show="success" class="color-green">提交成功</div>
+                <div ng-show="error" class="color-red">提交失败</div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" ng-click="submitCatalog()">Save changes</button>
             </div>
         </div>
     </div>

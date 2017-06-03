@@ -187,4 +187,9 @@ angular.module('articles').controller('editArticlesCtrl', function($scope, $http
         $http.get('/resources/article/delete/' + article.id);
     };
 
+    $scope.moveArticle = function(article){
+        $scope.$broadcast('event:catalogModal:show', article);
+    };
+
+
 });
