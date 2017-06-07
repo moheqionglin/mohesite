@@ -48,7 +48,7 @@ var Collections = entityManager.define('collections', {
         },
         catalogNum: {
             type: Sequelize.STRING(12),
-            allowNull: false
+            allowNull: true
         },
         createdAt: {
             type: Sequelize.DATE,

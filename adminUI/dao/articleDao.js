@@ -123,8 +123,7 @@ var createArticle = async(catalog, article) =>{
         if(!catalogNum && (catalog.collectionType == '01' || catalog.collectionType == '02')) {
             return null;
         }
-        article.catalogNum = catalogNum;
-        catalog.catalogNum = catalogNum;
+        article.catalogNum = catalogNum ;
         article.status = 1;
         article.createdAt = new Date();
         article.updatedAt = new Date();

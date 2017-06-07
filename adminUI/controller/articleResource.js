@@ -110,7 +110,6 @@ var changeCatalog = async(ctx, next) =>{
         ctx.status = 500;
         return;
     }
-    if
 
 };
 
