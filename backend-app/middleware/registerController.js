@@ -5,7 +5,7 @@
 const fs = require('fs');
 const _ = require('underscore');
 var _s = require("underscore.string");
-const log = require('log4js').getLogger("registerController");
+const log = require('log4js').getLogger("Register Controller");
 
 //必须要传路径
 var register = function(router, controllerDirs){

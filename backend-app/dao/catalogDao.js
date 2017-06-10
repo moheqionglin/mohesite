@@ -4,7 +4,7 @@
 'use strict';
 const catalogModal = require('../domain/entity/catalog');
 const _ = require('lodash');
-const log = require('log4js').getLogger('index controller');
+const log = require('log4js').getLogger('Catalog dao');
 
 var getCatalogByCatalogNum = async(catalogNum) =>{
     try{

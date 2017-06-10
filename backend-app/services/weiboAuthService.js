@@ -3,7 +3,7 @@
  */
 'use strict';
 const request = require('request');
-const log = require('log4js').getLogger('weibo Oauth2 Authenticate ');
+const log = require('log4js').getLogger('Weibo Oauth2 Authenticate ');
 const webConf = require('../webConf');
 const Oauth2AuthResponse = require('../messages/oauth2AuthResponse');
 const UUID = require('uuid');

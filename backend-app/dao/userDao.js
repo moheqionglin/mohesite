@@ -6,7 +6,7 @@ const cache = require('../domain/cache/lruCache')();
 const AuthUser = require('../messages/user');
 const userModal = require('../domain/entity/users');
 const authTokenModal = require('../domain/entity/authenticationTokens');
-const log = require('log4js').getLogger("useDao ");
+const log = require('log4js').getLogger("User dao");
 
 var getUserByAuthTokenAndCache = async function(localToken){
     

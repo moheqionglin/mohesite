@@ -5,7 +5,7 @@
 const UUID = require('uuid');
 const roles = require('../domain/entity/role').roles;
 const request = require('request');
-const log = require('log4js').getLogger('facebook Oauth2 Authenticate ');
+const log = require('log4js').getLogger('Facebook Oauth2 Authenticate ');
 const webConf = require('../webConf');
 const Oauth2AuthResponse = require('../messages/oauth2AuthResponse');
 

@@ -7,6 +7,7 @@ const collectionType = require('../domain/entity/collectionType');
 const _ = require('lodash');
 const pagiationConf = require('../webConf').pagiation;
 const em = require('../domain/entityManager');
+const log = require('log4js').getLogger('Serialize dao');
 
 var findBooksMetaByPage = async (currentPage) =>{
 
@@ -38,6 +39,13 @@ var getBookDetailByCatalogNum = async(catalogNum) =>{
         }
     });
     if(book){
+        try{
+            await book.updateAttributes({
+                readCount: book.readCount + 1
+            });
+        }catch(e){
+            log.warn(`Update blog [${catalogNum}] read count error: ${e}`);
+        }
         return book.dataValues;
     }
     return null;

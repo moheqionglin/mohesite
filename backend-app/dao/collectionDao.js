@@ -5,7 +5,7 @@
 const collectionModal = require('../domain/entity/collections');
 const collectionType = require('../domain/entity/collectionType');
 const _ = require('lodash');
-const log = require('log4js').getLogger('index controller');
+const log = require('log4js').getLogger('Collection dao');
 const em = require('../domain/entityManager');
 const CatalogItem = require('../messages/CatalogItem');
 

@@ -6,6 +6,7 @@ const collectionModal = require('../domain/entity/collections');
 const collectionType = require('../domain/entity/collectionType');
 const pagiationConf = require('../webConf').pagiation;
 const _ = require('lodash');
+const log = require('log4js').getLogger('Blog dao');
 
 var getBlockListByPage = async(currentPage) =>{
     if(!currentPage || isNaN(currentPage)){
@@ -38,6 +39,13 @@ var getBlogDetail = async(blogId) =>{
         }
     });
     if(blog){
+        try{
+            await blog.updateAttributes({
+                readCount: blog.readCount + 1
+            });
+        }catch(e){
+            log.warn(`Update blog [${blogId}] read count error: ${e}`);
+        }
         return blog.dataValues;
     }
     return null;
