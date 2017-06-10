@@ -22,7 +22,7 @@ module.exports = {
         FACEBOOK: 'facebook'
     },
     img:{
-        DEFAULT_USER_IMG: 'http://opkhviyav.bkt.clouddn.com/image/test/author.jpg'
+        DEFAULT_USER_IMG: 'http://image.moheqionglin.com/image/website/author.jpg'
     },
     forumId:{
         OTHER_ID: '-3',
