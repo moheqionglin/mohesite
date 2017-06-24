@@ -25,7 +25,7 @@
     <ul class="share text-center divider-top">
         分享至:
         <li class="text-center"><a href="#" data-toggle="modal" data-target="#qr-code-modal"> <i class="icon-wechat" ></i></a></li>
-        <li class="text-center"><a href="http://weibo.com/moheqionglin" target="_blank"><i class="icon-weibo"></i></a></li>
+        <li class="text-center"><a href="#" data-target="#qr-code-modal"><i class="icon-weibo"></i></a></li>
         <li class="text-center"><a href="#" data-toggle="modal" data-target="#qr-code-modal"> <i class="icon-qrcode" ></i></a></li>
     </ul>
     {%if(authUser)%}
@@ -60,10 +60,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title text-center" id="myModalLabel">分享微信</h4>
+                <h4 class="modal-title text-center" id="myModalLabel">分享文章</h4>
             </div>
             <div class="modal-body text-center">
-                <h5>打开微信"扫一扫"，打开网页后点击屏幕右上角分享按钮</h5>
+                <h5>打开微信/微博"扫一扫"，打开网页后点击屏幕右上角分享按钮</h5>
                 <div id="placeHolder"></div>
             </div>
         </div>
