@@ -14,12 +14,13 @@
     <link rel="icon" href="/images/favicon.ico">
 
     <title>墨荷琼林官网</title>
-    <!-- Bootstrap core CSS -->
-    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Loading Flat UI -->
-    <!--<link href="/bower_components/flat-ui/dist/css/flat-ui.css" rel="stylesheet">-->
-    <link href="/bower_components/animate.css/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/bower_components/bootstrap-offcanvas/dist/css/bootstrap.offcanvas.min.css"/>
+
+    <!-- build:cssLibIndex ../stylesheets/dist/lib-index.min.css -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bower_components/animate.css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bower_components/bootstrap-offcanvas/dist/css/bootstrap.offcanvas.min.css"/>
+    <!-- endbuild -->
+
     <!-- Custom styles for this template -->
     <link href="/stylesheets/main.min.css" rel="stylesheet">
 
@@ -70,10 +71,12 @@
         </div>
     </div>
     {% include './footer/_footer.html'%}
-    <!--待删除-->
-    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/bootstrap/js/dropdown.js"></script>
-    <script src="/bower_components/bootstrap-offcanvas/dist/js/bootstrap.offcanvas.min.js"></script>
+
+    <!-- build:jsLibIndex ../javascripts/dist/lib-index.min.js -->
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/js/dropdown.js"></script>
+    <script src="../bower_components/bootstrap-offcanvas/dist/js/bootstrap.offcanvas.min.js"></script>
+    <!-- endbuild -->
 
 </body>
 </html>
