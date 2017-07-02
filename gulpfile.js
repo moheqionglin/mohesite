@@ -23,6 +23,7 @@ var filter = require("gulp-filter");
 var revReplace = require("gulp-rev-replace");
 var cdnizer = require("gulp-cdnizer");
 var ngmin = require('gulp-ng-annotate');
+const gulpReplace = require('gulp-replace');
 require('./gulpServer');
 
 /********************CONST VAR***********************/
@@ -66,6 +67,7 @@ gulp.task('compile-compress-sass', function(){
         .pipe(compressCss())
         .pipe(gulp.dest(gulpConfig.scss.compress));
 });
+
 gulp.task('local-css-adminUI', function(){
     return gulp.src([gulpConfig.scss.adminUI.source])
         .pipe(sass())
@@ -83,13 +85,18 @@ gulp.task('copy-views-to-target', ['compile-compress-sass'], function(){
         .pipe(gulp.dest('target/'));
 
 });
+
 gulp.task('copy-public-to-target', ['copy-views-to-target'], function(){
     return gulp.src(['./public/bower_components/**/*', './public/font/**/*', './public/images/**/*', './public/javascripts/**/*', './public/stylesheets/**/*'], { "base" : "./public" })
         .pipe(gulp.dest('target/'));
 
 });
-
-gulp.task('concat-compress-js-css-in-html', ['copy-public-to-target'], function () {
+gulp.task('fix-fontello-CROS', ['copy-public-to-target'], function(){
+    gulp.src(['./target/stylesheets/main.min.css'])
+        .pipe(gulpReplace(/\.\.\/font\/fontello/g, gulpConfig.cdn.url + '/font/fontello'))
+        .pipe(gulp.dest('./target/stylesheets'));
+});
+gulp.task('concat-compress-js-css-in-html', ['fix-fontello-CROS'], function () {
     return gulp.src(gulpConfig.html.source)
         .pipe(usemin({
             jsLibQstBlockList: [ngmin(), uglify()],
