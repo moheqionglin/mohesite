@@ -16,7 +16,7 @@ var getBlockListByPage = async(currentPage) =>{
         attributes: ['id', 'title', 'introduction', 'image', 'readCount', 'collectionType', 'keyWord', 'createdAt' ],
         order:'readCount desc, id desc',
         where:{
-            collectionType: {$in: collectionType.BLOG, collectionType.BOOK, collectionType.SERIALIZE}
+            collectionType: {$in: [collectionType.BLOG, collectionType.BOOK, collectionType.SERIALIZE]}
         },
         limit: pagiationConf.PAGE_SIZE,
         offset: (currentPage - 1) * pagiationConf.PAGE_SIZE
