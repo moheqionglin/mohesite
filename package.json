@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "koa": "2.0.0",
+    "koa": "2.15.4",
     "koa-cors": "0.0.16",
     "koa-router": "7.0.0",
     "koa-bodyparser": "3.2.0",
